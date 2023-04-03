@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "weberg",
+  "private_key_id": "39d08063d5300525e5685376a09e601259531ede",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDiAiYoZytre1w6\njaErvpNTAInT084Y5EkObncrfQuZbHQvZ1ZzzScTdlwGpSAeO68QSS/RBKK7JSB4\n0HHuRIQSZYKfVCEX/J9wWSkgf3eCM0LOhnBFQwgFblAvCIIgB9kjhfhEeKN3TK0V\nxWPZUOrDqnGv4j0dw/jFdx6qS+lsFqmXJw4GoqEa2jTHDwyN4bK3CPtKnqzoNtVK\nu2swRUZXXFyOXuKGWY8dFC5aTzDNRc/4WXHV9xVzOdGosamj1EjrGpOasE33KS5Y\nMjBKEo7g1vzK3PJzopwEs6DWGu+Vu0BXFhxTRDErSbw4V/OnA9DKuzKOzjGNMk6r\naANmYKz/AgMBAAECggEAJM9Yy6fSCJV09gxvPaKyeAhUam3K2X8E7xbKzgh1xS1G\n1xmrmPzG6oKShnqKeqIZ5zskUJTCtFxdp4+7nqUGJcDmv3CCW1fH2BKNgj+AhXI3\n5U88Jeu++LN419A48WKV2RVO1EgZx6pzXmJh2tk1A11VWuIsNhbfA7pdAjuO7w2L\nfN4XtbuU11DZ/72/8L1kxv168FK1/ihKmiI+E93TUSt55BDm7fjYqvRhHG+KLGfs\n67U2Ez71OYaP4owvkpBG9ktvAT7+/i6pzpZsQX4B+346fYFYyY42gpbU9lk/DKZE\nJ9eaC1x64Ty4Ke3POGhYRdYCATpEcc9dSwMdKDLVMQKBgQD2k10Lpxvq+V7murV9\n56UHLmejEGzMXn4lEQ99HkYaIHmlSI0ZD+qier6tgJKulATsVKXbLRPsmOo7XdCl\nQMcoTUVQcOUTZR1WVEXL/Q17kCspj1o++tr/ZqTpKgqvr0K6L9N3ea1Exv5ICGKo\nphNsMk4Qa5NIHD9erL5KKftqKwKBgQDqpYtBKoomvF/iWRpkbThdVpgvRKj4vZEl\nNOcRd6QmoFiX6cy5/wx7DZAqWLCAmBT3ss7Wx9lpNoI02Ei4Daxv8LXoohhaodXt\n27i2CehbFfRaBrPogG4zHmKTF8rbE3rzd7Tzu4yzXaMOVnnxNEYwi/8BQCXQctMD\nUQM52hyCfQKBgQCRPFeP54xQKTY23T7NvEW+Jx0wNRqAfh/7IUNoRQ6xkPNV4ZgK\nbQ+dSINLmvHLFrCXq3xNzw1vTNqawTWGQNON74WmTfkAJYzULqs17gWlBFQIFMHp\nWsTnrsPv+q10sdyx4j3Cn87pNfTM5POHttq13iORFGwaC1lgIIutD3FhJQKBgFJa\nIWKQpIXtzRUqwomGj6aqkqTcSxVpqrxNMd++hr0Lv6wpYTHSIrY5T2SdVez78zfv\n6IoW/+XePJqBYhw+qEttRtrLsRJ2BBgD6nLxTTxSmzzRZ2jtUj/cpSoMyqRS1O8I\nD1kPdNUqwuRwU0HlX9EAAVKWCe97rTVXxHMUarcdAoGAcaZHAjaYf1GcdMSI/cRN\nL+7es2jOkJoLunvvH7NGupqurYhdzCbMZRwyOfy4CRVtPMb8024vDSmtMr3YIhwV\nhw8GVm0otGUNSKLZUNDQ6dkorYNpNCma0w3JW5xvllrMeHm6o7uhVLZwybiX4Yz5\nnaXsjgpkbnskBm5v537hVw4=\n-----END PRIVATE KEY-----\n",
+  "client_email": "genkovich-drive@weberg.iam.gserviceaccount.com",
+  "client_id": "118261915553698005546",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/genkovich-drive%40weberg.iam.gserviceaccount.com"
+}

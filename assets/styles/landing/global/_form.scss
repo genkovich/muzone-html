@@ -1,0 +1,284 @@
+.phone {
+    height: 100%;
+    position: relative;
+    color: $text;
+    &__item {
+        display: none !important;
+        &.active {
+            display: block !important;
+        }
+    }
+    &__input {
+        width: 100%;
+        height: 50px;
+        border: 1px solid #000;
+        font: 400 14px / 1 $font;
+        padding: 0 50px 0 25px;
+        &.valid {
+            + .invalid-feedback {
+                display: none;
+            }
+        }
+        &.invalid {
+            border-color: red !important;
+        }
+    }
+    &__arrow {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        height: 100%;
+        position: absolute;
+        right: 0;
+        top: 0;
+        cursor: pointer;
+        fill: $blue;
+        transition: .3s $trans;
+        &:hover {
+            background: rgba($blue, .1);
+        }
+        &.active-target {
+            svg {
+                transform: scaleY(-1);
+            }
+        }
+        svg {
+            width: 10px;
+            height: 5px;
+            transition: .3s $trans;
+        }
+    }
+    &__list {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #fff;
+        box-shadow: 0 10px 10px 0 rgba($blue, .05);
+        border-radius: 20px;
+        overflow: hidden;
+        margin: 10px 0 0;
+        visibility: hidden;
+        opacity: 0;
+        transform: translateY(8px);
+        transition: .3s $trans;
+        pointer-events: none;
+        font: 400 14px / 1 $font;
+        z-index: 10;
+        &.active-target {
+            visibility: visible;
+            opacity: 1;
+            transform: none;
+            pointer-events: all;
+        }
+        &-item {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: .2s background $trans;
+            &:hover {
+                background: rgba($blue, .1);
+            }
+            &.active {
+                background: $blue;
+                color: #fff;
+            }
+            &--phone {
+                fill: $greenH;
+            }
+            &--telegram {
+                fill: #7aa5da;
+            }
+            &--viber {
+                fill: #7c509a;
+            }
+        }
+        &-icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            svg {
+                width: 20px;
+                height: 20px;
+            }
+        }
+    }
+}
+
+
+.input {
+    display: block;
+    position: relative;
+    cursor: text;
+    margin: 0 0 8px;
+    input {
+        display: block;
+        border: 1px solid #C2D1D9;
+        height: 40px;
+        padding: 0 20px 0 40px;
+        background: #fff;
+        width: 100%;
+        font: 400 14px / 1 $font;
+        border-radius: 3px;
+        &:focus {
+            border-color: $blue;
+            + .input__icon {
+                fill: $blue;
+            }
+        }
+        &.invalid {
+            border-color: red;
+            + .input__icon {
+                fill: red;
+            }
+        }
+        &.valid {
+            + .input__icon + .invalid-feedback {
+                display: none;
+            }
+        }
+        &::placeholder {
+            color: #C2D1D9;
+        }
+    }
+    &__icon {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 40px;
+        width: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        fill: #C2D1D9;
+    }
+}
+
+.input2 {
+    display: block;
+    position: relative;
+    cursor: text;
+    margin: 0 0 15px;
+    input {
+        display: block;
+        border: 1px solid #C2D1D9;
+        height: 40px;
+        padding: 0 20px;
+        background: #fff;
+        width: 100%;
+        font: 400 14px / 1 $font;
+        border-radius: 3px;
+        &:focus {
+            border-color: $blue;
+            + .input__icon {
+                fill: $blue;
+            }
+        }
+        &.invalid {
+            border-color: red;
+            + .input__icon {
+                fill: red;
+            }
+        }
+        &.valid {
+            + .input__icon + .invalid-feedback {
+                display: none;
+            }
+        }
+        &::placeholder {
+            color: #C2D1D9;
+        }
+    }
+    &__icon {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 40px;
+        width: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        fill: #C2D1D9;
+    }
+}
+
+
+.invalid-feedback {
+    color: red;
+    font: 400 14px / 1 $font;
+    margin: 5px 0 10px;
+}
+
+
+.form-phone {
+    height: 50px;
+    display: flex;
+    &__btn {
+        background: $blue;
+        color: #fff;
+        width: 148px;
+        border-radius: 0 25px 25px 0;
+        font: 700 12px / 1 $font;
+        text-transform: uppercase;
+        transition: .3s $trans;
+        padding: 0 28px;
+        flex-shrink: 0;
+        width: auto;
+        &:hover {
+            background: $blueH;
+        }
+    }
+    .phone {
+        flex-grow: 1;
+        &__input {
+            border-color: $blue;
+            border-radius: 25px 0 0 25px;
+            &:focus {
+                border-color: $blueH;
+            }
+            &::placeholder {
+                color: #95A0A6;
+            }
+        }
+    }
+}
+
+
+.form {
+    .phone {
+        &__arrow {
+            height: 40px;
+        }
+    }
+    &__btn {
+        .btn {
+            width: 100%;
+            border-radius: 3px;
+            font-size: 12px;
+            height: 40px;
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .phone {
+        &__input {
+            font-size: 12px;
+            padding: 0 40px 0 22px;
+        }
+        &__arrow {
+            width: 40px;
+        }
+    }
+
+    .form-phone {
+        &__btn {
+            padding: 0 18px;
+            font-size: 12px;
+        }
+    }
+}

@@ -1,0 +1,43 @@
+{
+    "devDependencies": {
+        "@babel/core": "^7.21.3",
+        "@babel/preset-env": "^7.20.2",
+        "@hotwired/stimulus": "^3.0.0",
+        "@symfony/stimulus-bridge": "^3.2.0",
+        "@symfony/webpack-encore": "^4.0.0",
+        "babel-loader": "^9.1.2",
+        "copy-webpack-plugin": "^11.0.0",
+        "core-js": "^3.23.0",
+        "css-loader": "^6.7.3",
+        "eslint": "^8.36.0",
+        "eslint-config-airbnb-base": "^15.0.0",
+        "eslint-plugin-import": "^2.27.5",
+        "eslint-webpack-plugin": "^4.0.0",
+        "mini-css-extract-plugin": "^2.7.5",
+        "node-sass": "^8.0.0",
+        "postcss-loader": "^7.0.0",
+        "regenerator-runtime": "^0.13.9",
+        "sass-loader": "^13.2.1",
+        "webpack": "^5.74.0",
+        "webpack-cli": "^4.10.0",
+        "webpack-notifier": "^1.15.0"
+    },
+    "license": "UNLICENSED",
+    "private": true,
+    "scripts": {
+        "dev-server": "encore dev-server",
+        "dev": "encore dev",
+        "watch": "encore dev --watch",
+        "build": "encore production --progress"
+    },
+    "dependencies": {
+        "@emretulek/jbvalidator": "^1.0.9",
+        "@fancyapps/ui": "^5.0.13",
+        "fancybox": "^3.0.1",
+        "gsap": "^3.11.5",
+        "jquery": "^3.6.4",
+        "jquery-lazy": "^1.7.11",
+        "svg4everybody": "^2.1.9",
+        "swiper": "^9.1.1"
+    }
+}

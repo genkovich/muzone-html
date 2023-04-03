@@ -1,3 +1,8 @@
-controllers:
-    resource: ../src/Controller/
-    type: attribute
+main_page:
+    path: /
+    controller: Infrastructure\Symfony\Controller\MainPageController
+
+contact_save:
+    path: /contact/save
+    controller: Infrastructure\Symfony\Controller\ContactController::save
+    methods: [ POST ]
