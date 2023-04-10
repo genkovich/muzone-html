@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
             event.preventDefault();
 
             const formData = new FormData(contactForm);
-            const response = await fetch('/save-contact', {
+            const response = await fetch('/contact', {
                 method: 'POST',
                 body: formData,
                 headers: {

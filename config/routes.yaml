@@ -2,7 +2,7 @@ main_page:
     path: /
     controller: Infrastructure\Symfony\Controller\MainPageController
 
-contact_save:
-    path: /contact/save
-    controller: Infrastructure\Symfony\Controller\ContactController::save
+contact.save:
+    path: /contact
+    controller: Infrastructure\Symfony\Controller\LeadController::save
     methods: [ POST ]

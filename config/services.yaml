@@ -7,21 +7,34 @@ services:
     calls:
       - [setContainer, ['']]
 
+  Infrastructure\Symfony\ArgumentResolver\SaveLeadCommandArgumentResolver:
+    tags: [ 'controller.argument_value_resolver' ]
+
+  Infrastructure\Symfony\Controller\LeadController:
+    public: true
+    tags: ['controller.service_arguments', 'container.service_subscriber']
+    calls:
+      - [setContainer, ['']]
+    arguments:
+      - '@lead.handler_save'
+
   infrastructure.images:
     class: Infrastructure\Twig\GlobalVariables
 
-  Infrastructure\Symfony\ArgumentResolver\SaveContactCommandArgumentResolver:
-    tags: [ 'controller.argument_value_resolver' ]
-
-  contact_repository.psql:
-    class: Infrastructure\Persistence\Psql\Repository\ContactRepository
+  lead_repository.psql:
+    class: Infrastructure\Persistence\Psql\Repository\LeadRepository
     arguments:
       - '@database_connection'
+      - '@uuid.factory'
 
-  contact_repository:
-    alias: contact_repository.psql
+  lead_repository:
+    alias: lead_repository.psql
 
-  contact_save_handler:
-    class: Application\Contact\SaveContactHandler
+  lead.contact_factory:
+    class: Domain\Lead\Contact\ContactFactory
+
+  lead.handler_save:
+    class: Application\Lead\SaveLeadHandler
     arguments:
-      - '@contact_repository'
+      - '@lead_repository'
+      - '@lead.contact_factory'
