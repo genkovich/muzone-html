@@ -1,4 +1,6 @@
 parameters:
+  telegram_chat_id_notify: '%env(TELEGRAM_CHAT_ID_NOTIFY)%'
+  telegram_bot_token: '%env(TELEGRAM_BOT_TOKEN)%'
 
 services:
   Infrastructure\Symfony\Controller\MainPageController:
@@ -33,8 +35,39 @@ services:
   lead.contact_factory:
     class: Domain\Lead\Contact\ContactFactory
 
+  lead.message_bus.notifier:
+    class: Infrastructure\Symfony\Messenger\Notifier\MessengerNotifier
+    arguments:
+      - '@messenger.bus.default'
+
+  lead.message_bus.telegram.notifier_handler:
+    class: Infrastructure\Symfony\Messenger\Handler\TelegramNotificationHandler
+    tags: [messenger.message_handler]
+    arguments:
+        - '@lead.telegram.notifier'
+
+  lead.telegram.notifier:
+    class: Infrastructure\Telegram\TelegramNotifier
+    arguments:
+      - '%telegram_chat_id_notify%'
+      - '@telegram.client'
+
+  guzzle.client:
+    class: GuzzleHttp\Client
+
+  telegram.client:
+    class: Infrastructure\Telegram\TelegramClient
+    arguments:
+      - '%telegram_bot_token%'
+      - '@guzzle.client'
+
+  lead.notifier:
+    alias: lead.message_bus.notifier
+
   lead.handler_save:
     class: Application\Lead\SaveLeadHandler
     arguments:
       - '@lead_repository'
       - '@lead.contact_factory'
+      - '@lead.notifier'
+

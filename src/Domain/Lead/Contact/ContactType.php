@@ -8,4 +8,5 @@ enum ContactType : string
     case Telegram = 'telegram';
     case Instagram = 'instagram';
     case Other = 'other';
+
 }
