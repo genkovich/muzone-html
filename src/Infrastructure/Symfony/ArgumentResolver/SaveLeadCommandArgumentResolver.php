@@ -13,16 +13,15 @@ use Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata;
 
 final class SaveLeadCommandArgumentResolver  implements ValueResolverInterface
 {
-    public function supports(Request $request, ArgumentMetadata $argument): bool
-    {
-        return SaveLeadCommand::class === $argument->getType();
-    }
 
     /**
      * @throws \Exception
      */
     public function resolve(Request $request, ArgumentMetadata $argument): iterable
     {
+        if (SaveLeadCommand::class !== $argument->getType()) {
+            return [];
+        }
 
         $phone = $request->request->get('your_phone');
         $telegram = $request->request->get('your_telegram');

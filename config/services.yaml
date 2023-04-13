@@ -1,5 +1,6 @@
 parameters:
   telegram_chat_id_notify: '%env(TELEGRAM_CHAT_ID_NOTIFY)%'
+  telegram_thread_id_notify: '%env(TELEGRAM_THREAD_ID_NOTIFY)%'
   telegram_bot_token: '%env(TELEGRAM_BOT_TOKEN)%'
 
 services:
@@ -19,6 +20,39 @@ services:
       - [setContainer, ['']]
     arguments:
       - '@lead.handler_save'
+
+  Infrastructure\Symfony\Controller\SecurityController:
+    public: true
+    tags: [ 'controller.service_arguments', 'container.service_subscriber' ]
+    calls:
+      - [ setContainer, [ '' ] ]
+
+  Infrastructure\Symfony\Controller\GoogleController:
+    public: true
+    tags: [ 'controller.service_arguments', 'container.service_subscriber' ]
+    calls:
+      - [ setContainer, [ '' ] ]
+
+  Infrastructure\Symfony\Controller\AdminController:
+    public: true
+    tags: [ 'controller.service_arguments', 'container.service_subscriber' ]
+    calls:
+      - [ setContainer, [ '' ] ]
+
+  user.provider:
+    class: Infrastructure\Symfony\Security\UserProvider
+    arguments:
+      - '@user.repository'
+
+  user.repository:
+    class: Infrastructure\Persistence\Psql\User\UserRepository
+    arguments:
+      - '@uuid.factory'
+      - '@database_connection'
+      - '@user.factory'
+
+  user.factory:
+    class: Infrastructure\Persistence\Psql\User\UserFactory
 
   infrastructure.images:
     class: Infrastructure\Twig\GlobalVariables
@@ -50,6 +84,7 @@ services:
     class: Infrastructure\Telegram\TelegramNotifier
     arguments:
       - '%telegram_chat_id_notify%'
+      - '%telegram_thread_id_notify%'
       - '@telegram.client'
 
   guzzle.client:
@@ -71,3 +106,14 @@ services:
       - '@lead.contact_factory'
       - '@lead.notifier'
 
+  google_authenticator:
+    class: Infrastructure\Symfony\Security\GoogleAuthenticator
+    arguments:
+      - '@oauth2.registry'
+      - '@router'
+      - '@user.repository'
+
+  security.auth.entry_point:
+    class: Infrastructure\Symfony\Security\AuthenticationEntryPoint
+    arguments:
+      - '@router'

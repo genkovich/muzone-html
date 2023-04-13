@@ -13,6 +13,7 @@ final readonly class TelegramNotifier implements NotifierInterface
 
     public function __construct(
         private string $chatId,
+        private string $threadId,
         private TelegramClient $client,
     )
     {
@@ -24,11 +25,11 @@ final readonly class TelegramNotifier implements NotifierInterface
     public function notify(Lead $lead): void
     {
         $message = sprintf(
-            'New lead from %s %s',
+            'New lead from %s: %s',
             $lead->contact->type->value,
             $lead->contact->value
         );
 
-        $this->client->notify($this->chatId, $message);
+        $this->client->sendMessage($message, $this->chatId, $this->threadId);
     }
 }

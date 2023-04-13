@@ -6,3 +6,27 @@ contact.save:
     path: /contact
     controller: Infrastructure\Symfony\Controller\LeadController::save
     methods: [ POST ]
+
+login:
+    path: /login
+    controller: Infrastructure\Symfony\Controller\SecurityController::login
+    methods: [ GET, POST ]
+
+logout:
+    path: /logout
+    methods: [ GET ]
+
+admin.dashboard:
+    path: /admin
+    controller: Infrastructure\Symfony\Controller\AdminController::dashboard
+    methods: [ GET ]
+
+google.connect_start:
+    path: /connect/google
+    controller: Infrastructure\Symfony\Controller\GoogleController::connectGoogleStart
+    methods: [ GET ]
+
+google.connect_check:
+    path: /connect/google/check
+    controller: Infrastructure\Symfony\Controller\GoogleController::connectCheckAction
+    methods: [ GET ]

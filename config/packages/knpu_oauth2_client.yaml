@@ -1,3 +1,9 @@
 knpu_oauth2_client:
     clients:
-        # configure your clients as described here: https://github.com/knpuniversity/oauth2-client-bundle#configuration
+        google:
+            # Обязательно: измените client_id и client_secret на реальные данные вашего Google API проекта
+            client_id: '%env(OAUTH_GOOGLE_CLIENT_ID)%'
+            client_secret: '%env(OAUTH_GOOGLE_CLIENT_SECRET)%'
+            type: 'google'
+            redirect_route: 'google.connect_check'
+            redirect_params: {}

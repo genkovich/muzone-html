@@ -22,11 +22,12 @@ final readonly class TelegramClient
     /**
      * @throws GuzzleException
      */
-    public function notify(string $chatId, string $message): void
+    public function sendMessage(string $message, string $chatId, string $threadId = ''): void
     {
         $this->client->post($this->generateEndpoint('sendMessage'), [
             'form_params' => [
                 'chat_id' => $chatId,
+                'message_thread_id' => $threadId,
                 'text' => $message,
                 'parse_mode' => 'HTML'
             ]
