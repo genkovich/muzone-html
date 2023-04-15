@@ -34,10 +34,13 @@
         "@emretulek/jbvalidator": "^1.0.9",
         "@fancyapps/ui": "^5.0.13",
         "bootstrap": "5.3.0-alpha1",
+        "bootstrap-icons": "^1.10.4",
+        "bootstrap-sass": "^3.4.3",
         "fancybox": "^3.0.1",
         "gsap": "^3.11.5",
         "jquery": "^3.6.4",
         "jquery-lazy": "^1.7.11",
+        "popper.js": "^1.16.1",
         "svg4everybody": "^2.1.9",
         "swiper": "^9.1.1"
     }

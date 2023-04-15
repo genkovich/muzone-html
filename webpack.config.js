@@ -18,6 +18,9 @@ Encore
     .addEntry('app', './assets/app.js')
     .addEntry('styles', './assets/styles/app.scss')
 
+    .addEntry('admin', './assets/admin.js')
+    .addStyleEntry('admin_style', './assets/styles/admin/admin.scss')
+
     .enableSingleRuntimeChunk()
 
     .cleanupOutputBeforeBuild()
@@ -36,14 +39,16 @@ Encore
             { from: "./assets/landing/libs/form/ua.json", to: "libs/form/" },
         ],
     }),)
-
     .configureBabelPresetEnv((config) => {
         config.useBuiltIns = 'usage';
         config.corejs = '3.23';
     })
     .addAliases({
-        '@symfony/stimulus-bridge/controllers.json': path.resolve(__dirname, 'assets/controllers.json')
+        '@symfony/stimulus-bridge/controllers.json': path.resolve(__dirname, 'assets/controllers.json'),
+        $: 'jquery',
+        jQuery: 'jquery'
     })
+    .autoProvidejQuery()
 ;
 
 module.exports = Encore.getWebpackConfig();

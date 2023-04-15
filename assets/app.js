@@ -32,6 +32,7 @@ $(document).ready(() => {
     formInit(jQuery, Fancybox);
 });
 
+
 const imagesContext = require.context('./landing/img', true, /\.(png|jpg|jpeg|gif|ico|svg|webp)$/);
 const images = imagesContext.keys().reduce((images, key) => {
     images[key.replace('./', '')] = imagesContext(key);
