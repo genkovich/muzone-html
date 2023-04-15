@@ -7,17 +7,69 @@
     {{ encore_entry_link_tags('admin_style') }}
 </head>
 <body>
+<div class="wrapper">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid d-flex align-items-center">
+            <div class="d-flex flex-row align-items-center left-nav-div">
+                <div class="d-flex w-75">
+                    <a href="/" class="navbar-logo me-3">
+                        <img src="{{ asset('build/images/muzone_logo.png') }}" alt="">
+                    </a>
+                </div>
 
-<div class="container-fluid">
+                <div>
+                    <div class="d-flex flex-shrink-1">
+                        <button class="btn btn-dark toggle-sidebar "><i class="bi bi-list"></i></button>
+                        <button
+                                class="navbar-toggler d-lg-none"
+                                data-bs-toggle="offcanvas"
+                                data-bs-target="#offcanvasExample"
+                                aria-controls="offcanvasExample"
+                                type="button"
+                        ><i class="bi bi-list"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="dropdown ms-auto">
+                <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="user-profile" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="{{ user.avatar }}" alt="" width="32" height="32" class="rounded-circle me-2">
+                    <strong>{{ user.name }}</strong>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark text-small shadow" aria-labelledby="user-profile" style="">
+                    <li><a class="dropdown-item" href="#">Settings</a></li>
+                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="{{ path('logout') }}">Sign out</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="d-flex" >
 
-    <div class="row">
+        <div class="mobile-menu offcanvas offcanvas-start bg-dark text-white"
+             tabindex="-1"
+             id="offcanvasExample"
+             aria-labelledby="offcanvasExampleLabel"
+        >
+            <div class="offcanvas-header">
+                <button type="button" class="btn btn-dark text-reset" data-bs-dismiss="offcanvas" aria-label="Close">
+                    <i class="bi bi-x-circle-fill"></i>
+                </button>
+            </div>
+            <div class="offcanvas-body">
+                {% include 'admin/_menu.html.twig' %}
+            </div>
+        </div>
+        <div id="sidebar" class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark sidebar">
             {% include 'admin/_menu.html.twig' %}
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-            {% block body %}{% endblock %}
+        </div>
+
+        <main  class="d-flex col-md-auto ml-sm-auto col-lg-auto ">
+            {% block body %} {% endblock %}
         </main>
     </div>
-</div>
 
+</div>
 {{ encore_entry_script_tags('admin') }}
 
 </body>

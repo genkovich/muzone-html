@@ -11,6 +11,13 @@ final class AdminController extends AbstractController
 {
     public function dashboard(): Response
     {
-        return $this->render('admin/dashboard.html.twig');
+        $user = $this->getUser();
+
+        return $this->render(
+            'admin/dashboard.html.twig',
+            [
+                'user' => $user,
+            ],
+        );
     }
 }

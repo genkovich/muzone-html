@@ -1,8 +1,14 @@
 @import "~bootstrap/scss/bootstrap";
 @import '~bootstrap-icons/font/bootstrap-icons';
 
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+
 .sidebar {
-  height: 100vh;
+  height: calc(100vh - 60px);
   padding-top: 1rem;
   width: 280px;
   transition: width 0.3s;
@@ -28,12 +34,6 @@
   }
 }
 
-.toggle-sidebar {
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-
 .navbar {
   background-color: #000;
   height: 60px;
@@ -46,4 +46,40 @@
 
 .menu-icon {
   font-size: 1rem;
+}
+
+.offcanvas-body {
+  height: 100%;
+  overflow-y: auto;
+}
+
+.navbar-logo {
+  width: 134px;
+
+  img {
+    width: 134px;
+  }
+}
+
+.toggle-sidebar {
+  padding: var(--bs-navbar-toggler-padding-y) var(--bs-navbar-toggler-padding-x);
+  font-size: var(--bs-navbar-toggler-font-size);
+  line-height: 1;
+  color: var(--bs-navbar-color);
+  background-color: transparent;
+  border: var(--bs-border-width) solid var(--bs-navbar-toggler-border-color);
+  border-radius: var(--bs-navbar-toggler-border-radius);
+  transition: var(--bs-navbar-toggler-transition);
+}
+
+.left-nav-div {
+  width: 280px;
+}
+
+@media (max-width: 991.98px) {
+
+  .toggle-sidebar, .sidebar {
+    display: none !important;
+  }
+
 }
