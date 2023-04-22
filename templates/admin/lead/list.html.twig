@@ -1,0 +1,68 @@
+{% extends 'admin/base_admin.html.twig' %}
+
+{% block body %}
+    <div class="row w-100">
+        <div class="col-md-12">
+            <h2 class="mb-2 mt-2">Ліди</h2>
+            <div class="row">
+                <div class="col-md-12">
+                    {{ form_start(form, {'attr': {'class': 'row row-cols-lg-auto  g-3 align-items-center'}}) }}
+                        <div class="form-group col-md-2">
+                            {{ form_label(form.search) }}
+                            {{ form_widget(form.search) }}
+                        </div>
+                        <div class="form-group col-md-2">
+                            <div class="input-group">
+                                <div class="input-group-text">From</div>
+                                {{ form_label(form.fromDate) }}
+                                {{ form_widget(form.fromDate) }}
+                            </div>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <div class="input-group">
+                                <div class="input-group-text">To</div>
+                                {{ form_label(form.toDate) }}
+                                {{ form_widget(form.toDate) }}
+                            </div>
+                        </div>
+                        <div class="form-group col-md-2">
+                            {{ form_label(form.limit) }}
+                            {{ form_widget(form.limit) }}
+                        </div>
+                        <div class="form-group col-md-2 hstack gap-2">
+                            <button type="submit" class="btn btn-primary">Filter</button>
+                            <div class="vr mx-2"></div>
+                            {{ form_widget(form.prev) }}
+                            {{ form_widget(form.next) }}
+                        </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+            <table class="table table-striped mt-4">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Contact type</th>
+                        <th>Contact Value</th>
+                        <th>Created</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for lead in leads %}
+                        <tr>
+                            <td>{{ loop.index + offset }}</td>
+                            <td>{{ lead.contact.type.value }}</td>
+                            <td>{{ lead.contact.value }}</td>
+                            <td>{{ lead.createdAt|date('Y-m-d H:i:s') }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('build/admin/js/lead.js') }}"></script>
+{% endblock %}

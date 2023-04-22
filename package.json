@@ -13,6 +13,7 @@
         "eslint-config-airbnb-base": "^15.0.0",
         "eslint-plugin-import": "^2.27.5",
         "eslint-webpack-plugin": "^4.0.0",
+        "file-loader": "^6.0.0",
         "mini-css-extract-plugin": "^2.7.5",
         "node-sass": "^8.0.0",
         "postcss-loader": "^7.0.0",
@@ -42,6 +43,7 @@
         "jquery-lazy": "^1.7.11",
         "popper.js": "^1.16.1",
         "svg4everybody": "^2.1.9",
-        "swiper": "^9.1.1"
+        "swiper": "^9.1.1",
+        "toastr": "^2.1.4"
     }
 }

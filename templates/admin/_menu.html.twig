@@ -1,27 +1,22 @@
-    <ul class="nav nav-pills flex-column mb-auto">
+{% set currentRoute = app.request.attributes.get('_route') %}
+
+<ul class="nav nav-pills flex-column mb-auto">
         <li class="nav-item">
-            <a href="#" class="nav-link active" aria-current="page">
-                <i class="bi bi-house menu-icon"></i>
-                <span class="menu-text">Home</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="#" class="nav-link text-white">
+            <a href="{{ path('admin.dashboard') }}" class="nav-link text-white {% if currentRoute == 'admin.dashboard' %}active{% endif %}">
                 <i class="bi bi-speedometer2 menu-icon"></i>
-                <span class="menu-text">Dashboard</span>
+                <span class="menu-text">Дашборд</span>
             </a>
         </li >
         <li class="nav-item">
-            <a href="#" class="nav-link text-white">
-                <i class="bi bi-table menu-icon"></i>
-                <span class="menu-text">Leads</span>
+            <a href="{{ path('admin.users') }}" class="nav-link text-white {% if currentRoute == 'admin.users' %}active{% endif %}">
+                <i class="bi bi-grid people-circle menu-icon"></i>
+                <span class="menu-text">Юзери</span>
             </a>
         </li>
-
         <li class="nav-item">
-            <a href="#" class="nav-link text-white">
-                <i class="bi bi-grid people-circle menu-icon"></i>
-                <span class="menu-text">Users</span>
+            <a href="{{ path('admin.lead.list') }}" class="nav-link text-white">
+                <i class="bi bi-table menu-icon"></i>
+                <span class="menu-text">Ліди</span>
             </a>
         </li>
     </ul>

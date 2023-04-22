@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace Infrastructure\Persistence\Psql\Repository;
 
+use Doctrine\DBAL\Exception;
 use Doctrine\DBAL\Types\Types;
 use Domain\Lead\Lead;
+use Domain\Lead\LeadFactory;
 use Domain\Lead\LeadId;
 use Domain\Lead\LeadRepositoryInterface;
 use Doctrine\DBAL\Connection;
@@ -16,6 +18,7 @@ final readonly class LeadRepository implements LeadRepositoryInterface
     public function __construct(
         private Connection $connection,
         private UuidFactory $uuidFactory,
+        private LeadFactory $leadFactory,
     )
     {
     }
@@ -48,5 +51,65 @@ final readonly class LeadRepository implements LeadRepositoryInterface
 
     }
 
+    /**
+     * @throws Exception
+     */
+    public function getList(int $limit = 10, int $offset = 0, array $filters = []): array
+    {
+        $qb = $this->connection->createQueryBuilder();
 
+        $qb->select('lead_id, contact_type, contact_value, created_at, updated_at')
+            ->from('leads')
+            ->orderBy('created_at', 'DESC')
+            ->setMaxResults($limit)
+            ->setFirstResult($offset);
+
+        if (!empty($filters['date_from'])) {
+            $qb->andWhere('created_at >= :date_from')
+                ->setParameter('date_from', $filters['date_from'], Types::DATETIME_MUTABLE);
+        }
+
+        if (!empty($filters['date_to'])) {
+            $qb->andWhere('created_at <= :date_to')
+                ->setParameter('date_to', $filters['date_to'], Types::DATETIME_MUTABLE);
+        }
+
+        if (!empty($filters['search'])) {
+            $search = $filters['search'];
+            $qb->andWhere('contact_value LIKE :search')
+                ->setParameter('search', '%' . $search . '%');
+        }
+
+        $leads = $qb->executeQuery()->fetchAllAssociative();
+
+        return array_map(fn(array $lead) => $this->leadFactory->create($lead), $leads);
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function countLeads(array $filters): int
+    {
+        $qb = $this->connection->createQueryBuilder()
+            ->select('COUNT(lead_id) AS total_leads')
+            ->from('leads');
+
+        if (!empty($filters['date_from'])) {
+            $qb->andWhere('created_at >= :date_from')
+                ->setParameter('date_from', $filters['date_from'], Types::DATETIME_MUTABLE);
+        }
+
+        if (!empty($filters['date_to'])) {
+            $qb->andWhere('created_at <= :date_to')
+                ->setParameter('date_to', $filters['date_to'], Types::DATETIME_MUTABLE);
+        }
+
+        if (!empty($filters['search'])) {
+            $search = $filters['search'];
+            $qb->andWhere('contact_value LIKE :search')
+                ->setParameter('search', '%' . $search . '%');
+        }
+
+        return (int) $qb->executeQuery()->fetchOne();
+    }
 }

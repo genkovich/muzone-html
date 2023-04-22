@@ -1,43 +1,25 @@
+imports:
+  - { resource: 'controllers.yaml' }
+  - { resource: 'admin/*.yaml' }
+
 parameters:
   telegram_chat_id_notify: '%env(TELEGRAM_CHAT_ID_NOTIFY)%'
   telegram_thread_id_notify: '%env(TELEGRAM_THREAD_ID_NOTIFY)%'
   telegram_bot_token: '%env(TELEGRAM_BOT_TOKEN)%'
 
 services:
-  Infrastructure\Symfony\Controller\MainPageController:
-    public: true
-    tags: ['controller.service_arguments', 'container.service_subscriber']
-    calls:
-      - [setContainer, ['']]
 
   Infrastructure\Symfony\ArgumentResolver\SaveLeadCommandArgumentResolver:
     tags: [ 'controller.argument_value_resolver' ]
 
-  Infrastructure\Symfony\Controller\LeadController:
-    public: true
-    tags: ['controller.service_arguments', 'container.service_subscriber']
-    calls:
-      - [setContainer, ['']]
+  Infrastructure\Symfony\ArgumentResolver\ChangeUserFieldArgumentResolver:
+    tags: [ 'controller.argument_value_resolver' ]
+
+
+  admin.user.change_user_field.handler:
+    class: Application\Admin\User\ChangeUserFieldHandler
     arguments:
-      - '@lead.handler_save'
-
-  Infrastructure\Symfony\Controller\SecurityController:
-    public: true
-    tags: [ 'controller.service_arguments', 'container.service_subscriber' ]
-    calls:
-      - [ setContainer, [ '' ] ]
-
-  Infrastructure\Symfony\Controller\GoogleController:
-    public: true
-    tags: [ 'controller.service_arguments', 'container.service_subscriber' ]
-    calls:
-      - [ setContainer, [ '' ] ]
-
-  Infrastructure\Symfony\Controller\AdminController:
-    public: true
-    tags: [ 'controller.service_arguments', 'container.service_subscriber' ]
-    calls:
-      - [ setContainer, [ '' ] ]
+      - '@user.repository'
 
   user.provider:
     class: Infrastructure\Symfony\Security\UserProvider
@@ -62,6 +44,12 @@ services:
     arguments:
       - '@database_connection'
       - '@uuid.factory'
+      - '@lead_factory'
+
+  lead_factory:
+    class: Domain\Lead\LeadFactory
+    arguments:
+      - '@lead.contact_factory'
 
   lead_repository:
     alias: lead_repository.psql

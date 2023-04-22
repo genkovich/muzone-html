@@ -1,16 +1,27 @@
+@import './custom-theme';
 @import "~bootstrap/scss/bootstrap";
 @import '~bootstrap-icons/font/bootstrap-icons';
+@import '~toastr/toastr';
+
+.toast-custom {
+  top: 68px;
+  right: 12px;
+}
+
+.toast-top-right-custom {
+  top: 24px !important;
+  right: 24px !important;
+}
 
 .wrapper {
   display: flex;
   flex-direction: column;
 }
 
-
 .sidebar {
   height: calc(100vh - 60px);
   padding-top: 1rem;
-  width: 280px;
+  width: 200px;
   transition: width 0.3s;
 }
 
@@ -54,11 +65,15 @@
 }
 
 .navbar-logo {
-  width: 134px;
+  width: 100%;
 
   img {
     width: 134px;
   }
+}
+
+.user-table {
+  cursor: pointer;
 }
 
 .toggle-sidebar {
@@ -73,11 +88,18 @@
 }
 
 .left-nav-div {
-  width: 280px;
+  width: 240px;
+}
+
+.table > :not(caption) > * > * {
+    padding: 0.2rem 0.2rem;
 }
 
 @media (max-width: 991.98px) {
 
+  .mobile-hide {
+    display: none !important;
+  }
   .toggle-sidebar, .sidebar {
     display: none !important;
   }

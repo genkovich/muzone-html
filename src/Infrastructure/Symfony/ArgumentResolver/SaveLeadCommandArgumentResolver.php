@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Controller\ValueResolverInterface;
 use Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata;
 
-final class SaveLeadCommandArgumentResolver  implements ValueResolverInterface
+final class SaveLeadCommandArgumentResolver implements ValueResolverInterface
 {
 
     /**

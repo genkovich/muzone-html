@@ -35,7 +35,7 @@ final readonly class UserRepository implements UserRepositoryInterface
     public function findById(UserId $userId): ?User
     {
         $result = $this->connection->executeQuery(
-            'SELECT user_id, roles, email, avatar_url, name, surname
+            'SELECT user_id, roles, email, avatar_url, name, surname, created_at, updated_at
              FROM auth_user
              WHERE user_id = :user_id',
             ['user_id' => (string)$userId],
@@ -58,7 +58,7 @@ final readonly class UserRepository implements UserRepositoryInterface
         int $offset = 0,
     ): array {
         $result = $this->connection->executeQuery(
-            'SELECT user_id, roles, email, avatar_url, name, surname
+            'SELECT user_id, roles, email, avatar_url, name, surname, created_at, updated_at
              FROM auth_user
              LIMIT :limit
              OFFSET :offset',
@@ -88,7 +88,7 @@ final readonly class UserRepository implements UserRepositoryInterface
     public function findByEmail(string $email): ?User
     {
         $result = $this->connection->executeQuery(
-            'SELECT user_id, roles, email, avatar_url, name, surname
+            'SELECT user_id, roles, email, avatar_url, name, surname, created_at, updated_at
              FROM auth_user
              WHERE email = :email',
             ['email' => $email],
@@ -111,8 +111,8 @@ final readonly class UserRepository implements UserRepositoryInterface
         $this->connection->executeStatement(
             'INSERT INTO auth_user (user_id, email, roles, avatar_url, name, surname, updated_at)
              VALUES (:user_id, :email, :roles, :avatar_url, :name, :surname, :updated_at)
-             ON CONFLICT (email) DO UPDATE SET
-             avatar_url = :avatar_url, name = :name, surname = :surname, updated_at = :updated_at, roles = :roles',
+             ON CONFLICT (user_id) DO UPDATE SET
+             avatar_url = :avatar_url, name = :name, surname = :surname, updated_at = :updated_at, roles = :roles, email = :email',
             [
                 'user_id' => $user->userId,
                 'email' => $user->email,

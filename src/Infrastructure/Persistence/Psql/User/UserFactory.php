@@ -30,6 +30,8 @@ final class UserFactory
             name: $data[self::FIELD_NAME],
             surname: $data[self::FIELD_SURNAME],
             roles: $roles,
+            createdAt: new \DateTimeImmutable($data['created_at']),
+            updatedAt: new \DateTimeImmutable($data['updated_at']),
         );
     }
 }

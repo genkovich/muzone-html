@@ -1,0 +1,53 @@
+
+services:
+
+  Infrastructure\Symfony\Controller\MainPageController:
+    public: true
+    tags: ['controller.service_arguments', 'container.service_subscriber']
+    calls:
+      - [setContainer, ['']]
+
+  Infrastructure\Symfony\Controller\LeadController:
+    public: true
+    tags: ['controller.service_arguments', 'container.service_subscriber']
+    calls:
+      - [setContainer, ['']]
+    arguments:
+      - '@lead.handler_save'
+
+  Infrastructure\Symfony\Controller\SecurityController:
+    public: true
+    tags: [ 'controller.service_arguments', 'container.service_subscriber' ]
+    calls:
+      - [ setContainer, [ '' ] ]
+
+  Infrastructure\Symfony\Controller\GoogleController:
+    public: true
+    tags: [ 'controller.service_arguments', 'container.service_subscriber' ]
+    calls:
+      - [ setContainer, [ '' ] ]
+
+  Infrastructure\Symfony\Controller\AdminController:
+    public: true
+    tags: [ 'controller.service_arguments', 'container.service_subscriber' ]
+    calls:
+      - [ setContainer, [ '' ] ]
+    arguments:
+      - '@user.repository'
+
+  Infrastructure\Symfony\Controller\Admin\UserController:
+    public: true
+    tags: [ 'controller.service_arguments', 'container.service_subscriber' ]
+    calls:
+      - [ setContainer, [ '' ] ]
+    arguments:
+      - '@user.repository'
+      - '@admin.user.change_user_field.handler'
+
+  Infrastructure\Symfony\Controller\Admin\LeadController:
+    public: true
+    tags: [ 'controller.service_arguments', 'container.service_subscriber' ]
+    calls:
+      - [ setContainer, [ '' ] ]
+    arguments:
+      - '@lead_repository'

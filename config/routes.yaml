@@ -21,6 +21,31 @@ admin.dashboard:
     controller: Infrastructure\Symfony\Controller\AdminController::dashboard
     methods: [ GET ]
 
+admin.users:
+    path: /admin/users
+    controller: Infrastructure\Symfony\Controller\Admin\UserController::users
+    methods: [ GET ]
+
+admin.set_sidebar_state:
+    path: /admin/set-sidebar-state
+    controller: Infrastructure\Symfony\Controller\AdminController::setSidebarState
+    methods: [ POST ]
+
+admin.user.single:
+    path: /admin/users/{id}
+    controller: Infrastructure\Symfony\Controller\Admin\UserController::singleUser
+    methods: [ GET ]
+
+admin.user.single.update_field:
+    path: /admin/users/{id}/update-fields
+    controller: Infrastructure\Symfony\Controller\Admin\UserController::updateUserField
+    methods: [ POST ]
+
+admin.lead.list:
+    path: /admin/leads
+    controller: Infrastructure\Symfony\Controller\Admin\LeadController::list
+    methods: [ GET, POST ]
+
 google.connect_start:
     path: /connect/google
     controller: Infrastructure\Symfony\Controller\GoogleController::connectGoogleStart

@@ -54,13 +54,16 @@ final class GoogleAuthenticator extends OAuth2Authenticator implements Authentic
                     return $existingUser;
                 }
 
+                $now = new \DateTimeImmutable();
                 $googleUser = new User(
                     $this->userRepository->nextIdentity(),
                     $email,
                     $googleUser->getAvatar(),
                     $googleUser->getName(),
                     $googleUser->getLastName(),
-                    [UserRole::Admin->value]
+                    [UserRole::Admin->value],
+                    $now,
+                    $now,
                 );
 
                 $this->userRepository->upsert($googleUser);
