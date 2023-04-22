@@ -26,7 +26,7 @@ final  class LeadController extends AbstractController
     {
 
         $listPagination = new LeadPaginationList();
-        $listPagination->setFromDate((new \DateTimeImmutable('-70 days'))->setTime(0, 0, 0));
+        $listPagination->setFromDate((new \DateTimeImmutable('-7 days'))->setTime(0, 0, 0));
         $listPagination->setToDate((new \DateTimeImmutable())->setTime(23, 59, 59));
         $listPagination->setLimit(25);
 
@@ -40,8 +40,8 @@ final  class LeadController extends AbstractController
         }
 
         $filters = [
-            'date_from' => $listPagination->getFromDate(),
-            'date_to' => $listPagination->getToDate(),
+            'date_from' => $listPagination->getFromDate()?->setTime(0, 0, 0),
+            'date_to' => $listPagination->getToDate()?->setTime(23, 59, 59),
             'search' => $listPagination->getSearch(),
         ];
 

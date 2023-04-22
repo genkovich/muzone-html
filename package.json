@@ -41,6 +41,7 @@
         "gsap": "^3.11.5",
         "jquery": "^3.6.4",
         "jquery-lazy": "^1.7.11",
+        "jquery-validation": "^1.19.5",
         "popper.js": "^1.16.1",
         "svg4everybody": "^2.1.9",
         "swiper": "^9.1.1",

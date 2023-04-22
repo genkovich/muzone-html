@@ -14,7 +14,7 @@ final readonly class Instagram implements ContactValueInterface
             throw new InvalidArgumentException('Instagram cannot be empty');
         }
 
-        if (!preg_match('/^@?(\w){1,32}$/', $value)) {
+        if (!preg_match('/^@?(\w){4,32}$/', $value)) {
             throw new InvalidArgumentException('Invalid instagram format');
         }
     }

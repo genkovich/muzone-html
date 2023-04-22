@@ -21,8 +21,10 @@ final class LeadController extends AbstractController
     {
         $this->handler->handle($command);
 
-        return new JsonResponse(['message' => 'Lead saved'], Response::HTTP_CREATED);
-
+        return new JsonResponse([
+            'success' => 'true',
+            'message' => 'Lead saved'
+        ], Response::HTTP_CREATED);
     }
 
 }

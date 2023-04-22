@@ -25,7 +25,7 @@ final class SaveLeadCommandArgumentResolver implements ValueResolverInterface
 
         $phone = $request->request->get('your_phone');
         $telegram = $request->request->get('your_telegram');
-        $viber = $request->request->get('your_viber');
+        $instagram = $request->request->get('your_instagram');
 
         if ($phone) {
             $contactType = ContactType::Phone;
@@ -33,9 +33,9 @@ final class SaveLeadCommandArgumentResolver implements ValueResolverInterface
         } elseif ($telegram) {
             $contactType = ContactType::Telegram;
             $contactValue = $telegram;
-        } elseif ($viber) {
+        } elseif ($instagram) {
             $contactType = ContactType::Instagram;
-            $contactValue = $viber;
+            $contactValue = $instagram;
         } else {
             throw new \RuntimeException('Contact type not found');
         }
