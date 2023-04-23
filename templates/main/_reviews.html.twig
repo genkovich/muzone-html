@@ -1,0 +1,56 @@
+<section class="reviews j-reviews-slider" id="reviews">
+    <svg class="reviews__line1 line">
+        <use xlink:href="{{ asset('build/images/icons.svg') }}#line2"/>
+    </svg>
+    <div class="container">
+        <div class="reviews__top">
+            <div class="title-sec j-wow j-wow-left">
+                Що кажуть про нас наші учні
+            </div>
+            <div class="reviews__arrows">
+                <div class="arrow arrow--prev j-prev">
+                    <svg>
+                        <use xlink:href="{{ asset('build/images/icons.svg') }}#arrow3"/>
+                    </svg>
+                </div>
+                <div class="arrow arrow--next j-next">
+                    <svg>
+                        <use xlink:href="{{ asset('build/images/icons.svg') }}#arrow3"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <div class="reviews__slider">
+            <div class="reviews__slider-wrapper">
+                {% for review in reviews %}
+                    <div class="reviews__slider-slide">
+                        <a
+                                class="reviews-item"
+                                data-fancybox
+                                data-src="{{ asset(review.img) }}"
+                                data-caption="{{ review.nickname }}"
+                        >
+                            <div class="reviews-item__img">
+                                <img src="{{ asset(review.img) }}" alt="" loading="lazy">
+                            </div>
+                            <div class="reviews-item__title">
+                                <svg>
+                                    <use xlink:href="{{ asset('build/images/icons.svg') }}#{{ review.source }}"/>
+                                </svg>
+                                {{ review.nickname }}
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+{#        <div class="reviews__video" data-fancybox data-src="https://www.youtube.com/watch?v=vWJa5gnhEg4">#}
+{#            <img src="{{ asset('build/images/6@2x.jpg') }}" alt="" loading="lazy">#}
+{#            <div class="reviews__play">#}
+{#                <svg>#}
+{#                    <use xlink:href="{{ asset('build/images/icons.svg') }}#play2"/>#}
+{#                </svg>#}
+{#            </div>#}
+{#        </div>#}
+    </div>
+</section>

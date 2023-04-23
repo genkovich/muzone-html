@@ -102,12 +102,24 @@
         align-items: center;
         margin: 0 auto;
         position: relative;
+
+        .phone__list {
+            top: -25%
+        }
+
+        .trial__form {
+            flex-shrink: 0;
+            width: 280px;
+            margin: 16px auto;
+        }
+
+
     }
     &__logo {
         width: 150px;
     }
     &__title {
-        font: 900 66px / 1.2 $font;
+        font: 900 60px / 1.2 $font;
         text-align: center;
     }
 }

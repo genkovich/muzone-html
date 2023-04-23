@@ -1,0 +1,123 @@
+<section class="trial" id="trial">
+    <div class="container">
+        <div class="trial__wrapper">
+            <div class="trial__img">
+                <div class="trial__bg">
+                    <img src="{{ asset('build/images/trial.jpg') }}" srcset="{{ asset('build/images/trial@2x.jpg') }} 2x" alt="" loading="lazy">
+                </div>
+                <div class="trial__bl trial__bl--1 j-wow j-wow-top">
+                    <div class="trial__title">
+                        60% OFF
+                    </div>
+                    <div class="trial__subtitle">
+                        <span>на перше</span>
+                        індивідуальне
+                        заняття
+                    </div>
+                </div>
+                <div class="trial__bl trial__bl--2 j-wow j-wow-bottom">
+                    <div class="trial__title">
+                        50 UAH
+                    </div>
+                    <div class="trial__subtitle">
+                        <span>перше</span>
+                        групове
+                        заняття
+                    </div>
+                </div>
+            </div>
+            <form class="trial__form  form j-form j-wow j-wow-right" novalidate>
+                <div class="title-sec">Пробне заняття</div>
+                <div class="desc-sec">
+                    <p>Для новачків в музиці, або тих хто сумнівається для якого напрямку хоче придбати абонемент, є варіанти пробного заняття:</p>
+                </div>
+                <div class="trial__form-form">
+                    <label class="input">
+                        <div class="input__icon">
+                            <svg width="18" height="20">
+                                <use xlink:href="{{ asset('build/images/icons.svg') }}#play"/>
+                            </svg>
+                        </div>
+                    </label>
+                    <label class="input">
+                        <div class="phone j-phone">
+                            <div class="phone__label">
+                                <div class="phone__item j-phone-bl active">
+                                    <input name="your_phone" type="tel" class="phone__input j-phone-mask" placeholder="Телефон" required>
+                                    <div class="input__icon">
+                                        <svg width="18" height="20">
+                                            <use xlink:href="{{ asset('build/images/icons.svg') }}#phone"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="phone__item j-phone-bl">
+                                    <input name="your_telegram" type="text" class="phone__input" placeholder="Telegram">
+                                    <div class="input__icon">
+                                        <svg width="18" height="20">
+                                            <use xlink:href="{{ asset('build/images/icons.svg') }}#telegram"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="phone__item j-phone-bl">
+                                    <input name="your_instagram" type="text" class="phone__input" placeholder="Instagram">
+                                    <div class="input__icon">
+                                        <svg width="18" height="20">
+                                            <use xlink:href="{{ asset('build/images/icons.svg') }}#instagram"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="phone__arrow" data-target="#phone-list4">
+                                <svg>
+                                    <use xlink:href="{{ asset('build/images/icons.svg') }}#arrow"/>
+                                </svg>
+                            </div>
+                            <ul class="phone__list" id="phone-list4">
+                                <li class="phone__list-li">
+                                    <div class="phone__list-item phone__list-item--phone j-phone-item active">
+                                        <div class="phone__list-icon">
+                                            <svg>
+                                                <use xlink:href="{{ asset('build/images/icons.svg') }}#phone"/>
+                                            </svg>
+                                        </div>
+                                        <div class="phone__list-title">
+                                            Телефон
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="phone__list-li">
+                                    <div class="phone__list-item phone__list-item--telegram j-phone-item">
+                                        <div class="phone__list-icon">
+                                            <svg>
+                                                <use xlink:href="{{ asset('build/images/icons.svg') }}#telegram"/>
+                                            </svg>
+                                        </div>
+                                        <div class="phone__list-title">
+                                            Telegram
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="phone__list-li">
+                                    <div class="phone__list-item phone__list-item--instagram j-phone-item">
+                                        <div class="phone__list-icon">
+                                            <svg>
+                                                <use xlink:href="{{ asset('build/images/icons.svg') }}#instagram"/>
+                                            </svg>
+                                        </div>
+                                        <div class="phone__list-title">
+                                            Instagram
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </label>
+                    <div class="form__btn">
+                        <button type="submit" class="btn">Записатись</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</section>

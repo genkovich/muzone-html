@@ -8,6 +8,13 @@
         </div>
         <form class="modal__form form j-form" novalidate>
             <input name="theme" type="hidden" class="j-theme">
+            <label class="input2">
+                <input name="count" type="number" placeholder="Кількість занять">
+            </label>
+            <label class="input2">
+                <input name="direction_title" type="text" placeholder="Напрямок">
+            </label>
+
             <div class="phone j-phone">
                 <div class="phone__label">
                     <label class="phone__item input2 j-phone-bl active">
@@ -64,10 +71,11 @@
                     </li>
                 </ul>
             </div>
-            <label class="input2">
-                <input name="count" type="text" placeholder="Кількість занять">
-            </label>
-            <div class="form__btn">
+
+            <input name="direction" type="hidden" />
+            <input name="group_type" type="hidden" />
+            <input name="age" type="hidden" />
+            <div class="gift__btn">
                 <button type="submit" class="btn">Замовити</button>
             </div>
         </form>

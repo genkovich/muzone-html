@@ -1,0 +1,83 @@
+<section class="cost" id="cost">
+    <svg class="cost__line1 line">
+        <use xlink:href="{{ asset('build/images/icons.svg') }}#line2"/>
+    </svg>
+    <svg class="cost__line2 line">
+        <use xlink:href="{{ asset('build/images/icons.svg') }}#line2"/>
+    </svg>
+    <div class="container">
+        <h3 class="title-sec">Вартість абонементів</h3>
+        <div class="cost__desc desc-sec">
+            <p>Оберіть напрямок, в якому плануєте себе спробувати:</p>
+        </div>
+        <div class="tabs">
+            <ul class="tabs__list">
+                {% for tab in tabs %}
+                    <li class="tabs__li j-wow j-wow-right" data-delay="{{loop.index * 0.1}}">
+                        <div class="tabs__item {{ loop.index == 1 ? 'active' : ''}}" data-tab="#tab1-{{ loop.index }}">
+                            {{ tab }}
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <label class="cost-checkbox">
+            <input type="checkbox" class="j-cost-checkbox">
+            <div class="cost-checkbox__bl">
+                <div class="cost-checkbox__title">Для дорослих</div>
+                <div class="cost-checkbox__toggle">
+                    <div class="cost-checkbox__toggle-circle"></div>
+                </div>
+                <div class="cost-checkbox__title">Для дітей</div>
+            </div>
+        </label>
+        <div class="cost__wrapper j-wow j-wow-bottom">
+            {% for direction_key, tab in tabs %}
+                <div class="cost__tab j-tab-wrapper {{ loop.index == 1 ? 'active' : ''}}" id="tab1-{{ loop.index }}">
+                    <div class="row">
+                        {% for cart_item in cart %}
+                            <div class="col">
+                                <div class="cost-item j-cost-item {{ cart_item.age == 'adult' ?  'age-adults' : 'age-children'}}">
+                                    {% if cart_item.promo is defined %}
+                                        <div class="cost-item__promo">{{ cart_item.promo }}</div>
+                                    {% endif %}
+                                    <div class="cost-item__price">
+                                        ₴
+                                        <span>
+                                       {{ cart_item.promo_price is defined ? cart_item.promo_price : cart_item.price }}
+                                    </span>
+                                    </div>
+                                    {% if cart_item.promo_price is defined %}
+                                        <div class="cost-item__promo-price">₴{{ cart_item.price }}</div>
+                                    {% endif %}
+                                    {% for info_row in cart_item.info %}
+                                        <div class="cost-item__info">{{ info_row }}</div>
+                                    {% endfor %}
+
+                                    <div class="cost-item__bottom">
+                                        <div class="cost-item__type">{{ cart_item.type }}</div>
+                                        <div class="cost-item__btn">
+                                            <button
+                                                    type="button"
+                                                    class="btn"
+                                                    data-src="#modal-prices"
+                                                    data-fancybox
+                                                    data-direction="{{ direction_key }}"
+                                                    data-direction-title="{{ tab }}"
+                                                    data-age="{{ cart_item.age }}"
+                                                    data-group-type="{{ cart_item.group_type }}"
+                                                    data-count="{{ cart_item.count }}"
+                                            >
+                                                Записатись
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

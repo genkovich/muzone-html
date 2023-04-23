@@ -5,292 +5,11 @@
     {% include('main/_header.html.twig') %}
     {% include('main/_banner.html.twig') %}
     {% include('main/_services.html.twig') %}
-
-
-    <section class="cost" id="cost">
-        <svg class="cost__line1 line">
-            <use xlink:href="{{ asset('build/images/icons.svg') }}#line2"/>
-        </svg>
-        <svg class="cost__line2 line">
-            <use xlink:href="{{ asset('build/images/icons.svg') }}#line2"/>
-        </svg>
-        <div class="container">
-            <h3 class="title-sec">Вартість абонементів</h3>
-            <div class="cost__desc desc-sec">
-                <p>Оберіть напрямок, в якому плануєте себе спробувати:</p>
-            </div>
-            <div class="tabs">
-                <ul class="tabs__list">
-                    {% for tab in tabs %}
-                    <li class="tabs__li j-wow j-wow-right" data-delay="{{loop.index * 0.1}}">
-                        <div class="tabs__item {{ loop.index == 1 ? 'active' : ''}}" data-tab="#tab1-{{ loop.index }}">
-                            {{ tab }}
-                        </div>
-                    </li>
-                    {% endfor %}
-                </ul>
-            </div>
-            <label class="cost-checkbox">
-                <input type="checkbox" class="j-cost-checkbox">
-                <div class="cost-checkbox__bl">
-                    <div class="cost-checkbox__title">Для дорослих</div>
-                    <div class="cost-checkbox__toggle">
-                        <div class="cost-checkbox__toggle-circle"></div>
-                    </div>
-                    <div class="cost-checkbox__title">Для дітей</div>
-                </div>
-            </label>
-            <div class="cost__wrapper j-wow j-wow-bottom">
-                {% for tab in tabs %}
-                <div class="cost__tab j-tab-wrapper {{ loop.index == 1 ? 'active' : ''}}" id="tab1-{{ loop.index }}">
-                    <div class="row">
-                        {% for cart_item in cart %}
-                        <div class="col">
-                            <div class="cost-item j-cost-item {{ cart_item.age == 'adults' ?  'age-adults' : 'age-children'}}">
-                                {% if cart_item.promo is defined %}
-                                    <div class="cost-item__promo">{{ cart_item.promo }}</div>
-                                {% endif %}
-                                <div class="cost-item__price">
-                                    ₴
-                                    <span>
-                                       {{ cart_item.promo_price is defined ? cart_item.promo_price : cart_item.price }}
-                                    </span>
-                                </div>
-                                {% if cart_item.promo_price is defined %}
-                                    <div class="cost-item__promo-price">₴{{ cart_item.price }}</div>
-                                {% endif %}
-                                {% for info_row in cart_item.info %}
-                                    <div class="cost-item__info">{{ info_row }}</div>
-                                {% endfor %}
-
-                                <div class="cost-item__bottom">
-                                    <div class="cost-item__type">{{ cart_item.type }}</div>
-                                    <div class="cost-item__btn">
-                                        <button type="button" class="btn" data-src="#modal-prices" data-fancybox data-theme="Назва пакета та інфо">Записатись</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    {% endfor %}
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
-        </div>
-    </section>
-
-    <section class="gift" id="gift">
-        <svg class="gift__line1 line">
-            <use xlink:href="{{ asset('build/images/icons.svg') }}#line2"/>
-        </svg>
-        <svg class="gift__line2 line">
-            <use xlink:href="{{ asset('build/images/icons.svg') }}#line2"/>
-        </svg>
-        <div class="container">
-            <div class="title-sec">Подарунковий сертифікат</div>
-            <div class="gift__desc desc-sec">
-                <p>Вартість сертифікату така сама як і в абонімента. Тож оберіть той напрямок, який вас цікавить, або зателефонуйте / напішіть нам і ми з радістю допоможемо зробити вибір 🙂</p>
-            </div>
-            <div class="gift__sert">
-                <svg class="gift__sert-line1 line">
-                    <use xlink:href="{{ asset('build/images/icons.svg') }}#line2"/>
-                </svg>
-                <svg class="gift__sert-line2 line">
-                    <use xlink:href="{{ asset('build/images/icons.svg') }}#line2"/>
-                </svg>
-                <div class="gift__imgs">
-                    {% for certificate in certificates %}
-                    <div class="gift__img gift__img--{{ loop.index}} j-wow j-wow-bottom" data-delay="{{ loop.index * 0.2}}">
-                        <img src="{{ asset(certificate.img) }}" srcset="{{ asset(certificate.img2x) }} 2x" alt="" loading="lazy">
-                    </div>
-                    {% endfor %}
-                </div>
-                <div class="gift__inner">
-                    <div class="gift__logo">
-                        <img src="{{ asset('build/images/logo-white.png') }}" srcset="{{ asset('build/images/logo-white@2x.png') }} 2x" alt="" loading="lazy">
-                    </div>
-                    <div class="gift__title j-wow j-wow-bottom">
-                        Подарунковий сертифікат
-                    </div>
-                    <div class="gift__btn">
-                        <button type="button" class="btn btn--green" data-fancybox data-src="#modal" data-theme="Подарунковий сертифікат">ПРИДБАТИ</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="reviews j-reviews-slider" id="reviews">
-        <svg class="reviews__line1 line">
-            <use xlink:href="{{ asset('build/images/icons.svg') }}#line2"/>
-        </svg>
-        <div class="container">
-            <div class="reviews__top">
-                <div class="title-sec j-wow j-wow-left">
-                    Що кажуть про нас наші учні
-                </div>
-                <div class="reviews__arrows">
-                    <div class="arrow arrow--prev j-prev">
-                        <svg>
-                            <use xlink:href="{{ asset('build/images/icons.svg') }}#arrow3"/>
-                        </svg>
-                    </div>
-                    <div class="arrow arrow--next j-next">
-                        <svg>
-                            <use xlink:href="{{ asset('build/images/icons.svg') }}#arrow3"/>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-            <div class="reviews__slider">
-                <div class="reviews__slider-wrapper">
-                    {% for review in reviews %}
-                    <div class="reviews__slider-slide">
-                        <a href="#" class="reviews-item">
-                            <div class="reviews-item__img">
-                                <img src="{{ asset('build/images/banner__img2@2x.jpg') }}" alt="" loading="lazy">
-                            </div>
-                            <div class="reviews-item__title">
-                                <svg>
-                                    <use xlink:href="{{ asset('build/images/icons.svg') }}#twitter"/>
-                                </svg>
-                                {{ review.nickname }}
-                            </div>
-                        </a>
-                    </div>
-                    {% endfor %}
-                </div>
-            </div>
-            <div class="reviews__video" data-fancybox data-src="https://www.youtube.com/watch?v=vWJa5gnhEg4">
-                <img src="{{ asset('build/images/6@2x.jpg') }}" alt="" loading="lazy">
-                <div class="reviews__play">
-                    <svg>
-                        <use xlink:href="{{ asset('build/images/icons.svg') }}#play2"/>
-                    </svg>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="trial" id="trial">
-        <div class="container">
-            <div class="trial__wrapper">
-                <div class="trial__img">
-                    <div class="trial__bg">
-                        <img src="{{ asset('build/images/trial.jpg') }}" srcset="{{ asset('build/images/trial@2x.jpg') }} 2x" alt="" loading="lazy">
-                    </div>
-                    <div class="trial__bl trial__bl--1 j-wow j-wow-top">
-                        <div class="trial__title">
-                            60% OFF
-                        </div>
-                        <div class="trial__subtitle">
-                            <span>на перше</span>
-                            індивідуальне
-                            заняття
-                        </div>
-                    </div>
-                    <div class="trial__bl trial__bl--2 j-wow j-wow-bottom">
-                        <div class="trial__title">
-                            Free
-                        </div>
-                        <div class="trial__subtitle">
-                            <span>перше</span>
-                            групове
-                            заняття
-                        </div>
-                    </div>
-                    <form class="trial__form-tablet form-phone j-form" novalidate>
-                        <div class="phone j-phone">
-                            <div class="phone__label">
-                                <div class="phone__item j-phone-bl active">
-                                    <input name="your_phone" type="tel" class="phone__input j-phone-mask" placeholder="Телефон" required>
-                                </div>
-                                <div class="phone__item j-phone-bl">
-                                    <input name="your_telegram" type="tel" class="phone__input" placeholder="Telegram">
-                                </div>
-                                <div class="phone__item j-phone-bl">
-                                    <input name="your_viber" type="tel" class="phone__input" placeholder="Viber">
-                                </div>
-                            </div>
-                            <div class="phone__arrow" data-target="#phone-list2">
-                                <svg>
-                                    <use xlink:href="{{ asset('build/images/icons.svg') }}#arrow"/>
-                                </svg>
-                            </div>
-                            <ul class="phone__list" id="phone-list2">
-                                <li class="phone__list-li">
-                                    <div class="phone__list-item phone__list-item--phone j-phone-item active">
-                                        <div class="phone__list-icon">
-                                            <svg>
-                                                <use xlink:href="{{ asset('build/images/icons.svg') }}#phone"/>
-                                            </svg>
-                                        </div>
-                                        <div class="phone__list-title">
-                                            Телефон
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="phone__list-li">
-                                    <div class="phone__list-item phone__list-item--telegram j-phone-item">
-                                        <div class="phone__list-icon">
-                                            <svg>
-                                                <use xlink:href="{{ asset('build/images/icons.svg') }}#telegram"/>
-                                            </svg>
-                                        </div>
-                                        <div class="phone__list-title">
-                                            Telegram
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="phone__list-li">
-                                    <div class="phone__list-item phone__list-item--viber j-phone-item">
-                                        <div class="phone__list-icon">
-                                            <svg>
-                                                <use xlink:href="{{ asset('build/images/icons.svg') }}#viber"/>
-                                            </svg>
-                                        </div>
-                                        <div class="phone__list-title">
-                                            Viber
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <button type="submit" class="form-phone__btn">
-                            Записатись
-                        </button>
-                    </form>
-                </div>
-                <form class="trial__form form j-form j-wow j-wow-right" novalidate>
-                    <div class="title-sec">Пробне заняття</div>
-                    <div class="desc-sec">
-                        <p>Для новачків в музиці, або тих хто сумнівається для якого напрямку хоче придбати абонемент, є варіанти пробного заняття:</p>
-                    </div>
-                    <div class="trial__form-form">
-                        <label class="input">
-                            <input name="your_name" type="text" placeholder="Ім’я" required>
-                            <div class="input__icon">
-                                <svg width="18" height="20">
-                                    <use xlink:href="{{ asset('build/images/icons.svg') }}#user"/>
-                                </svg>
-                            </div>
-                        </label>
-                        <label class="input">
-                            <input name="your_email" type="email" placeholder="E-mail" required>
-                            <div class="input__icon">
-                                <svg width="22" height="18">
-                                    <use xlink:href="{{ asset('build/images/icons.svg') }}#email"/>
-                                </svg>
-                            </div>
-                        </label>
-                        <div class="form__btn">
-                            <button type="submit" class="btn">Записатись</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </section>
+    {% include('main/_cost.html.twig') %}
+    {% include('main/_gift.htmk.twig') %}
+    {% include('main/_reviews.html.twig') %}
+    {% include('main/_trial.html.twig') %}
+{#    {% include('main/_footer.html.twig') %}#}
 
     <section class="contacts" id="contacts">
         <div class="container">
@@ -298,24 +17,21 @@
         </div>
         <div class="contacts__map">
             <div class="contacts__iframe">
-                <iframe class="contacts__iframe-inner" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2747.7862076040365!2d30.73357337270823!3d46.47274256862513!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40c63182e89f1339%3A0x52a5175530c1ef29!2z0YPQuy4g0JHQvtC70YzRiNCw0Y8g0JDRgNC90LDRg9GC0YHQutCw0Y8sINCe0LTQtdGB0YHQsCwg0J7QtNC10YHRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCwgNjUwMDA!5e0!3m2!1sru!2sua!4v1676044073442!5m2!1sru!2sua" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe class="contacts__iframe-inner" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2747.857137323277!2d30.74727469202336!3d46.47133769661346!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40c63170bb80b815%3A0xfbd9d6972e688fc2!2z0YPQuy4g0JHQvtC70YzRiNCw0Y8g0JDRgNC90LDRg9GC0YHQutCw0Y8sIDUsINCe0LTQtdGB0YHQsCwg0J7QtNC10YHRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCwgNjUwMDA!5e0!3m2!1sru!2sua!4v1682281656869!5m2!1suk!2sua" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
             <div class="container">
                 <div class="contacts__bl j-wow j-wow-bottom">
                     <div class="contacts__item">
                         <div class="contacts__item-title">Адреса:</div>
-                        <div class="contacts__item-val">м. Одеса, вул. Велика Арнаутська</div>
+                        <div class="contacts__item-val">м. Одеса, вул. Велика Арнаутська 5</div>
                     </div>
                     <div class="contacts__item">
                         <div class="contacts__item-title">Графік роботи:</div>
-                        <div class="contacts__item-val">Понеділок — Субота (9:00–21:00)</div>
+                        <div class="contacts__item-val">Понеділок — Неділя (9:00–21:00)</div>
                     </div>
                     <ul class="contacts__phones">
                         <li>
-                            <a href="tel:+380 00 000 00 00">+380 00 000 00 00</a>
-                        </li>
-                        <li>
-                            <a href="tel:+380 00 000 00 00">+380 00 000 00 00</a>
+                            <a href="tel:+380933010369">+38 (093) 301 03 69</a>
                         </li>
                     </ul>
                     <div class="contacts__social">
@@ -396,7 +112,7 @@
 </div>
 
     {% include('main/_modal_trial_form.html.twig') %}
-
     {% include('main/_modal_prices_form.html.twig') %}
+
 
 {% endblock %}

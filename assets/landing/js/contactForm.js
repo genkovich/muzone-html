@@ -106,8 +106,25 @@ $(document).ready(function () {
         let direction = $(this).attr('data-direction');
         let directionTitle = $(this).attr('data-direction-title');
 
-        $('input[name="direction_title"]').val(directionTitle);
-        $('input[name="direction"]').val(direction);
+        let $form = $('#modal').find('form'); // Найдите форму внутри вызванного модального окна
 
+        $form.find('input[name="direction_title"]').val(directionTitle); // Используйте найденную форму в качестве контекста для выборки инпутов
+        $form.find('input[name="direction"]').val(direction);
+    });
+
+    $('[data-fancybox][data-src="#modal-prices"]').on('click', function () {
+        let direction = $(this).attr('data-direction');
+        let directionTitle = $(this).attr('data-direction-title');
+        let age = $(this).attr('data-age');
+        let groupType = $(this).attr('data-group-type');
+        let count = $(this).attr('data-count');
+
+        let $form = $('#modal-prices').find('form'); // Найдите форму внутри вызванного модального окна
+
+        $form.find('input[name="direction_title"]').val(directionTitle); // Используйте найденную форму в качестве контекста для выборки инпутов
+        $form.find('input[name="direction"]').val(direction);
+        $form.find('input[name="age"]').val(age);
+        $form.find('input[name="group_type"]').val(groupType);
+        $form.find('input[name="count"]').val(count);
     });
 });

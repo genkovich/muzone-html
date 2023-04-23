@@ -14,6 +14,8 @@ import ScrollToPlugin from 'gsap/ScrollToPlugin';
 import Swiper from 'swiper';
 import { Quad } from "gsap/gsap-core";
 import { Fancybox } from '@fancyapps/ui';
+import "@fancyapps/ui/dist/fancybox/fancybox.css";
+
 import { Circ } from "gsap/gsap-core";
 
 import { commonInit } from './landing/js/common.js';

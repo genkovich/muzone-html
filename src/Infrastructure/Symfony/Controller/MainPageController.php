@@ -3,7 +3,9 @@ declare(strict_types=1);
 
 namespace Infrastructure\Symfony\Controller;
 
+use Domain\Age;
 use Domain\Direction;
+use Domain\GroupType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -158,12 +160,12 @@ final class MainPageController extends AbstractController
         ];
 
         $tabs = [
-            'Барабани',
-            'Вокал',
-            'Клавішні',
-            'Гітара',
-            'Укулеле',
-            'Саксофон',
+            Direction::Drums->value =>'Барабани',
+            Direction::Vocal->value => 'Вокал',
+            Direction::Piano->value => 'Клавішні',
+            Direction::Guitar->value => 'Гітара',
+            Direction::Ukulele->value => 'Укулеле',
+            Direction::Saxophone->value => 'Саксофон',
         ];
 
         $cart = [
@@ -177,22 +179,27 @@ final class MainPageController extends AbstractController
                     'тривалість одного заняття 55 хв',
                 ],
                 'type' => 'Індивідуальні',
-                'age' => 'adults',
+                'count' => 4,
+                'group_type' => GroupType::Individual->value,
+                'age' => Age::Adult->value,
             ],
             1 => [
                 'promo' => '20% OFF',
                 'price' => '3 900',
                 'promo_price' => '3 200',
+                'count' => 8,
                 'info' => [
                     '8 занять (2 рази на тиждень)',
                     'індивідуальний підхід',
                     'тривалість одного заняття 55 хв',
                 ],
                 'type' => 'Індивідуальні',
-                'age' => 'adults',
+                'group_type' => GroupType::Individual->value,
+                'age' => Age::Adult->value,
             ],
             2 => [
                 'price' => '1 450',
+                'count' => 4,
                 'info' => [
                     '4 заняття (1 раз на тиждень)',
                     'повний драйв',
@@ -200,34 +207,40 @@ final class MainPageController extends AbstractController
                     'тривалість одного заняття 55 хв',
                 ],
                 'type' => 'Групові',
-                'age' => 'adults',
+                'group_type' => GroupType::Group->value,
+                'age' => Age::Adult->value,
             ],
             3 => [
                 'promo' => '20% OFF',
                 'price' => '1 500',
                 'promo_price' => '1 250',
+                'count' => 4,
                 'info' => [
                     '4 заняття (1 раз на тиждень)',
                     'індивідуальний підхід',
                     'тривалість одного заняття 35 хв',
                 ],
                 'type' => 'Індивідуальні',
-                'age' => 'children',
+                'group_type' => GroupType::Individual->value,
+                'age' => Age::Kids->value,
             ],
             4 => [
                 'promo' => '20% OFF',
                 'price' => '2 850',
                 'promo_price' => '2 350',
+                'count' => 8,
                 'info' => [
                     '8 занять (2 рази на тиждень)',
                     'індивідуальний підхід',
                     'тривалість одного заняття 35 хв',
                 ],
                 'type' => 'Індивідуальні',
-                'age' => 'children',
+                'group_type' => GroupType::Individual->value,
+                'age' => Age::Kids->value,
             ],
             5 => [
                 'price' => '1 100',
+                'count' => 4,
                 'info' => [
                     '4 заняття (1 раз на тиждень)',
                     'соціальна активність',
@@ -235,7 +248,8 @@ final class MainPageController extends AbstractController
                     'тривалість одного заняття 35 хв',
                 ],
                 'type' => 'Групові',
-                'age' => 'children',
+                'group_type' => GroupType::Group->value,
+                'age' => Age::Kids->value,
             ],
         ];
 
@@ -267,11 +281,16 @@ final class MainPageController extends AbstractController
         ];
 
         $reviews = [
-            ['nickname' => 'Андрій'],
-            ['nickname' => '@genkovich'],
-            ['nickname' => '@Roan_lite'],
-            ['nickname' => '@value'],
-            ['nickname' => '@oleg_sanich92'],
+            [
+                'nickname' => 'Тетяна',
+                'img' => 'build/images/feedback_1.png',
+                'source' => 'instagram',
+            ],
+            [
+                'nickname' => '@dhusvggsh_h',
+                'img' => 'build/images/feedback_2.png',
+                'source' => 'instagram',
+            ],
 
         ];
 

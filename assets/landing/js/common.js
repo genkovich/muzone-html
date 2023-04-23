@@ -140,10 +140,10 @@ export function commonInit($, svg4everybody, Fancybox, Swiper, gsap, Circ, Quad)
 		$document.on('click', function (e) {
 			let $target = $(e.target);
 
+
 			if (!$target.is(btn) &&
 				!$target.parents().is(btn) &&
-				!$target.is('.active-target') &&
-				!$target.parents().is('.active-target')
+				!$target.is('.active-target')
 			) {
 				hide_target();
 			}
@@ -261,10 +261,11 @@ export function commonInit($, svg4everybody, Fancybox, Swiper, gsap, Circ, Quad)
 	// slider with resize-----------------------------------------
 	$(function () {
 		function slider_results() {
-			var $slider = $('.j-results-slider');
+			let $slider = $('.j-results-slider');
 
 			if ($window.width() <= 767) {
 				if (!$slider.is('.swiper-initialized')) {
+
 					new Swiper('.j-results-slider', {
 						speed: 400,
 						slidesPerView: 'auto',
