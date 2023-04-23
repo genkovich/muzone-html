@@ -2,7 +2,7 @@
 
 namespace Domain\Lead\Contact;
 
-enum ContactType : string
+enum ContactType: string
 {
     case Phone = 'phone';
     case Telegram = 'telegram';

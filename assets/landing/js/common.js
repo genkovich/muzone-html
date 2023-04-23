@@ -1,6 +1,6 @@
 import svg4everybody from "svg4everybody";
 
-export function commonInit($, svg4everybody, Fancybox, Swiper, gsap, Circ) {
+export function commonInit($, svg4everybody, Fancybox, Swiper, gsap, Circ, Quad) {
 	const $document = $(document),
 		$window = $(window),
 		$up = $('.j-up'),
@@ -109,21 +109,22 @@ export function commonInit($, svg4everybody, Fancybox, Swiper, gsap, Circ) {
 			e.preventDefault();
 
 			let $this = $(this),
-				target = $this.attr('data-target');
+				target = $this.attr('data-target'),
+				$commonParent = $this.closest('.j-phone'); // Замените '.common-parent-class' на класс общего родителя
 
 			$(btn).each(function () {
 				let $this_new = $(this),
 					target_new = $this_new.attr('data-target'),
 					$target_new = $(target_new);
 
-				if (target != target_new && !$(target).parents().is('.active-target')) {
+				if (target !== target_new && !$(target).parents().is('.active-target')) {
 					$this_new.removeClass('active-target');
 					$target_new.removeClass('active-target');
 				}
 			});
 
 			$this.toggleClass('active-target');
-			$(target).toggleClass('active-target');
+			$commonParent.find(target).toggleClass('active-target'); // Используйте find() для поиска ближайшего элемента с атрибутом data-target
 		});
 
 		function hide_target() {
@@ -157,6 +158,8 @@ export function commonInit($, svg4everybody, Fancybox, Swiper, gsap, Circ) {
 	// scroll to element-----------------------------------------
 	$(function () {
 		let $link = $('.j-scroll');
+		let ww = $window.width();
+
 
 		$link.on('click', function (e) {
 			e.preventDefault();
@@ -325,4 +328,6 @@ export function commonInit($, svg4everybody, Fancybox, Swiper, gsap, Circ) {
 			$('.j-cost-item.age-adults').stop().fadeIn();
 		}
 	});
+
+
 }

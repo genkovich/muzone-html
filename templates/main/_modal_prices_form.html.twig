@@ -1,0 +1,75 @@
+<div class="modal-prices" id="modal-prices">
+    <div class="modal__inner">
+        <div class="modal__title j-wow-modal j-wow-bottom">
+            Записатись
+        </div>
+        <div class="modal__desc">
+            Для запису заповніть форму нижче
+        </div>
+        <form class="modal__form form j-form" novalidate>
+            <input name="theme" type="hidden" class="j-theme">
+            <div class="phone j-phone">
+                <div class="phone__label">
+                    <label class="phone__item input2 j-phone-bl active">
+                        <input name="your_phone" type="tel" class="phone__input j-phone-mask" placeholder="Телефон" required>
+                    </label>
+                    <label class="phone__item input2 j-phone-bl">
+                        <input name="your_telegram" type="tel" class="phone__input" placeholder="Telegram">
+                    </label>
+                    <label class="phone__item input2 j-phone-bl">
+                        <input name="your_instagram" type="tel" class="phone__input" placeholder="Instagram">
+                    </label>
+                </div>
+                <div class="phone__arrow" data-target="#phone-list3">
+                    <svg>
+                        <use xlink:href="{{ asset('build/images/icons.svg') }}#arrow"/>
+                    </svg>
+                </div>
+                <ul class="phone__list" id="phone-list3">
+                    <li class="phone__list-li">
+                        <div class="phone__list-item phone__list-item--phone j-phone-item active">
+                            <div class="phone__list-icon">
+                                <svg>
+                                    <use xlink:href="{{ asset('build/images/icons.svg') }}#phone"/>
+                                </svg>
+                            </div>
+                            <div class="phone__list-title">
+                                Телефон
+                            </div>
+                        </div>
+                    </li>
+                    <li class="phone__list-li">
+                        <div class="phone__list-item phone__list-item--telegram j-phone-item">
+                            <div class="phone__list-icon">
+                                <svg>
+                                    <use xlink:href="{{ asset('build/images/icons.svg') }}#telegram"/>
+                                </svg>
+                            </div>
+                            <div class="phone__list-title">
+                                Telegram
+                            </div>
+                        </div>
+                    </li>
+                    <li class="phone__list-li">
+                        <div class="phone__list-item phone__list-item--intasgram j-phone-item">
+                            <div class="phone__list-icon">
+                                <svg>
+                                    <use xlink:href="{{ asset('build/images/icons.svg') }}#intasgram"/>
+                                </svg>
+                            </div>
+                            <div class="phone__list-title">
+                                Instagram
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <label class="input2">
+                <input name="count" type="text" placeholder="Кількість занять">
+            </label>
+            <div class="form__btn">
+                <button type="submit" class="btn">Замовити</button>
+            </div>
+        </form>
+    </div>
+</div>

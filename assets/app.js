@@ -1,6 +1,6 @@
-import './styles/app.css';
+// import './styles/app.css';
 import './styles/app.scss';
-import './styles/landing/style.scss';
+// import './styles/landing/style.scss';
 
 import jQuery from 'jquery';
 window.$ = window.jQuery = jQuery;
@@ -37,7 +37,7 @@ $(document).ready(() => {
     require('./landing/libs/jquery.maskedinput.min.js');
     require('@emretulek/jbvalidator');
     animationInit(gsap, ScrollToPlugin, ScrollTrigger, Quad, jQuery);
-    commonInit(jQuery, svg4everybody, Fancybox, Swiper, gsap, Circ);
+    commonInit(jQuery, svg4everybody, Fancybox, Swiper, gsap, Circ, Quad);
     formInit(jQuery);
 });
 

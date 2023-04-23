@@ -17,7 +17,7 @@ Encore
     .setPublicPath('/build')
 
     .addEntry('app', './assets/app.js')
-    .addEntry('styles', './assets/styles/app.scss')
+    .addStyleEntry('styles', './assets/styles/app.scss')
 
     .addEntry('admin', './assets/admin.js')
     .addStyleEntry('admin_style', './assets/styles/admin/admin.scss')

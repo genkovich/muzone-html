@@ -8,17 +8,18 @@ use Symfony\Component\Form\Extension\Core\DataMapper\DataMapper;
 
 class PaginationDataMapper extends DataMapper
 {
-    public function mapFormsToData($forms, &$viewData): void
+    public function mapFormsToData(iterable $forms, &$data): void
     {
-        parent::mapFormsToData($forms, $viewData);
+        /** @var \Traversable $forms */
+        parent::mapFormsToData($forms, $data);
 
-        if (null === $viewData) {
+        if (null === $data) {
             return;
         }
 
         $forms = \iterator_to_array($forms);
 
-        $viewData->processOffset(
+        $data->processOffset(
             $forms['next']->isClicked(),
             $forms['prev']->isClicked()
         );

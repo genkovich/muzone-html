@@ -1,0 +1,61 @@
+<section class="banner" id="banner">
+    <div class="container">
+        <div class="banner__wrapper row">
+            <div class="banner__text col">
+                <svg class="banner__line line">
+                    <use xlink:href="{{ asset('build/images/icons.svg') }}#line1"/>
+                </svg>
+                <div class="banner__kv banner__kv--1"></div>
+                <div class="banner__circle"></div>
+                <div class="banner__text-inner">
+                    <div class="banner__subtitle j-wow j-wow-top" data-delay=".2">— Заснована в Одесі —</div>
+                    <h1 class="banner__title j-wow j-wow-left">Нова музична школа</h1>
+                    <div class="banner__desc j-wow j-wow-bottom" data-delay=".2">
+                        <p>Навчись співати чи грати на будь-якому музичному інструменті</p>
+                    </div>
+                    {% include('main/_contact_form.html.twig') %}
+                </div>
+            </div>
+            <div class="banner__imgs col">
+                <div class="banner-imgs">
+                    <div class="banner__kv banner__kv--2"></div>
+                    <div class="banner__kv banner__kv--3"></div>
+                    <svg class="banner-imgs__line line">
+                        <use xlink:href="{{ asset('build/images/icons.svg') }}#line1"/>
+                    </svg>
+                    <div class="banner-imgs__bl banner-imgs__bl--1 j-wow j-wow-bottom">
+                        <picture class="banner-imgs__picture">
+                            <img src="{{ asset('build/images/banner__img1.jpg') }}" srcset="{{ asset('build/images/banner__img1@2x.jpg') }} 2x" alt="">
+                        </picture>
+                    </div>
+                    <div class="banner-imgs__bl banner-imgs__bl--2 j-wow j-wow-bottom" data-delay=".1">
+                        <picture class="banner-imgs__picture">
+                            <img src="{{ asset('build/images/banner__img2.jpg') }}" srcset="{{ asset('build/images/banner__img2@2x.jpg') }} 2x" alt="">
+                        </picture>
+                    </div>
+                    <div class="banner-imgs__bl banner-imgs__bl--3 j-wow j-wow-bottom" data-delay=".2">
+                        <picture class="banner-imgs__picture">
+                            <img src="{{ asset('build/images/banner__img3.jpg') }}" srcset="{{ asset('build/images/banner__img3@2x.jpg') }} 2x" alt="">
+                        </picture>
+                    </div>
+                    <div class="banner-imgs__bl banner-imgs__bl--4 j-wow j-wow-bottom" data-delay=".3">
+                        <a href="#contacts" class="banner-imgs__address j-scroll">
+                            <svg class="banner-imgs__address-svg">
+                                <use xlink:href="{{ asset('build/images/icons.svg') }}#marker"/>
+                            </svg>
+                            <div class="banner-imgs__address-how">
+                                Як нас знайти
+                                <svg>
+                                    <use xlink:href="{{ asset('build/images/icons.svg') }}#play"/>
+                                </svg>
+                            </div>
+                            <div class="banner-imgs__address-title">
+                                Odesa
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

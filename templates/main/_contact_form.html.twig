@@ -1,0 +1,61 @@
+<form class="banner__form form-phone j-form" id="contact-form" novalidate>
+    <div class="phone j-phone">
+        <div class="phone__label">
+            <div class="phone__item j-phone-bl active">
+                <input name="your_phone" type="tel" class="phone__input j-phone-mask" placeholder="Телефон" required>
+            </div>
+            <div class="phone__item j-phone-bl">
+                <input name="your_telegram" type="text" class="phone__input" placeholder="Telegram">
+            </div>
+            <div class="phone__item j-phone-bl">
+                <input name="your_instagram" type="text" class="phone__input" placeholder="Instagram">
+            </div>
+        </div>
+        <div class="phone__arrow" data-target="#phone-list1">
+            <svg>
+                <use xlink:href="{{ asset('build/images/icons.svg') }}#arrow"/>
+            </svg>
+        </div>
+        <ul class="phone__list" id="phone-list1">
+            <li class="phone__list-li">
+                <div class="phone__list-item phone__list-item--phone j-phone-item active">
+                    <div class="phone__list-icon">
+                        <svg>
+                            <use xlink:href="{{ asset('build/images/icons.svg') }}#phone"/>
+                        </svg>
+                    </div>
+                    <div class="phone__list-title">
+                        Телефон
+                    </div>
+                </div>
+            </li>
+            <li class="phone__list-li">
+                <div class="phone__list-item phone__list-item--telegram j-phone-item">
+                    <div class="phone__list-icon">
+                        <svg>
+                            <use xlink:href="{{ asset('build/images/icons.svg') }}#telegram"/>
+                        </svg>
+                    </div>
+                    <div class="phone__list-title">
+                        Telegram
+                    </div>
+                </div>
+            </li>
+            <li class="phone__list-li">
+                <div class="phone__list-item phone__list-item--instagram j-phone-item">
+                    <div class="phone__list-icon">
+                        <svg>
+                            <use xlink:href="{{ asset('build/images/icons.svg') }}#instagram"/>
+                        </svg>
+                    </div>
+                    <div class="phone__list-title">
+                        Instagram
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <button type="submit" class="form-phone__btn">
+        Записатись
+    </button>
+</form>

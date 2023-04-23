@@ -3,16 +3,28 @@
 @import 'global/_normalize.scss';
 @import 'global/_global.scss';
 @import 'global/_header.scss';
-@import 'sections/_banner.scss';
 @import 'global/_btn.scss';
 @import 'global/_form.scss';
+@import 'global/_modal.scss';
+@import 'global/_footer.scss';
+@import 'sections/_banner.scss';
 @import 'sections/_services.scss';
 @import 'sections/_cost.scss';
 @import 'sections/_gift.scss';
 @import 'sections/_reviews.scss';
 @import 'sections/_trial.scss';
 @import 'sections/_contacts.scss';
-@import 'global/_modal.scss';
-@import 'global/_footer.scss';
 @import '~toastr/toastr';
 
+.toast-error {
+  background-color: #FF00B8;
+}
+
+.toast-success {
+  background-color: #3502FF;
+}
+
+.phone__item > label {
+  display: block;
+  color: #FF00B8;
+}

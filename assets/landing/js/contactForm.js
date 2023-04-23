@@ -16,79 +16,98 @@ jQuery.validator.addMethod("instagram", function (value, element) {
 }, "Будь ласка, перевірте правильність instagram нікнейму");
 
 $(document).ready(function () {
-    const contactForm = $('.j-form');
+    const contactForms = $('.j-form');
 
-    contactForm.validate({
-        rules: {
-            your_phone: {
-                required: true,
-                minlength: 10,
-            },
-            your_telegram: {
-                required: true,
-                minlength: 4,
-                maxlength: 32,
-                telegram: true,
-            },
-            your_instagram: {
-                required: true,
-                minlength: 4,
-                maxlength: 30,
-                instagram: true,
-            },
-        },
-        messages: {
-            your_phone: {
-                required: "Будь ласка, введіть ваш номер телефону"  ,
-                minlength: "Номер телефону має містити мінімум 10 символів",
-            },
-            your_telegram: {
-                required: "Будь ласка, введіть ваш Telegram",
-                minlength: "Нікнейм Telegram має містити мінімум 4 символи",
-                maxlength: "Нікнейм Telegram не повинен перевищувати 32 символи",
-                telegram: "Будь ласка, введіть коректний нікнейм Telegram",
-            },
-            your_instagram: {
-                required: "Пожалуйста, введите ваш Instagram",
-                minlength: "Instagram должен содержать минимум 1 символ",
-                maxlength: "Instagram не должен превышать 30 символов",
-                instagram: "Пожалуйста, введите корректный никнейм Instagram",
-            },
-        },
-    });
+    contactForms.each(function () {
+        const contactForm = $(this);
 
-    contactForm.on('submit', async function (event) {
-        event.preventDefault();
-
-        // Проверка валидности формы
-        if (!contactForm.valid()) {
-            toastr.error('Будь ласка, перевірте що там введено', 'error');
-            return;
-        }
-
-        $('button[type="submit"]', this).prop('disabled', true);
-
-        const formData = $(this).serialize();
-
-        $.ajax({
-            url: '/contact',
-            type: 'POST',
-            data: formData,
-            dataType: 'json',
-            success: function (jsonResponse) {
-                if (jsonResponse.success) {
-                    toastr.success('Ми дуже скоро зв\`яжемось з вами', 'Дякуюємо за звернення!');
-                } else {
-                    toastr.error('Будь ласка, спробуйте ще раз', 'Нажаль виникла помилка');
-                }
-
-                $('button[type="submit"]').prop('disabled', false);
+        contactForm.validate({
+            rules: {
+                your_phone: {
+                    required: true,
+                    minlength: 10,
+                },
+                your_telegram: {
+                    required: true,
+                    minlength: 4,
+                    maxlength: 32,
+                    telegram: true,
+                },
+                your_instagram: {
+                    required: true,
+                    minlength: 4,
+                    maxlength: 30,
+                    instagram: true,
+                },
             },
-            error: function (xhr, textStatus, errorThrown) {
-                toastr.error('Будь ласка, спробуйте ще раз', 'Нажаль виникла помилка');
-                $('button[type="submit"]').prop('disabled', false);
+            messages: {
+                your_phone: {
+                    required: "Будь ласка, введіть ваш номер телефону",
+                    minlength: "Номер телефону має містити мінімум 10 символів",
+                },
+                your_telegram: {
+                    required: "Будь ласка, введіть ваш нік Telegram",
+                    minlength: "Нікнейм Telegram має містити мінімум 4 символи",
+                    maxlength: "Нікнейм Telegram не повинен перевищувати 32 символи",
+                    telegram: "Будь ласка, введіть коректний нікнейм Telegram",
+                },
+                your_instagram: {
+                    required: "Будь ласка, введіть ваш нік Instagram",
+                    minlength: "Нікнейм Instagram має містити мінімум 4 символи",
+                    maxlength: "Нікнейм Instagram не повинен перевищувати 30 символів",
+                    instagram: "Будь ласка, введіть коректний нікнейм Instagram",
+                },
             },
         });
+
+        contactForm.on('submit', async function (event) {
+            event.preventDefault();
+
+            const currentForm = $(this)
+
+            // Проверка валидности формы
+            if (!currentForm.valid()) {
+                toastr.error('Будь ласка, перевірте що там введено', 'error');
+                return;
+            }
+
+            $('button[type="submit"]', this).prop('disabled', true);
+
+            const formData = currentForm.serialize();
+
+            $.ajax({
+                url: '/contact',
+                type: 'POST',
+                data: formData,
+                dataType: 'json',
+                success: function (jsonResponse) {
+                    if (jsonResponse.success) {
+                        toastr.success('Ми дуже скоро зв\`яжемось з вами', 'Дякуюємо за звернення!');
+
+                        currentForm[0].reset(); // Сброс текущей формы
+                    } else {
+                        toastr.error('Будь ласка, спробуйте ще раз', 'Нажаль виникла помилка');
+                    }
+
+                    $('button[type="submit"]', currentForm).prop('disabled', false);
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    toastr.error('Будь ласка, спробуйте ще раз', 'Нажаль виникла помилка');
+                    $('button[type="submit"]', currentForm).prop('disabled', false);
+                },
+            });
+
+        });
+    });
+});
+
+$(document).ready(function () {
+    $('[data-fancybox][data-src="#modal"]').on('click', function () {
+        let direction = $(this).attr('data-direction');
+        let directionTitle = $(this).attr('data-direction-title');
+
+        $('input[name="direction_title"]').val(directionTitle);
+        $('input[name="direction"]').val(direction);
 
     });
 });

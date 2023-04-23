@@ -118,14 +118,6 @@
                 min-height: 100%;
             }
         }
-        &__form {
-            order: 1;
-            margin: 0;
-            width: 100%;
-            &-form {
-                display: none;
-            }
-        }
         &__bl {
             position: relative;
             margin: 0 0 35px;
@@ -144,11 +136,14 @@
             font-size: 20px;
             margin: 2px 0 0;
         }
-        &__form-tablet {
-            display: flex;
-            position: relative;
-            z-index: 1;
-            max-width: 458px;
+        &__form {
+            order: 2;
+            width: 100%;
+            margin: 2rem auto auto;
+            .desc-sec {
+                max-width: 100%;
+                margin: 2rem auto;
+            }
         }
     }
 }

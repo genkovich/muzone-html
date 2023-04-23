@@ -1,0 +1,46 @@
+<section class="services" id="services">
+    <div class="container">
+        <svg class="services__line1 line">
+            <use xlink:href="{{ asset('build/images/icons.svg') }}#line2"/>
+        </svg>
+        <svg class="services__line2 line">
+            <use xlink:href="{{ asset('build/images/icons.svg') }}#line2"/>
+        </svg>
+        <svg class="services__line3 line">
+            <use xlink:href="{{ asset('build/images/icons.svg') }}#line2"/>
+        </svg>
+        <div class="title-sec">Шо взагалі є?</div>
+        <div class="services__wrapper">
+            {% for service in services %}
+                <div class="services-item">
+                    <div class="services-item__wrapper">
+                        <div class="services-item__img">
+                            <div class="services-item__img-inner">
+                                <div class="services-item__number">{{ loop.index }}.</div>
+                                <picture class="services-item__picture j-wow j-wow-class">
+                                    <img src="{{ asset(service.img) }}" srcset="{{ asset(service.img2x) }} 2x" alt="" loading="lazy">
+                                </picture>
+                            </div>
+                        </div>
+                        <div class="services-item__text">
+                            <h2 class="services-item__title j-wow j-wow-right">{{ service.title }}</h2>
+                            <div class="services-item__desc">
+                                {{ service.desc | raw }}
+                            </div>
+                            <button type="button" data-fancybox data-src="#modal" class="services-item__link" data-direction-title="{{ service.title }}" data-direction="{{ service.direction }}">
+                                <div class="services-item__link-title">
+                                    <b>Записатись</b> на пробне заняття
+                                </div>
+                                <div class="services-item__link-arrow">
+                                    <svg>
+                                        <use xlink:href="{{ asset('build/images/icons.svg') }}#arrow2"/>
+                                    </svg>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

@@ -2,226 +2,10 @@
 
 {% block body %}
 <div class="wrapper">
-    <header class="header j-header">
-        <div class="container">
-            <div class="header__wrapper">
-                <a href="/" class="header__logo">
-                    <img src="{{ asset('build/images/logo.png') }}" srcset="{{ asset('build/images/logo@2x.png') }}" alt="">
-                </a>
-                <div class="header__menu" id="menu">
-                    <div class="header__menu-inner">
-                        <nav class="header__nav">
-                            <ul class="header__nav-list">
-                                {% for item in menu %}
-                                <li class="header__nav-li">
-                                    <a href="{{ item.url }}" class="header__nav-a j-scroll">
-                                        {{ item.title }}
-                                    </a>
-                                </li>
-                                {% endfor %}
-                            </ul>
-                        </nav>
-                        <div class="header__info">
-                            <a href="#contacts" class="header__address j-scroll">
-                                <svg>
-                                    <use xlink:href="{{ asset('build/images/icons.svg') }}#marker"/>
-                                </svg>
-                                як нас знайти
-                            </a>
-                            <a href="tel:+380933010369" class="header__phone">
-                                +380 (93) 301-03-69
-                            </a>
-                        </div>
-                        <div class="header__social">
-                            <div class="social">
-                                <ul class="social__list">
-                                    <li class="social__li">
-                                        <a href="https://www.instagram.com/muzone_music_hub/" class="social__a social__a--instagram" target="_blank">
-                                            <svg>
-                                                <use xlink:href="{{ asset('build/images/icons.svg') }}#instagram"/>
-                                            </svg>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="header__toggle" data-target="#menu">
-                    <span></span><span></span><span></span>
-                </div>
-            </div>
-        </div>
-    </header>
+    {% include('main/_header.html.twig') %}
+    {% include('main/_banner.html.twig') %}
+    {% include('main/_services.html.twig') %}
 
-    <section class="banner" id="banner">
-        <div class="container">
-            <div class="banner__wrapper row">
-                <div class="banner__text col">
-                    <svg class="banner__line line">
-                        <use xlink:href="{{ asset('build/images/icons.svg') }}#line1"/>
-                    </svg>
-                    <div class="banner__kv banner__kv--1"></div>
-                    <div class="banner__circle"></div>
-                    <div class="banner__text-inner">
-                        <div class="banner__subtitle j-wow j-wow-top" data-delay=".2">— Заснована в Одесі —</div>
-                        <h1 class="banner__title j-wow j-wow-left">Нова музична школа</h1>
-                        <div class="banner__desc j-wow j-wow-bottom" data-delay=".2">
-                            <p>Навчись співати чи грати на будь-якому музичному інструменті</p>
-                        </div>
-                        <form class="banner__form form-phone j-form" novalidate>
-                            <div class="phone j-phone">
-                                <div class="phone__label">
-                                    <div class="phone__item j-phone-bl active">
-                                        <input name="your_phone" type="tel" class="phone__input j-phone-mask" placeholder="Телефон" required>
-                                    </div>
-                                    <div class="phone__item j-phone-bl">
-                                        <input name="your_telegram" type="text" class="phone__input" placeholder="Telegram">
-                                    </div>
-                                    <div class="phone__item j-phone-bl">
-                                        <input name="your_instagram" type="text" class="phone__input" placeholder="Instagram">
-                                    </div>
-                                </div>
-                                <div class="phone__arrow" data-target="#phone-list1">
-                                    <svg>
-                                        <use xlink:href="{{ asset('build/images/icons.svg') }}#arrow"/>
-                                    </svg>
-                                </div>
-                                <ul class="phone__list" id="phone-list1">
-                                    <li class="phone__list-li">
-                                        <div class="phone__list-item phone__list-item--phone j-phone-item active">
-                                            <div class="phone__list-icon">
-                                                <svg>
-                                                    <use xlink:href="{{ asset('build/images/icons.svg') }}#phone"/>
-                                                </svg>
-                                            </div>
-                                            <div class="phone__list-title">
-                                                Телефон
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="phone__list-li">
-                                        <div class="phone__list-item phone__list-item--telegram j-phone-item">
-                                            <div class="phone__list-icon">
-                                                <svg>
-                                                    <use xlink:href="{{ asset('build/images/icons.svg') }}#telegram"/>
-                                                </svg>
-                                            </div>
-                                            <div class="phone__list-title">
-                                                Telegram
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="phone__list-li">
-                                        <div class="phone__list-item phone__list-item--instagram j-phone-item">
-                                            <div class="phone__list-icon">
-                                                <svg>
-                                                    <use xlink:href="{{ asset('build/images/icons.svg') }}#instagram"/>
-                                                </svg>
-                                            </div>
-                                            <div class="phone__list-title">
-                                                Instagram
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                            <button type="submit" class="form-phone__btn">
-                                Записатись
-                            </button>
-                        </form>
-                    </div>
-                </div>
-                <div class="banner__imgs col">
-                    <div class="banner-imgs">
-                        <div class="banner__kv banner__kv--2"></div>
-                        <div class="banner__kv banner__kv--3"></div>
-                        <svg class="banner-imgs__line line">
-                            <use xlink:href="{{ asset('build/images/icons.svg') }}#line1"/>
-                        </svg>
-                        <div class="banner-imgs__bl banner-imgs__bl--1 j-wow j-wow-bottom">
-                            <picture class="banner-imgs__picture">
-                                <img src="{{ asset('build/images/banner__img1.jpg') }}" srcset="{{ asset('build/images/banner__img1@2x.jpg') }} 2x" alt="">
-                            </picture>
-                        </div>
-                        <div class="banner-imgs__bl banner-imgs__bl--2 j-wow j-wow-bottom" data-delay=".1">
-                            <picture class="banner-imgs__picture">
-                                <img src="{{ asset('build/images/banner__img2.jpg') }}" srcset="{{ asset('build/images/banner__img2@2x.jpg') }} 2x" alt="">
-                            </picture>
-                        </div>
-                        <div class="banner-imgs__bl banner-imgs__bl--3 j-wow j-wow-bottom" data-delay=".2">
-                            <picture class="banner-imgs__picture">
-                                <img src="{{ asset('build/images/banner__img3.jpg') }}" srcset="{{ asset('build/images/banner__img3@2x.jpg') }} 2x" alt="">
-                            </picture>
-                        </div>
-                        <div class="banner-imgs__bl banner-imgs__bl--4 j-wow j-wow-bottom" data-delay=".3">
-                            <a href="#contacts" class="banner-imgs__address j-scroll">
-                                <svg class="banner-imgs__address-svg">
-                                    <use xlink:href="{{ asset('build/images/icons.svg') }}#marker"/>
-                                </svg>
-                                <div class="banner-imgs__address-how">
-                                    Як нас знайти
-                                    <svg>
-                                        <use xlink:href="{{ asset('build/images/icons.svg') }}#play"/>
-                                    </svg>
-                                </div>
-                                <div class="banner-imgs__address-title">
-                                    Odesa
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="services" id="services">
-        <div class="container">
-            <svg class="services__line1 line">
-                <use xlink:href="{{ asset('build/images/icons.svg') }}#line2"/>
-            </svg>
-            <svg class="services__line2 line">
-                <use xlink:href="{{ asset('build/images/icons.svg') }}#line2"/>
-            </svg>
-            <svg class="services__line3 line">
-                <use xlink:href="{{ asset('build/images/icons.svg') }}#line2"/>
-            </svg>
-            <div class="title-sec">Шо взагалі є?</div>
-            <div class="services__wrapper">
-            {% for service in services %}
-                <div class="services-item">
-                    <div class="services-item__wrapper">
-                        <div class="services-item__img">
-                            <div class="services-item__img-inner">
-                                <div class="services-item__number">{{ loop.index }}.</div>
-                                <picture class="services-item__picture j-wow j-wow-class">
-                                    <img src="{{ asset(service.img) }}" srcset="{{ asset(service.img2x) }} 2x" alt="" loading="lazy">
-                                </picture>
-                            </div>
-                        </div>
-                        <div class="services-item__text">
-                            <h2 class="services-item__title j-wow j-wow-right">{{ service.title }}</h2>
-                            <div class="services-item__desc">
-                                {{ service.desc | raw }}
-                            </div>
-                            <button type="button" data-fancybox data-src="#modal" class="services-item__link" data-theme="{{ service.title }}">
-                                <div class="services-item__link-title">
-                                    <b>Записатись</b> на пробне заняття
-                                </div>
-                                <div class="services-item__link-arrow">
-                                    <svg>
-                                        <use xlink:href="{{ asset('build/images/icons.svg') }}#arrow2"/>
-                                    </svg>
-                                </div>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
-        </div>
-    </section>
 
     <section class="cost" id="cost">
         <svg class="cost__line1 line">
@@ -231,9 +15,9 @@
             <use xlink:href="{{ asset('build/images/icons.svg') }}#line2"/>
         </svg>
         <div class="container">
-            <h3 class="title-sec">Вартість</h3>
+            <h3 class="title-sec">Вартість абонементів</h3>
             <div class="cost__desc desc-sec">
-                <p>Оберіть напрямок, в якому цікаво зараз розвиватись:</p>
+                <p>Оберіть напрямок, в якому плануєте себе спробувати:</p>
             </div>
             <div class="tabs">
                 <ul class="tabs__list">
@@ -275,11 +59,14 @@
                                 {% if cart_item.promo_price is defined %}
                                     <div class="cost-item__promo-price">₴{{ cart_item.price }}</div>
                                 {% endif %}
-                                <div class="cost-item__count">{{ cart_item.count }}</div>
+                                {% for info_row in cart_item.info %}
+                                    <div class="cost-item__info">{{ info_row }}</div>
+                                {% endfor %}
+
                                 <div class="cost-item__bottom">
                                     <div class="cost-item__type">{{ cart_item.type }}</div>
                                     <div class="cost-item__btn">
-                                        <button type="button" class="btn" data-src="#modal" data-fancybox data-theme="Назва пакета та інфо">Придбати</button>
+                                        <button type="button" class="btn" data-src="#modal-prices" data-fancybox data-theme="Назва пакета та інфо">Записатись</button>
                                     </div>
                                 </div>
                             </div>
@@ -606,94 +393,10 @@
             </div>
         </div>
     </footer>
-
-</div><!--end .wrapper-->
-
-<div class="modal" id="ok">
-    <div class="modal__inner">
-        <div class="modal__title j-wow-modal j-wow-bottom">
-            Спасибо!
-        </div>
-        <div class="modal__desc j-wow-modalj-wow-bottom" data-delay=".2">
-            Ваше сообщение успешно отправлено!
-        </div>
-    </div>
 </div>
 
-<div class="modal" id="modal">
-    <div class="modal__inner">
-        <div class="modal__title j-wow-modal j-wow-bottom">
-            Замовити
-        </div>
-        <div class="modal__desc">
-            Для замовлення заповніть форму нижче
-        </div>
-        <form class="modal__form form j-form" novalidate>
-            <input name="theme" type="hidden" class="j-theme">
-            <div class="phone j-phone">
-                <div class="phone__label">
-                    <label class="phone__item input2 j-phone-bl active">
-                        <input name="your_phone" type="tel" class="phone__input j-phone-mask" placeholder="Телефон" required>
-                    </label>
-                    <label class="phone__item input2 j-phone-bl">
-                        <input name="your_telegram" type="tel" class="phone__input" placeholder="Telegram">
-                    </label>
-                    <label class="phone__item input2 j-phone-bl">
-                        <input name="your_viber" type="tel" class="phone__input" placeholder="Viber">
-                    </label>
-                </div>
-                <div class="phone__arrow" data-target="#phone-list3">
-                    <svg>
-                        <use xlink:href="{{ asset('build/images/icons.svg') }}#arrow"/>
-                    </svg>
-                </div>
-                <ul class="phone__list" id="phone-list3">
-                    <li class="phone__list-li">
-                        <div class="phone__list-item phone__list-item--phone j-phone-item active">
-                            <div class="phone__list-icon">
-                                <svg>
-                                    <use xlink:href="{{ asset('build/images/icons.svg') }}#phone"/>
-                                </svg>
-                            </div>
-                            <div class="phone__list-title">
-                                Телефон
-                            </div>
-                        </div>
-                    </li>
-                    <li class="phone__list-li">
-                        <div class="phone__list-item phone__list-item--telegram j-phone-item">
-                            <div class="phone__list-icon">
-                                <svg>
-                                    <use xlink:href="{{ asset('build/images/icons.svg') }}#telegram"/>
-                                </svg>
-                            </div>
-                            <div class="phone__list-title">
-                                Telegram
-                            </div>
-                        </div>
-                    </li>
-                    <li class="phone__list-li">
-                        <div class="phone__list-item phone__list-item--viber j-phone-item">
-                            <div class="phone__list-icon">
-                                <svg>
-                                    <use xlink:href="{{ asset('build/images/icons.svg') }}#viber"/>
-                                </svg>
-                            </div>
-                            <div class="phone__list-title">
-                                Viber
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <label class="input2">
-                <input name="your_count" type="text" placeholder="Кількість занять">
-            </label>
-            <div class="form__btn">
-                <button type="submit" class="btn">Замовити</button>
-            </div>
-        </form>
-    </div>
-</div>
+    {% include('main/_modal_trial_form.html.twig') %}
+
+    {% include('main/_modal_prices_form.html.twig') %}
 
 {% endblock %}

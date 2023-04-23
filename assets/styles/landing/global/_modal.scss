@@ -1,9 +1,8 @@
 
 .modal {
     color: $text;
-    max-width: 450px;
+    max-width: 1200px;
     width: 100%;
-    padding: 40px 30px;
     display: none;
     border-radius: 20px;
     &__title {
@@ -17,6 +16,13 @@
     &__form {
         margin: 25px 0 0;
     }
+}
+
+.modal-prices {
+    color: $text;
+    max-width: 1200px;
+    display: none;
+    border-radius: 20px;
 }
 
 .fancybox__container {
