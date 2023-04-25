@@ -9,7 +9,6 @@
     {% include('main/_gift.htmk.twig') %}
     {% include('main/_reviews.html.twig') %}
     {% include('main/_trial.html.twig') %}
-{#    {% include('main/_footer.html.twig') %}#}
 
     <section class="contacts" id="contacts">
         <div class="container">
@@ -38,16 +37,23 @@
                         <div class="social">
                             <ul class="social__list">
                                 <li class="social__li">
-                                    <a href="#" class="social__a social__a--instagram" target="_blank">
+                                    <a href="https://www.tiktok.com/@muzone_hub" class="social__a social__a--linkedin" target="_blank">
                                         <svg>
-                                            <use xlink:href="{{ asset('build/images/icons.svg') }}#instagram"/>
+                                            <use xlink:href="{{ asset('build/images/icons.svg') }}#tiktok"/>
                                         </svg>
                                     </a>
                                 </li>
                                 <li class="social__li">
-                                    <a href="#" class="social__a social__a--facebook" target="_blank">
+                                    <a href="https://t.me/muzonefam" class="social__a social__a--twitter" target="_blank">
                                         <svg>
-                                            <use xlink:href="{{ asset('build/images/icons.svg') }}#facebook"/>
+                                            <use xlink:href="{{ asset('build/images/icons.svg') }}#telegram"/>
+                                        </svg>
+                                    </a>
+                                </li>
+                                <li class="social__li">
+                                    <a href="https://www.instagram.com/muzone_music_hub/" class="social__a social__a--instagram" target="_blank">
+                                        <svg>
+                                            <use xlink:href="{{ asset('build/images/icons.svg') }}#instagram"/>
                                         </svg>
                                     </a>
                                 </li>
@@ -58,57 +64,8 @@
             </div>
         </div>
     </section>
+    {% include('main/_footer.html.twig') %}
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer__wrapper">
-                <a href="/" class="footer__logo">
-                    <img src="<?= $target; ?>/img/logo-white.png" srcset="<?= $target; ?>/img/logo-white@2x.png 2x" alt="" loading="lazy">
-                </a>
-                <div class="footer__menu">
-                    <ul class="footer__menu-list">
-                        <? foreach($menu as $item) {
-								$url = $item['url'];
-								$title = $item['title'];
-							?>
-                        <li class="footer__menu-li">
-                            <a href="" class="footer__menu-a j-scroll">
-
-                            </a>
-                        </li>
-                        <? } ?>
-                    </ul>
-                </div>
-                <div class="footer__social">
-                    <div class="social social--green">
-                        <ul class="social__list">
-                            <li class="social__li">
-                                <a href="#" class="social__a social__a--linkedin" target="_blank">
-                                    <svg>
-                                        <use xlink:href="{{ asset('build/images/icons.svg') }}#linkedin"/>
-                                    </svg>
-                                </a>
-                            </li>
-                            <li class="social__li">
-                                <a href="#" class="social__a social__a--twitter" target="_blank">
-                                    <svg>
-                                        <use xlink:href="{{ asset('build/images/icons.svg') }}#twitter"/>
-                                    </svg>
-                                </a>
-                            </li>
-                            <li class="social__li">
-                                <a href="#" class="social__a social__a--instagram" target="_blank">
-                                    <svg>
-                                        <use xlink:href="{{ asset('build/images/icons.svg') }}#instagram"/>
-                                    </svg>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
 </div>
 
     {% include('main/_modal_trial_form.html.twig') %}
