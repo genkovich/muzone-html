@@ -37,6 +37,7 @@
         position: relative;
         z-index: 1;
         position: absolute;
+
         &--1 {
             max-width: 252px;
             top: 30px;
@@ -171,11 +172,23 @@
                 float: right;
             }
         }
+        &__bl-container { /* добавлено */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+            padding: 30px 0;
+        }
+
         &__bl {
             margin: 0 0 25px;
         }
         &__form-tablet {
             margin: 40px auto 0;
+        }
+        &__form {
+            margin: 4rem auto auto;
         }
     }
 }

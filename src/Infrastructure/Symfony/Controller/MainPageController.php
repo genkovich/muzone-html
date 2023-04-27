@@ -291,6 +291,21 @@ final class MainPageController extends AbstractController
                 'img' => 'build/images/feedback_2.png',
                 'source' => 'instagram',
             ],
+            [
+                'nickname' => '@anonymous',
+                'img' => 'build/images/feedback_3.png',
+                'source' => 'instagram',
+            ],
+            [
+                'nickname' => 'Olesia Ihoshuna',
+                'img' => 'build/images/feedback_4.png',
+                'source' => 'instagram',
+            ],
+            [
+                'nickname' => '@anonymous',
+                'img' => 'build/images/feedback_5.png',
+                'source' => 'instagram',
+            ],
 
         ];
 

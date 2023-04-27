@@ -1,6 +1,6 @@
 import svg4everybody from "svg4everybody";
 
-export function commonInit($, svg4everybody, Fancybox, Swiper, gsap, Circ, Quad) {
+export function commonInit($, svg4everybody, Fancybox, Swiper, Navigation, gsap, Circ, Quad) {
 	const $document = $(document),
 		$window = $(window),
 		$up = $('.j-up'),
@@ -170,7 +170,7 @@ export function commonInit($, svg4everybody, Fancybox, Swiper, gsap, Circ, Quad)
 				ww = $window.width();
 
 			gsap.to(window, {
-				duration: 1.8,
+				duration: 0.8,
 				scrollTo: {
 					y: href,
 					offsetY: offset,
@@ -232,8 +232,9 @@ export function commonInit($, svg4everybody, Fancybox, Swiper, gsap, Circ, Quad)
 	$(function () {
 		let $slider = $('.j-reviews-slider');
 
-		new Swiper($slider.find('.reviews__slider')[0], {
-			speed: 700,
+		const swiper = new Swiper('.reviews__slider', {
+			modules: [ Navigation ],
+			speed: 250,
 			wrapperClass: 'reviews__slider-wrapper',
 			slideClass: 'reviews__slider-slide',
 			navigation: {
@@ -255,40 +256,9 @@ export function commonInit($, svg4everybody, Fancybox, Swiper, gsap, Circ, Quad)
 				},
 			}
 		});
+
 	});
 
-
-	// slider with resize-----------------------------------------
-	$(function () {
-		function slider_results() {
-			let $slider = $('.j-results-slider');
-
-			if ($window.width() <= 767) {
-				if (!$slider.is('.swiper-initialized')) {
-
-					new Swiper('.j-results-slider', {
-						speed: 400,
-						slidesPerView: 'auto',
-						slideClass: 'results__table',
-						wrapperClass: 'results__slider-wrapper',
-						freeMode: true,
-						scrollbar: {
-							el: $slider.find('.j-scrollbar')[0],
-							draggable: true,
-						},
-					});
-				}
-			} else {
-				if ($slider.is('.swiper-initialized')) {
-					$slider[0].swiper.destroy(true, true);
-				}
-			}
-		}
-
-		slider_results();
-
-		$window.on('resize', slider_results);
-	});
 
 
 	// tabs---------------------------------------

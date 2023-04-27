@@ -51,6 +51,20 @@
         &__title {
             font-size: 36px;
         }
+
+        .trial {
+            &__img {
+                height: auto;
+            }
+
+            &__form {
+                margin: 1rem auto auto;
+
+                .desc-sec {
+                    margin: 1rem auto;
+                }
+            }
+        }
     }
 
     .fancybox__container {

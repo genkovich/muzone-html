@@ -11,7 +11,7 @@ import 'jquery-validation';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import ScrollToPlugin from 'gsap/ScrollToPlugin';
-import Swiper from 'swiper';
+import Swiper, { Navigation } from 'swiper';
 import { Quad } from "gsap/gsap-core";
 import { Fancybox } from '@fancyapps/ui';
 import "@fancyapps/ui/dist/fancybox/fancybox.css";
@@ -39,7 +39,7 @@ $(document).ready(() => {
     require('./landing/libs/jquery.maskedinput.min.js');
     require('@emretulek/jbvalidator');
     animationInit(gsap, ScrollToPlugin, ScrollTrigger, Quad, jQuery);
-    commonInit(jQuery, svg4everybody, Fancybox, Swiper, gsap, Circ, Quad);
+    commonInit(jQuery, svg4everybody, Fancybox, Swiper, Navigation, gsap, Circ, Quad);
     formInit(jQuery);
 });
 
