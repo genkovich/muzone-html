@@ -1,6 +1,4 @@
-// import './styles/app.css';
 import './styles/app.scss';
-// import './styles/landing/style.scss';
 
 import jQuery from 'jquery';
 window.$ = window.jQuery = jQuery;
@@ -41,6 +39,7 @@ $(document).ready(() => {
     animationInit(gsap, ScrollToPlugin, ScrollTrigger, Quad, jQuery);
     commonInit(jQuery, svg4everybody, Fancybox, Swiper, Navigation, gsap, Circ, Quad);
     formInit(jQuery);
+
 });
 
 

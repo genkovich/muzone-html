@@ -9,11 +9,26 @@
                     <nav class="header__nav">
                         <ul class="header__nav-list ">
                             {% for item in menu %}
-                                <li class="header__nav-li">
+                                {% if item.subitems is defined and item.subitems is not empty %}
+                                <li class="header__nav-li dropdown">
+                                    <a href="{{ item.url }}" class="header__nav-a j-scroll">
+                                        {{ item.title }} <i class="caret-icon bi bi-caret-down-fill"></i>
+                                    </a>
+                                    <div class="dropdown-menu">
+                                        {% for subitem in item.subitems %}
+                                            <a href="{{ subitem.url }}" class="dropdown-item j-scroll">{{ subitem.title }}</a>
+                                        {% endfor %}
+
+                                    </div>
+                                </li>
+                                {% else %}
+                                <li class="header__nav-li ">
                                     <a href="{{ item.url }}" class="header__nav-a j-scroll">
                                         {{ item.title }}
                                     </a>
                                 </li>
+                                {% endif %}
+
                             {% endfor %}
                         </ul>
                     </nav>

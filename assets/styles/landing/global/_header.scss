@@ -124,6 +124,44 @@
             }
         }
     }
+
+    .dropdown {
+        position: relative;
+    }
+
+    .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #fff;
+        padding: 8px 12px;
+        min-width: 180px;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .dropdown-menu a {
+        color: #333;
+        padding: 8px 16px;
+        text-decoration: none;
+        display: block;
+        transition: background-color 0.3s;
+    }
+
+    .dropdown-menu a:hover {
+        background-color: #f1f1f1;
+    }
+
+    .dropdown:hover .dropdown-menu {
+        display: block;
+    }
+
+    .dropdown-toggle {
+        position: relative;
+        display: inline-block;
+    }
+
 }
 
 
@@ -202,6 +240,21 @@
         &__address {
             margin: 0;
         }
+
+        .dropdown-menu {
+            display: block !important;
+            position: static;
+            background-color: transparent;
+            box-shadow: none;
+            padding-left: 1rem;
+        }
+        .dropdown-menu a {
+            padding: 10px 20px;
+        }
+        .caret-icon {
+            display: none;
+        }
+
     }
 }
 
