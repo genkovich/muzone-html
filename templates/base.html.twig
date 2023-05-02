@@ -4,7 +4,20 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{% block title %}Muzone - нова музична школа для кожного{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        <!-- Android Chrome -->
+        <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('build/favicon/android-chrome-192x192.png') }}">
+        <link rel="icon" type="image/png" sizes="512x512" href="{{ asset('build/favicon/android-chrome-512x512.png') }}">
+
+        <!-- Apple Touch Icon -->
+        <link rel="apple-touch-icon" href="{{ asset('build/favicon/apple-touch-icon.png') }}">
+
+        <!-- Favicon -->
+        <link rel="icon" type="image/x-icon" href="{{ asset('build/favicon/favicon.ico') }}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('build/favicon/favicon-16x16.png') }}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('build/favicon/favicon-32x32.png') }}">
+
+        <!-- Site Manifest -->
+        <link rel="manifest" href="{{ asset('build/favicon/site.webmanifest') }}">
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
