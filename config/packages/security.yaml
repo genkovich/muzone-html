@@ -21,3 +21,4 @@ security:
 
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/connect, requires_channel: '%env(SECURE_SCHEME)%' }
