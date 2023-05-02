@@ -73,6 +73,7 @@ services:
       - '%telegram_chat_id_notify%'
       - '%telegram_thread_id_notify%'
       - '@telegram.client'
+      - '@twig'
 
   guzzle.client:
     class: GuzzleHttp\Client

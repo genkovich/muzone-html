@@ -13,8 +13,8 @@ final readonly class Telegram implements ContactValueInterface
             throw new \InvalidArgumentException('Telegram cannot be empty');
         }
 
-        if (!preg_match('/^[\w_@.\/:-]{4,32}$/', $value)) {
-            throw new \InvalidArgumentException('Telegram is not valid');
+        if (!preg_match('/^[-:\/@#$\w_.]{4,150}$/', $value)) {
+            throw new \InvalidArgumentException('Invalid format');
         }
     }
 

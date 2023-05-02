@@ -1,0 +1,13 @@
+<b>New lead from {{ lead.contact.type.value }}:</b> {{ lead.contact.value }}
+<b>Lessons Count:</b> {{ lead.lessonsCount }}
+
+{% if lead.direction %}
+<b>Direction:</b> {{ lead.direction.icon }} {{ lead.direction.value }}
+{% endif %}
+{% if lead.groupType %}
+<b>Group Type:</b> {{ lead.groupType.icon }} {{ lead.groupType.value }}
+{% endif %}
+{% if lead.age %}
+<b>Age:</b> {{ lead.age.icon }} {{ lead.age.value }}
+{% endif %}
+<b>Created At:</b> {{ lead.createdAt|date('H:i d.M.Y') }}

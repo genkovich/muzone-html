@@ -27,6 +27,11 @@ final class SaveLeadCommandArgumentResolver implements ValueResolverInterface
         $telegram = $request->request->get('your_telegram');
         $instagram = $request->request->get('your_instagram');
 
+        $lessonsCount = $request->request->get('count');
+        $direction = $request->request->get('direction');
+        $groupType = $request->request->get('group_type');
+        $age = $request->request->get('age');
+
         if ($phone) {
             $contactType = ContactType::Phone;
             $contactValue = $phone;
@@ -40,9 +45,13 @@ final class SaveLeadCommandArgumentResolver implements ValueResolverInterface
             throw new \RuntimeException('Contact type not found');
         }
 
-
-        // Валидация данных здесь (если требуется)
-
-        yield new SaveLeadCommand($contactValue, $contactType->value);
+        yield new SaveLeadCommand(
+            $contactValue,
+            $contactType->value,
+            (int) $lessonsCount,
+            (string) $direction,
+            (string) $groupType,
+            (string) $age,
+        );
     }
 }

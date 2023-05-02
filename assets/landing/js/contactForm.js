@@ -6,12 +6,12 @@ toastr.options = {
 };
 
 jQuery.validator.addMethod("telegram", function (value, element) {
-    const telegramPattern = /^@?[a-zA-Z0-9_\/:\.-]{4,32}$/;
+    const telegramPattern = /^@?[a-zA-Z0-9_\/:\.-]{4,150}$/;
     return this.optional(element) || telegramPattern.test(value);
 }, "Будь ласка, перевірте правильність telegram нікнейму");
 
 jQuery.validator.addMethod("instagram", function (value, element) {
-    var instagramPattern = /^[a-zA-Z0-9_\/:\.-]{4,32}$/;
+    var instagramPattern = /^[a-zA-Z0-9_\/:\.-]{4,150}$/;
     return this.optional(element) || instagramPattern.test(value);
 }, "Будь ласка, перевірте правильність instagram нікнейму");
 
@@ -30,13 +30,13 @@ $(document).ready(function () {
                 your_telegram: {
                     required: true,
                     minlength: 4,
-                    maxlength: 32,
+                    maxlength: 150,
                     telegram: true,
                 },
                 your_instagram: {
                     required: true,
                     minlength: 4,
-                    maxlength: 30,
+                    maxlength: 150,
                     instagram: true,
                 },
             },

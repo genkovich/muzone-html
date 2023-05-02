@@ -31,12 +31,16 @@ final readonly class LeadRepository implements LeadRepositoryInterface
     public function insert(Lead $lead): void
     {
         $this->connection->executeStatement(
-            'INSERT INTO leads (lead_id, contact_type, contact_value, created_at, updated_at)
-             VALUES (:lead_id, :contact_type, :contact_value, :created_at, :updated_at)',
+            'INSERT INTO leads (lead_id, contact_type, contact_value, lessons_count, direction, group_type, age, created_at, updated_at)
+             VALUES (:lead_id, :contact_type, :contact_value, :lessons_count, :direction, :group_type, :age, :created_at, :updated_at)',
             [
                 'lead_id' => $lead->id,
                 'contact_type' => $lead->contact->type->value,
                 'contact_value' => $lead->contact->value,
+                'lessons_count' => $lead->lessonsCount,
+                'direction' => $lead->direction?->value,
+                'group_type' => $lead->groupType?->value,
+                'age' => $lead->age?->value,
                 'created_at' => $lead->createdAt,
                 'updated_at' => $lead->updatedAt,
             ],
@@ -44,6 +48,10 @@ final readonly class LeadRepository implements LeadRepositoryInterface
                 'lead_id' => Types::GUID,
                 'contact_type' => Types::STRING,
                 'contact_value' => Types::STRING,
+                'lessons_count' => Types::INTEGER,
+                'direction' => Types::STRING,
+                'group_type' => Types::STRING,
+                'age' => Types::STRING,
                 'created_at' => Types::DATETIMETZ_IMMUTABLE,
                 'updated_at' => Types::DATETIMETZ_IMMUTABLE,
             ],
@@ -58,7 +66,7 @@ final readonly class LeadRepository implements LeadRepositoryInterface
     {
         $qb = $this->connection->createQueryBuilder();
 
-        $qb->select('lead_id, contact_type, contact_value, created_at, updated_at')
+        $qb->select('lead_id, contact_type, contact_value, lessons_count, direction, group_type, age, created_at, updated_at')
             ->from('leads')
             ->orderBy('created_at', 'DESC')
             ->setMaxResults($limit)

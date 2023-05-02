@@ -8,4 +8,13 @@ enum Age: string
     case Adult = 'adult';
     case Unknown = 'unknown';
 
+    public function icon(): string
+    {
+        return match ($this) {
+            self::Kids => '👶',
+            self::Adult => '🧑',
+            default => '?',
+        };
+    }
+
 }

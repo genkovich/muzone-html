@@ -7,6 +7,7 @@ namespace Infrastructure\Telegram;
 use Application\Lead\Notifier\NotifierInterface;
 use Domain\Lead\Lead;
 use GuzzleHttp\Exception\GuzzleException;
+use Twig\Environment;
 
 final readonly class TelegramNotifier implements NotifierInterface
 {
@@ -15,6 +16,7 @@ final readonly class TelegramNotifier implements NotifierInterface
         private string $chatId,
         private string $threadId,
         private TelegramClient $client,
+        private Environment $twig,
     )
     {
     }
@@ -24,12 +26,8 @@ final readonly class TelegramNotifier implements NotifierInterface
      */
     public function notify(Lead $lead): void
     {
-        $message = sprintf(
-            'New lead from %s: %s',
-            $lead->contact->type->value,
-            $lead->contact->value
-        );
+        $html = $this->twig->render('telegram/notifier/lead_created_notification.html.twig', ['lead' => $lead]);
 
-        $this->client->sendMessage($message, $this->chatId, $this->threadId);
+        $this->client->sendMessage($html, $this->chatId, $this->threadId);
     }
 }

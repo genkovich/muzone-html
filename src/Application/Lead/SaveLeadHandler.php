@@ -5,6 +5,9 @@ declare(strict_types=1);
 namespace Application\Lead;
 
 use Application\Lead\Notifier\NotifierInterface;
+use Domain\Age;
+use Domain\Direction;
+use Domain\GroupType;
 use Domain\Lead\Contact\ContactFactory;
 use Domain\Lead\Lead;
 use Domain\Lead\LeadRepositoryInterface;
@@ -29,6 +32,10 @@ final readonly class SaveLeadHandler
         $lead = new Lead(
             id: $this->leadRepository->generateNext(),
             contact: $contact,
+            lessonsCount: $command->lessonsCount,
+            direction: Direction::tryFrom($command->direction),
+            groupType: GroupType::tryFrom($command->groupType),
+            age: Age::tryFrom($command->age),
             createdAt: $now,
             updatedAt: $now,
         );

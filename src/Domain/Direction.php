@@ -14,4 +14,18 @@ enum Direction: string
     case Other = 'other';
     case Unknown = 'unknown';
 
+    public function icon(): string
+    {
+        return match ($this) {
+            self::Drums => '🥁',
+            self::Vocal => '🎤',
+            self::Guitar => '🎸',
+            self::Piano => '🎹',
+            self::Ukulele => '🪕',
+            self::Saxophone => '🎷',
+            self::Certificate => '📜',
+            default => '?',
+        };
+    }
+
 }

@@ -42,18 +42,24 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Contact type</th>
-                        <th>Contact Value</th>
-                        <th>Created</th>
+                        <th>📞 <span class="mobile-hide">Contact</span></th>
+                        <th>🔢 <span class="mobile-hide">Count</span></th>
+                        <th>↔️ <span class="mobile-hide">Direction</span></th>
+                        <th>🔞 <span class="mobile-hide">Age</span></th>
+                        <th>👥 <span class="mobile-hide">Group Type</span></th>
+                        <th>📅 <span class="mobile-hide">Created</span></th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for lead in leads %}
                         <tr>
                             <td>{{ loop.index + offset }}</td>
-                            <td>{{ lead.contact.type.value }}</td>
-                            <td>{{ lead.contact.value }}</td>
-                            <td>{{ lead.createdAt|date('Y-m-d H:i:s') }}</td>
+                            <td><i class="bi bi-{{ lead.contact.type.value }}"></i>  {{ lead.contact.value }}</td>
+                            <td>{{ lead.lessonsCount ?? 0 }}</td>
+                            <td>{{ lead.direction.icon ?? '?' }}</td>
+                            <td>{{ lead.age.icon ?? '?' }}</td>
+                            <td>{{ lead.groupType.icon ?? '?' }}</td>
+                            <td>{{ lead.createdAt|date('H:i d.M') }}</td>
                         </tr>
                     {% endfor %}
                 </tbody>

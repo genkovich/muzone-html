@@ -1,3 +1,4 @@
+import '@popperjs/core';
 import 'bootstrap/dist/js/bootstrap.bundle';
 
 import jQuery from 'jquery';
@@ -17,8 +18,12 @@ const images = imagesContext.keys().reduce((images, key) => {
 
 window.images = images;
 
+const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+
 $(document).ready(function() {
 
+    $('[data-toggle="tooltip"]').tooltip();
     $('.clickable-row').click(function() {
         window.location = $(this).data('href');
     });
@@ -144,5 +149,7 @@ $(document).ready(function() {
             },
         });
     });
+
+
 
 });
