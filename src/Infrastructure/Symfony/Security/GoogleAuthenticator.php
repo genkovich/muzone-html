@@ -61,7 +61,7 @@ final class GoogleAuthenticator extends OAuth2Authenticator implements Authentic
                     $googleUser->getAvatar(),
                     $googleUser->getName(),
                     $googleUser->getLastName(),
-                    [UserRole::Admin->value],
+                    [UserRole::User->value],
                     $now,
                     $now,
                 );
@@ -75,7 +75,13 @@ final class GoogleAuthenticator extends OAuth2Authenticator implements Authentic
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
-        return new RedirectResponse($this->urlGenerator->generate('admin.dashboard'));
+        $route = $this->urlGenerator->generate('user.dashboard');
+
+        if (in_array(UserRole::Admin->value, $token->getUser()?->getRoles(), true)) {
+            $route = $this->urlGenerator->generate('admin.dashboard');
+        }
+
+        return new RedirectResponse($route);
     }
 
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception): ?Response

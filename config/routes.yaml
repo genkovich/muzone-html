@@ -16,6 +16,11 @@ logout:
     path: /logout
     methods: [ GET ]
 
+user.dashboard:
+    path: /cabinet
+    controller: Infrastructure\Symfony\Controller\Cabinet\MainController::dashboard
+    methods: [ GET ]
+
 admin.dashboard:
     path: /admin
     controller: Infrastructure\Symfony\Controller\AdminController::dashboard
