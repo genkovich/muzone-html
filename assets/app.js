@@ -39,8 +39,9 @@ $(document).ready(() => {
     animationInit(gsap, ScrollToPlugin, ScrollTrigger, Quad, jQuery);
     commonInit(jQuery, svg4everybody, Fancybox, Swiper, Navigation, gsap, Circ, Quad);
     formInit(jQuery);
-
 });
+
+
 
 
 

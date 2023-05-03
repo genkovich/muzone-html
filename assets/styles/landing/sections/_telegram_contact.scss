@@ -1,0 +1,43 @@
+.telegram-contact-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: $blue;
+  color: #fff;
+  font-size: 32px;
+  text-decoration: none;
+  opacity: 0.7;
+  z-index: 1000;
+}
+
+.telegram-contact-button:hover {
+  opacity: 1;
+  background-color: $blue;
+}
+
+.telegram-contact-button i {
+  transition: all 0.3s;
+}
+
+.telegram-contact-button:hover i {
+  transform: scale(1.1);
+}
+
+.shake {
+  animation: shake-animation 6s ease infinite;
+  transform-origin: 50% 50%;
+}
+
+@keyframes shake-animation {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(8px, 8px) rotate(24deg); }
+  50% { transform: translate(0, 0) rotate(0deg); }
+  75% { transform: translate(-8px, 8px) rotate(-24deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
