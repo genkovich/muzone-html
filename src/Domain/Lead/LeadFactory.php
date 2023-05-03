@@ -28,6 +28,17 @@ final readonly class LeadFactory
         $groupType = null === $data['group_type'] ? null : GroupType::tryFrom($data['group_type']);
         $age = null === $data['age'] ? null : Age::tryFrom($data['age']);
 
+        $sentAtTelegram = null;
+        if (array_key_exists('sent_at_telegram', $data)) {
+            $sentAtTelegram = null === $data['sent_at_telegram'] ? null : new DateTimeImmutable($data['sent_at_telegram']);
+        }
+
+        $sentAtSendpulse = null;
+        if (array_key_exists('sent_at_sendpulse', $data)) {
+            $sentAtSendpulse = null === $data['sent_at_sendpulse'] ? null : new DateTimeImmutable($data['sent_at_sendpulse']);
+        }
+
+
         return new Lead(
             new LeadId($data['lead_id']),
             $this->contactFactory->create($data['contact_type'], $data['contact_value']),
@@ -37,8 +48,8 @@ final readonly class LeadFactory
             $age,
             new DateTimeImmutable($data['created_at']),
             new DateTimeImmutable($data['updated_at']),
-            $data['telegram_sent_at'] ?? new DateTimeImmutable($data['telegram_sent_at']),
-            $data['sendpulse_sent_at'] ?? new DateTimeImmutable($data['sendpulse_sent_at']),
+            $sentAtTelegram,
+            $sentAtSendpulse,
         );
     }
 }

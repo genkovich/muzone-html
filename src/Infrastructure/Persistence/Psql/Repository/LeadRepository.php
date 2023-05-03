@@ -66,7 +66,7 @@ final readonly class LeadRepository implements LeadRepositoryInterface
     {
         $qb = $this->connection->createQueryBuilder();
 
-        $qb->select('lead_id, contact_type, contact_value, lessons_count, direction, group_type, age, created_at, updated_at')
+        $qb->select('lead_id, contact_type, contact_value, lessons_count, direction, group_type, age, created_at, updated_at', 'sent_at_telegram', 'sent_at_sendpulse')
             ->from('leads')
             ->orderBy('created_at', 'DESC')
             ->setMaxResults($limit)

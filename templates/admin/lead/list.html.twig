@@ -48,6 +48,9 @@
                         <th>🔞 <span class="mobile-hide">Age</span></th>
                         <th>👥 <span class="mobile-hide">Group Type</span></th>
                         <th>📅 <span class="mobile-hide">Created</span></th>
+                        <th><i class="bi bi-telegram"></i> <span class="mobile-hide">Telegram</span></th>
+                        <th><i class="bi bi-kanban-fill"></i> <span class="mobile-hide">Sendpulse</span></th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -60,6 +63,21 @@
                             <td>{{ lead.age.icon ?? '?' }}</td>
                             <td>{{ lead.groupType.icon ?? '?' }}</td>
                             <td>{{ lead.createdAt|date('H:i d.M') }}</td>
+                            <td>
+                                {% if lead.telegramSentAt %}
+                                    <i class="bi bi-check-circle-fill text-success"></i>
+                                {% else %}
+                                    <i class="bi bi-x-circle-fill text-warning"></i>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if lead.sendpulseSentAt %}
+                                    <i class="bi bi-check-circle-fill text-success"></i>
+                                {% else %}
+                                    <i class="bi bi-x-circle-fill text-warning"></i>
+                                {% endif %}
+                            </td>
+
                         </tr>
                     {% endfor %}
                 </tbody>
