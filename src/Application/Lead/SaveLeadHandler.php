@@ -38,6 +38,8 @@ final readonly class SaveLeadHandler
             age: Age::tryFrom($command->age),
             createdAt: $now,
             updatedAt: $now,
+            telegramSentAt: Lead::DEFAULT_TELEGRAM_SENT_AT,
+            sendpulseSentAt: Lead::DEFAULT_SENDPULSE_SENT_AT,
         );
 
         $this->leadRepository->insert($lead);

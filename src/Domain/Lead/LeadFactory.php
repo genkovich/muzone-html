@@ -37,6 +37,8 @@ final readonly class LeadFactory
             $age,
             new DateTimeImmutable($data['created_at']),
             new DateTimeImmutable($data['updated_at']),
+            $data['telegram_sent_at'] ?? new DateTimeImmutable($data['telegram_sent_at']),
+            $data['sendpulse_sent_at'] ?? new DateTimeImmutable($data['sendpulse_sent_at']),
         );
     }
 }

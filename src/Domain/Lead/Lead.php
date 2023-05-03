@@ -11,6 +11,8 @@ use Domain\Lead\Contact\Contact;
 
 final readonly class Lead implements \JsonSerializable
 {
+    public const DEFAULT_TELEGRAM_SENT_AT = null;
+    public const DEFAULT_SENDPULSE_SENT_AT = null;
     public function __construct(
         public LeadId $id,
         public Contact $contact,
@@ -20,6 +22,8 @@ final readonly class Lead implements \JsonSerializable
         public ?Age $age,
         public \DateTimeImmutable $createdAt,
         public \DateTimeImmutable $updatedAt,
+        public ?\DateTimeImmutable $telegramSentAt,
+        public ?\DateTimeImmutable $sendpulseSentAt,
     ) {
     }
 
@@ -34,6 +38,8 @@ final readonly class Lead implements \JsonSerializable
             'age' => $this->age ?? Age::Unknown,
             'createdAt' => $this->createdAt->format(\DateTimeInterface::RFC3339_EXTENDED),
             'updatedAt' => $this->updatedAt->format(\DateTimeInterface::RFC3339_EXTENDED),
+            'telegramSentAt' => $this->telegramSentAt?->format(\DateTimeInterface::RFC3339_EXTENDED),
+            'sendpulseSentAt' => $this->sendpulseSentAt?->format(\DateTimeInterface::RFC3339_EXTENDED),
         ];
     }
 }

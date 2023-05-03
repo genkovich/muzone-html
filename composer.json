@@ -69,7 +69,8 @@
         "psr-4": {
             "Infrastructure\\": "src/Infrastructure/",
             "Domain\\": "src/Domain/",
-            "Application\\": "src/Application/"
+            "Application\\": "src/Application/",
+            "DoctrineMigrations\\": "src/Infrastructure/Persistence/Migrations/"
         }
     },
     "autoload-dev": {

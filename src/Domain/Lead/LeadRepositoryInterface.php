@@ -9,5 +9,6 @@ interface LeadRepositoryInterface
     public function generateNext(): LeadId;
     public function insert(Lead $lead): void;
     public function getList(int $limit, int $offset): array;
-    public function countLeads(array $filters): int;
+    public function markTelegramSent(LeadId $leadId): void;
+    public function markSendpulseSent(LeadId $leadId): void;
 }

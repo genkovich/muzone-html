@@ -93,31 +93,33 @@ final readonly class LeadRepository implements LeadRepositoryInterface
         return array_map(fn(array $lead) => $this->leadFactory->create($lead), $leads);
     }
 
-    /**
-     * @throws Exception
-     */
-    public function countLeads(array $filters): int
+    public function markTelegramSent(LeadId $leadId): void
     {
-        $qb = $this->connection->createQueryBuilder()
-            ->select('COUNT(lead_id) AS total_leads')
-            ->from('leads');
+        $this->connection->executeStatement(
+            'UPDATE leads SET sent_at_telegram = :sent_at WHERE lead_id = :lead_id',
+            [
+                'sent_at' => new \DateTimeImmutable(),
+                'lead_id' => (string) $leadId,
+            ],
+            [
+                'sent_at' => Types::DATETIMETZ_IMMUTABLE,
+                'lead_id' => Types::GUID,
+            ],
+        );
+    }
 
-        if (!empty($filters['date_from'])) {
-            $qb->andWhere('created_at >= :date_from')
-                ->setParameter('date_from', $filters['date_from'], Types::DATETIME_MUTABLE);
-        }
-
-        if (!empty($filters['date_to'])) {
-            $qb->andWhere('created_at <= :date_to')
-                ->setParameter('date_to', $filters['date_to'], Types::DATETIME_MUTABLE);
-        }
-
-        if (!empty($filters['search'])) {
-            $search = $filters['search'];
-            $qb->andWhere('contact_value LIKE :search')
-                ->setParameter('search', '%' . $search . '%');
-        }
-
-        return (int) $qb->executeQuery()->fetchOne();
+    public function markSendpulseSent(LeadId $leadId): void
+    {
+        $this->connection->executeStatement(
+            'UPDATE leads SET sent_at_sendpulse = :sent_at WHERE lead_id = :lead_id',
+            [
+                'sent_at' => new \DateTimeImmutable(),
+                'lead_id' => (string) $leadId,
+            ],
+            [
+                'sent_at' => Types::DATETIMETZ_IMMUTABLE,
+                'lead_id' => Types::GUID,
+            ],
+        );
     }
 }
