@@ -80,6 +80,7 @@ services:
       - '@lead.to_contact.convertor'
       - '@sendpulse.client'
       - '@sendpulse.pipeline.repository'
+      - '@lead_repository'
 
   lead.telegram.notifier:
     class: Infrastructure\Telegram\TelegramNotifier

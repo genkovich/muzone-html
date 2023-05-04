@@ -6,6 +6,7 @@ namespace Infrastructure\Symfony\Messenger\Handler;
 
 use Domain\GroupType;
 use Domain\Lead\Lead;
+use Domain\Lead\LeadRepositoryInterface;
 use GuzzleHttp\Exception\GuzzleException;
 use Infrastructure\InMemory\InMemoryPipelineRepository;
 use Infrastructure\Sendpulse\Convertors\LeadToContactConvertor;
@@ -21,6 +22,7 @@ final readonly class SendpulseCreateLeadHandler
         private LeadToContactConvertor $converter,
         private SendpulseClient $sendpulseClient,
         private InMemoryPipelineRepository $pipelineRepository,
+        private LeadRepositoryInterface $leadRepository,
     )
     {
     }
@@ -48,5 +50,6 @@ final readonly class SendpulseCreateLeadHandler
 
         $this->sendpulseClient->createDeal($lead, $response['data']['id'], $pipeline);
 
+        $this->leadRepository->markSendpulseSent($lead->id);
     }
 }
