@@ -16,12 +16,12 @@ final readonly class LeadToContactConvertor
     {
         $contactValue = match ($lead->contact->type) {
             ContactType::Instagram => $this->extractInstagramUsername((string) $lead->contact->value),
-            ContactType::Phone => $lead->contact->value,
+            ContactType::Phone => (string) $lead->contact->value,
             ContactType::Telegram => \str_replace('@', '', (string) $lead->contact->value),
-            ContactType::Other => $lead->contact->value,
+            ContactType::Other => (string) $lead->contact->value,
         };
 
-        $phone = $lead->contact->type === ContactType::Phone ? $lead->contact->value : '';
+        $phone = $lead->contact->type === ContactType::Phone ? (string) $lead->contact->value : '';
 
         $messengers = [];
 
