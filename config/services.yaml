@@ -1,4 +1,5 @@
 imports:
+  - { resource: './sendpulse/**.yaml' }
   - { resource: 'controllers.yaml' }
 
 parameters:
@@ -7,13 +8,14 @@ parameters:
   telegram_bot_token: '%env(TELEGRAM_BOT_TOKEN)%'
 
 services:
+  Monolog\Processor\PsrLogMessageProcessor:
+    tags: { name: monolog.processor, handler: sentry }
 
   Infrastructure\Symfony\ArgumentResolver\SaveLeadCommandArgumentResolver:
     tags: [ 'controller.argument_value_resolver' ]
 
   Infrastructure\Symfony\ArgumentResolver\ChangeUserFieldArgumentResolver:
     tags: [ 'controller.argument_value_resolver' ]
-
 
   admin.user.change_user_field.handler:
     class: Application\Admin\User\ChangeUserFieldHandler
@@ -67,6 +69,17 @@ services:
     arguments:
         - '@lead.telegram.notifier'
         - '@lead_repository'
+
+  lead.to_contact.convertor:
+    class: Infrastructure\Sendpulse\Convertors\LeadToContactConvertor
+
+  lead.message_bus.sendpulse.create_lead_handler:
+    class: Infrastructure\Symfony\Messenger\Handler\SendpulseCreateLeadHandler
+    tags: [ messenger.message_handler ]
+    arguments:
+      - '@lead.to_contact.convertor'
+      - '@sendpulse.client'
+      - '@sendpulse.pipeline.repository'
 
   lead.telegram.notifier:
     class: Infrastructure\Telegram\TelegramNotifier

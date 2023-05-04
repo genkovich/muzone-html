@@ -1,0 +1,112 @@
+# config/pipelines.yaml
+
+parameters:
+  pipelines:
+    individual:
+      id: 51858
+      statuses:
+        contacted: 172297 # Связался с нами
+        info_received: 172300 # Получил инфу
+        second_contact: 172301 # 2й контакт
+        trial_registered: 172303 # Записался на пробник
+        confirmed_attendance: 172304 # Подтвердил что будет
+        attended: 172305 # Пришел
+        subscription_purchased: 172308 # Купил абонемент
+        refused_after_attending: 172306 # Отказался после посещения
+        refused: 179693 # Отказался
+        trial_reschedule: 172307 # Перенос пробника
+        ignore: 172302 # Игнор
+      directions:
+        id: 272835
+        options:
+          drums: Барабани
+          guitar: Гітара
+          vocal: Вокал
+          piano: Фортепіано
+          saxophone: Саксофон
+          ukulele: Укулеле
+          other: Інше
+      teachers:
+        id: 272837
+        options:
+          slava: "Славик (Барабаны)"
+          evgen: "Женя (Барабаны)"
+          nastya: "Настя (Ритмы)"
+          alexandra: "Александра (Вокал/Клавиши)"
+          anton: "Антон (Гитара)"
+          sveta: "Света (Вокал)"
+          tanya: "Тетяна (Вокал)"
+          oleg: "Олег (Вокал)"
+      sources:
+        id: 272838
+        options:
+          instagram: Instagram
+          olx: OLX
+          site: Сайт
+          telegram: Telegram
+          phone: Дзвінок
+          other: Інше
+          bodo: Бодо
+      age:
+        id: 324441
+        options:
+          adult: Дорослі
+          kids: Діти
+    group:
+      id: 50685
+      statuses:
+        contacted: 168218 # Написал в инст
+        info_received: 168337 # Получил инфу
+        second_contact: 168338 # 2й контакт
+        trial_registered: 168339 # Записался на пробник
+        confirmed_attendance: 168340 # Подтвердил что будет
+        attended: 168341 # Пришел
+        subscription_purchased: 168342 # Купил абонемент
+        refused_after_trial: 168343 # Отказался после пробника
+        refused: 168347 # Отказался
+        reschedule: 168344 # Перенос
+        waiting_for_group_after_trial: 168345 # Ожидает группу после пробника
+        waiting_for_group: 168346 # Ожидание группы
+        ignore: 168225 # Игнор
+      directions:
+        id: 256076
+        options:
+          drums: Барабани
+          guitar: Гітара
+          vocal: Вокал
+          piano: Фортепіано
+          saxophone: Саксофон
+          ukulele: Укулеле
+          other: Інше
+      age:
+        id: 256082
+        options:
+          adult: Дорослі
+          kids: Діти
+      teachers:
+        id: 256084
+        options:
+          slava: "Славик"
+          eugen: "Женя"
+          alexandra: "Александра"
+          anton: "Антон"
+          sveta: "Світлана"
+          nastya: "Настя"
+          oleg: "Олег"
+      sources:
+        id: 285388
+        options:
+          instagram: Instagram
+          olx: OLX
+          site: Сайт
+          telegram: Telegram
+          phone: Дзвінок
+          other: Інше
+          bodo: Бодо
+
+services:
+
+  sendpulse.pipeline.repository:
+    class: Infrastructure\InMemory\InMemoryPipelineRepository
+    arguments:
+      - '%pipelines%'

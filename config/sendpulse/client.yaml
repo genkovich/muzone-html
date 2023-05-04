@@ -1,0 +1,35 @@
+parameters:
+  env(SENDPULSE_CLIENT_ID): ''
+  env(SENDPULSE_CLIENT_SECRET): ''
+  env(BASE_URL): 'https://api.sendpulse.com'
+
+  sendpulse_client_id: '%env(SENDPULSE_CLIENT_ID)%'
+  sendpulse_client_secret: '%env(SENDPULSE_CLIENT_SECRET)%'
+  base_url: '%env(BASE_URL)%'
+  guzzle_config:
+    base_uri: '%base_url%'
+    headers:
+      Content-Type: 'application/json'
+      Accept: 'application/json'
+    timeout: 10
+    connect_timeout: 10
+
+services:
+  sendpulse.guzzle.client:
+    class: GuzzleHttp\Client
+    arguments:
+      - '%guzzle_config%'
+
+  sendpulse.application.cache:
+    class: Symfony\Component\Cache\Psr16Cache
+    arguments:
+      - '@cache.app'
+
+  sendpulse.client:
+    class: Infrastructure\Sendpulse\SendpulseClient
+    arguments:
+      - '@sendpulse.guzzle.client'
+      - '%sendpulse_client_secret%'
+      - '%sendpulse_client_id%'
+      - '@sendpulse.application.cache'
+
