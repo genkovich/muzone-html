@@ -55,9 +55,8 @@ when@prod:
                 type: stream
                 channels: [deprecation]
                 path: php://stderr
-            handlers:
-                sentry:
-                    type: sentry
-                    level: !php/const Monolog\Logger::ERROR
-                    hub_id: Sentry\State\HubInterface
+            sentry:
+                type: sentry
+                level: !php/const Monolog\Logger::ERROR
+                hub_id: Sentry\State\HubInterface
 
