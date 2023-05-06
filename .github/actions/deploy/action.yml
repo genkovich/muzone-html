@@ -40,11 +40,6 @@ runs:
         echo "SSH Password: ${{ inputs.ssh_password }}"
       shell: bash
 
-
-    - name: Install rsync and sshpass
-      run: apt install rsync sshpass -y
-      shell: bash
-
     - name: Deploy to server with rsync
       run: |
         sshpass -p '${{ inputs.ssh_password }}' rsync -avz -e 'ssh -o StrictHostKeyChecking=no' --exclude '.git' --exclude 'var' . root@185.215.180.50:${{ inputs.folder }}${{ inputs.timestamp }}
@@ -53,6 +48,7 @@ runs:
     - name: SSH to server and run commands
       run: |
         sshpass -p ${{ inputs.ssh_password }} ssh root@185.215.180.50 <<'ENDSSH'
+          sops --decrypt ${{ inputs.folder }}${{ inputs.timestamp }}.env.local.sops > ${{ inputs.folder }}${{ inputs.timestamp }}.env.local
           ln -sfn ${{ inputs.folder }}${{ inputs.timestamp }} ${{ inputs.project_folder }}current
         ENDSSH
       shell: bash
