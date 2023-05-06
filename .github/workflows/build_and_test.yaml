@@ -19,8 +19,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - uses: ./.github/actions/deploy
-
       - name: Copy .env.test.local
         run: php -r "file_exists('.env.test.local') || copy('.env.test', '.env.test.local');"
 
@@ -42,7 +40,10 @@ jobs:
             ${{ runner.os }}-php-
 
       - name: Install Dependencies
-        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+        run: |
+          composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+          echo "Current Directory:"
+          pwd
 
       - name: Create Database
         run: |
@@ -54,15 +55,27 @@ jobs:
           DATABASE_URL: sqlite:///%kernel.project_dir%/data/database.sqlite
         run: ./vendor/bin/phpunit
 
-      - name: Cache Yarn dependencies
-        uses: actions/cache@v2
-        with:
-          path: ~/.cache/yarn
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-
       - name: Build Front
-        run: yarn install && yarn run build
+        run: | 
+          yarn install && yarn run build
+          echo "Current Directory:"
+          pwd
 
+      - name: Set timestamp
+        id: set_timestamp
+        run: |
+          echo "::set-output name=timestamp::$(date +'%Y%m%d%H%M%S')"
 
+      - name: Import GPG key
+        run: |
+          echo "${{ secrets.GPG_PUBLIC_KEY }}" | gpg --import
+
+      - name: Decrypt .env.local
+        run: |
+          sops --decrypt .env.local.sops > .env.local
+
+      - uses: ./.github/actions/deploy
+        id: deploy
+        with:
+          ssh_password: ${{ secrets.SSH_PASSWORD }}
+          timestamp: ${{ steps.set_timestamp.outputs.timestamp }}
