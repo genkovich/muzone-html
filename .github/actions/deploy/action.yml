@@ -52,3 +52,9 @@ runs:
           ln -sfn ${{ inputs.folder }}${{ inputs.timestamp }} ${{ inputs.project_folder }}current
         ENDSSH
       shell: bash
+
+    - name: Clean old builds
+      run: |
+        cd ${{ inputs.folder }}
+        ls -t | tail -n +6 | xargs -I {} rm -rf {}
+      shell: bash
