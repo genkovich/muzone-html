@@ -48,7 +48,7 @@ runs:
     - name: SSH to server and run commands
       run: |
         sshpass -p ${{ inputs.ssh_password }} ssh root@185.215.180.50 <<'ENDSSH'
-          sops --decrypt ${{ inputs.folder }}${{ inputs.timestamp }}.env.local.sops > ${{ inputs.folder }}${{ inputs.timestamp }}.env.local
+          sops --decrypt ${{ inputs.folder }}${{ inputs.timestamp }}/.env.local.sops > ${{ inputs.folder }}${{ inputs.timestamp }}/.env.local
           ln -sfn ${{ inputs.folder }}${{ inputs.timestamp }} ${{ inputs.project_folder }}current
         ENDSSH
       shell: bash
