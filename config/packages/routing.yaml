@@ -1,4 +1,6 @@
 framework:
+    error_controller: Infrastructure\Symfony\Controller\ErrorController::show
+
     router:
         utf8: true
 

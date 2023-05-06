@@ -19,6 +19,7 @@
 /phpunit.xml
 ###< symfony/phpunit-bridge ###
 
+.env.docker
 /.idea/
 ###> symfony/webpack-encore-bundle ###
 /node_modules/

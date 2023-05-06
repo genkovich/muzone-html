@@ -2,6 +2,12 @@ main_page:
     path: /
     controller: Infrastructure\Symfony\Controller\MainPageController
 
+app_error:
+    path: /_error/{statusCode}
+    controller: Infrastructure\Symfony\Controller\ErrorController::show
+    requirements:
+        statusCode: \d+
+
 contact.save:
     path: /contact
     controller: Infrastructure\Symfony\Controller\LeadController::save

@@ -1,0 +1,28 @@
+name: Deploy
+
+runs:
+  using: "composite"
+  env:
+    TIMESTAMP: ${{ format('{0:yyyyMMddHHmmss}', now()) }}
+    FOLDER: /root/www/muzone/html/
+    PHP_CONTAINER: muzone_php
+    CONTAINER_FOLDER: /srv/src/muzone/html/
+
+  steps:
+    - name: Install rsync and sshpass
+      run: sudo apt-get install rsync sshpass
+
+    - name: Deploy to server with rsync
+      run: |
+        sshpass -p ${{ env.SSH_PASSWORD }} rsync -avz --exclude '.git' --exclude 'var' . root@185.215.180.50:${FOLDER}${TIMESTAMP}
+
+    - name: SSH to server and run commands
+      run: |
+        sshpass -p ${{ secrets.SSH_PASSWORD }} ssh root@185.215.180.50 <<'ENDSSH'
+          cd ${FOLDER}
+          ln -sfn ${TIMESTAMP} current
+          docker exec ${PHP_CONTAINER} ${CONTAINER_FOLDER}bin/console doctrine:migrations:migrate --no-interaction
+          docker exec ${PHP_CONTAINER} ${CONTAINER_FOLDER}bin/console cache:clear --env=prod
+          docker exec ${PHP_CONTAINER} ${CONTAINER_FOLDER}bin/console cache:warmup --env=prod
+          docker exec ${PHP_CONTAINER} supervisorctl restart all
+        ENDSSH
