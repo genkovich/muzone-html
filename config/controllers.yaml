@@ -59,9 +59,3 @@ services:
       - [ setContainer, [ '' ] ]
     arguments:
       - '@logger'
-
-  Infrastructure\Symfony\Controller\ErrorController:
-    public: true
-    arguments:
-      - '@twig'
-      - '%kernel.debug%'

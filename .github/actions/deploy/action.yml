@@ -17,9 +17,9 @@ inputs:
     required: false
     default: '/root/www/muzone/'
   container_folder:
-    description: 'Folder for deployment'
+    description: 'Folder in container'
     required: false
-    default: '/srv/src/muzone/html/'
+    default: '/srv/src/muzone/current/'
   timestamp:
     description: 'Timestamp for deployment'
     required: true
@@ -49,12 +49,13 @@ runs:
       run: |
         sshpass -p ${{ inputs.ssh_password }} ssh root@185.215.180.50 <<'ENDSSH'
           sops --decrypt ${{ inputs.folder }}${{ inputs.timestamp }}/.env.local.sops > ${{ inputs.folder }}${{ inputs.timestamp }}/.env.local
-          ln -sfn ${{ inputs.folder }}${{ inputs.timestamp }} ${{ inputs.project_folder }}current
+          cd ${{ inputs.project_folder }}
+          ln -sfn deployment/{{ inputs.timestamp }}/ current
+          cd ${{ inputs.folder }}
+          ls -t | tail -n +6 | xargs -I {} rm -rf {}
+          docker exec ${{ inputs.php_container }} ${{ inputs.container_folder }}bin/console doctrine:migrations:migrate --no-interaction
+          docker exec ${{ inputs.php_container }} ${{ inputs.container_folder }}bin/console cache:clear --env=prod
+          docker exec ${{ inputs.php_container }} ${{ inputs.container_folder }}bin/console cache:warmup --env=prod
+          docker exec ${{ inputs.php_container }} supervisorctl restart all
         ENDSSH
-      shell: bash
-
-    - name: Clean old builds
-      run: |
-        cd ${{ inputs.folder }}
-        ls -t | tail -n +6 | xargs -I {} rm -rf {}
       shell: bash
