@@ -1,0 +1,58 @@
+name: "Deploy"
+description: 'Deploys the application to the server'
+inputs:
+  ssh_password:
+    description: 'SSH password for the remote server'
+    required: true
+  php_container:
+    description: 'PHP container name'
+    required: false
+    default: 'muzone_php'
+  folder:
+    description: 'Folder for deployment'
+    required: false
+    default: '/root/www/muzone/html/'
+  container_folder:
+    description: 'Folder for deployment'
+    required: false
+    default: '/srv/src/muzone/html/'
+  timestamp:
+    description: 'Timestamp for deployment'
+    required: false
+    default: ${{ format('{0:yyyyMMddHHmmss}', now()) }}
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Debug information
+      run: |
+        echo "Environment Variables:"
+        env
+        echo "---------------------------------------"
+        echo "Current Directory:"
+        pwd
+        echo "---------------------------------------"
+        echo "Directory Content:"
+        ls -la
+      shell: bash
+
+    - name: Install rsync and sshpass
+      run: sudo apt-get install rsync sshpass
+      shell: bash
+
+    - name: Deploy to server with rsync
+      run: |
+        sshpass -p ${{ inputs.ssh_password }} rsync -avz --exclude '.git' --exclude 'var' . root@185.215.180.50:${{ inputs.folder }}${{ inputs.timestamp }}
+      shell: bash
+
+    - name: SSH to server and run commands
+      run: |
+        sshpass -p ${{ inputs.ssh_password }} ssh root@185.215.180.50 <<'ENDSSH'
+          cd ${FOLDER}
+          ln -sfn ${TIMESTAMP} current
+          docker exec ${{ inputs.php_container }} ${{ inputs.container_folder }}bin/console doctrine:migrations:migrate --no-interaction
+          docker exec ${{ inputs.php_container }} ${{ inputs.container_folder }}bin/console cache:clear --env=prod
+          docker exec ${{ inputs.php_container }} ${{ inputs.container_folder }}bin/console cache:warmup --env=prod
+          docker exec ${{ inputs.php_container }} supervisorctl restart all
+        ENDSSH
+      shell: bash

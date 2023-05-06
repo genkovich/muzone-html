@@ -15,10 +15,11 @@ jobs:
       options: --workdir /srv/src/muzone/html
 
     steps:
-      - uses: ./.github/workflows/deploy_main
 
       - name: Checkout code
         uses: actions/checkout@v2
+
+      - uses: ./.github/actions/deploy
 
       - name: Copy .env.test.local
         run: php -r "file_exists('.env.test.local') || copy('.env.test', '.env.test.local');"
