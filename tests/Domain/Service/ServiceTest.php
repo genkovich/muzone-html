@@ -15,9 +15,13 @@ use Faker\Generator;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Uid\Uuid;
 
-class ServiceTest extends TestCase
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
+final class ServiceTest extends TestCase
 {
-
     private Generator $faker;
 
     protected function setUp(): void
@@ -26,11 +30,8 @@ class ServiceTest extends TestCase
         $this->faker = Factory::create();
     }
 
-
-
     public function testServiceCreation(): void
     {
-
         $serviceId = new ServiceId(Uuid::v4()->toRfc4122());
         $title = new Title($this->faker->sentence(3));
         $price = new Price(
@@ -62,14 +63,13 @@ class ServiceTest extends TestCase
             $updatedAt
         );
 
-        $this->assertSame($serviceId, $service->serviceId);
-        $this->assertSame($title, $service->title);
-        $this->assertSame($price, $service->price);
-        $this->assertSame($direction, $service->direction);
-        $this->assertSame($lessonsCount, $service->lessonsCount);
-        $this->assertSame($age, $service->age);
-        $this->assertSame($createdAt, $service->createdAt);
-        $this->assertSame($updatedAt, $service->updatedAt);
-
+        static::assertSame($serviceId, $service->serviceId);
+        static::assertSame($title, $service->title);
+        static::assertSame($price, $service->price);
+        static::assertSame($direction, $service->direction);
+        static::assertSame($lessonsCount, $service->lessonsCount);
+        static::assertSame($age, $service->age);
+        static::assertSame($createdAt, $service->createdAt);
+        static::assertSame($updatedAt, $service->updatedAt);
     }
 }

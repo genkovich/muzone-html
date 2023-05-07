@@ -1,6 +1,6 @@
 <?php
-declare(strict_types=1);
 
+declare(strict_types=1);
 
 namespace Infrastructure\Symfony\Security;
 
@@ -23,18 +23,16 @@ use Symfony\Component\Security\Http\EntryPoint\AuthenticationEntryPointInterface
 
 final class GoogleAuthenticator extends OAuth2Authenticator implements AuthenticationEntrypointInterface
 {
-
     public function __construct(
         private readonly ClientRegistry $clientRegistry,
         private readonly UrlGeneratorInterface $urlGenerator,
         private readonly UserRepositoryInterface $userRepository,
-    )
-    {
+    ) {
     }
 
     public function supports(Request $request): bool
     {
-        return $request->attributes->get('_route') === 'google.connect_check';
+        return 'google.connect_check' === $request->attributes->get('_route');
     }
 
     public function authenticate(Request $request): Passport
@@ -43,7 +41,7 @@ final class GoogleAuthenticator extends OAuth2Authenticator implements Authentic
         $accessToken = $this->fetchAccessToken($client);
 
         return new SelfValidatingPassport(
-            new UserBadge($accessToken->getToken(), function() use ($accessToken, $client) {
+            new UserBadge($accessToken->getToken(), function () use ($accessToken, $client) {
                 /** @var GoogleUser $googleUser */
                 $googleUser = $client->fetchUserFromToken($accessToken);
 
@@ -77,7 +75,7 @@ final class GoogleAuthenticator extends OAuth2Authenticator implements Authentic
     {
         $route = $this->urlGenerator->generate('user.dashboard');
 
-        if (in_array(UserRole::Admin->value, $token->getUser()?->getRoles(), true)) {
+        if (\in_array(UserRole::Admin->value, $token->getUser()?->getRoles(), true)) {
             $route = $this->urlGenerator->generate('admin.dashboard');
         }
 
@@ -96,6 +94,4 @@ final class GoogleAuthenticator extends OAuth2Authenticator implements Authentic
             Response::HTTP_TEMPORARY_REDIRECT
         );
     }
-
-
 }

@@ -1,6 +1,6 @@
 <?php
-declare(strict_types=1);
 
+declare(strict_types=1);
 
 namespace Infrastructure\Symfony\Commands;
 
@@ -14,13 +14,12 @@ use Symfony\Component\Console\Output\OutputInterface;
 #[AsCommand(name: 'crm:sync-individual-leads', description: 'Syncs group leads from Google Sheets to CRM')]
 final class SyncSheetsToCRMIndividualLeads extends Command
 {
-
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $output->writeln('Syncing leads from Google Sheets to CRM...');
 
-        ini_set('max_execution_time', 0); //0=NOLIMIT
-        putenv('GOOGLE_APPLICATION_CREDENTIALS=' . __DIR__ . '/../../weberg-39d08063d530.json');
+        ini_set('max_execution_time', 0); // 0=NOLIMIT
+        putenv('GOOGLE_APPLICATION_CREDENTIALS='.__DIR__.'/../../weberg-39d08063d530.json');
         $client = new Client();
         $client->useApplicationDefaultCredentials();
 
@@ -31,7 +30,6 @@ final class SyncSheetsToCRMIndividualLeads extends Command
         $spreadsheetId = '16PGmc0j6EfrWMJsW2yO_TWQCNlwXkddTZqVf10IEXTw';
 
         $response = $service->spreadsheets_values->get($spreadsheetId, 'Лиды!A420:L1000');
-
 
         $statuses = [
             'Связался с нами' => 172297,
@@ -74,13 +72,13 @@ final class SyncSheetsToCRMIndividualLeads extends Command
             'base_uri' => 'https://api.sendpulse.com/',
             'headers' => [
                 'Content-Type' => 'application/json',
-                'Authorization' => 'Bearer ' . $accessToken,
-            ]
+                'Authorization' => 'Bearer '.$accessToken,
+            ],
         ]);
 
         $pipelineId = 51858;
 
-        $output->writeln('Total leads: ' . \count($sheetsValues));
+        $output->writeln('Total leads: '.\count($sheetsValues));
 
         foreach ($sheetsValues as $value) {
             $contact = [
@@ -91,29 +89,28 @@ final class SyncSheetsToCRMIndividualLeads extends Command
 
                 'messengers' => [
                     [
-                        'typeId' => 4, //instgram
-                        'login' => \str_replace('@', '', $value[1]),
-                    ]
+                        'typeId' => 4, // instgram
+                        'login' => str_replace('@', '', $value[1]),
+                    ],
                 ],
             ];
-
 
             $response = $curlClient->post(
                 'crm/v1/contacts',
                 [
-                    'json' => $contact
+                    'json' => $contact,
                 ]
             );
             $responseContact = json_decode($response->getBody()->getContents(), true);
 
             $contactId = $responseContact['data']['id'];
 
-            $date = empty($value[9]) || $value[9] == '-' ? new \DateTimeImmutable('1970-01-01') : (new \DateTimeImmutable($value[9] . ' ' . $value[10] ));
+            $date = empty($value[9]) || '-' === $value[9] ? new \DateTimeImmutable('1970-01-01') : (new \DateTimeImmutable($value[9].' '.$value[10]));
             $deal = [
                 'pipelineId' => $pipelineId,
                 'stepId' => $statuses[$value['8']],
                 'responsibleId' => 8194976,
-                'name' => $value['3'] . ' ' . $value['1'],
+                'name' => $value['3'].' '.$value['1'],
                 'price' => 0,
                 'currency' => 'UAH',
                 'sourceId' => null,
@@ -124,49 +121,43 @@ final class SyncSheetsToCRMIndividualLeads extends Command
                     [
                         'attributeId' => 272838,
                         'value' => $source[$value['4']],
-                    ]
-                ]
-
-
+                    ],
+                ],
             ];
-            $output->writeln('$source: ' . $source[$value['4']]);
+            $output->writeln('$source: '.$source[$value['4']]);
 
-            if ($value[6] !== '') {
+            if ('' !== $value[6]) {
                 $deal['attributes'][] = [
                     'attributeId' => 272835,
                     'value' => $direction[$value['6']],
                 ];
-                $output->writeln('Direction: ' . $direction[$value['6']]);
+                $output->writeln('Direction: '.$direction[$value['6']]);
 
-                if ($value[6] === 'Свидание (барабаны)') {
+                if ('Свидание (барабаны)' === $value[6]) {
                     $deal['attributes'][] = [
                         'attributeId' => 272836,
                         'value' => 'Свидание | 2000',
                     ];
-                    $output->writeln('Attribute: ' . 'Svidanie (barabany)');
+                    $output->writeln('Attribute: Svidanie (barabany)');
                 }
-
             }
 
-            if ($value[7] !== '') {
+            if ('' !== $value[7]) {
                 $deal['attributes'][] = [
                     'attributeId' => 272837,
                     'value' => $value[7],
                 ];
-                $output->writeln('teatcher: ' . $value['7']);
-
+                $output->writeln('teatcher: '.$value['7']);
             }
 
-
-            $output->writeln('Deal: ' . $value['3'] . ' ' . $value['1']);
+            $output->writeln('Deal: '.$value['3'].' '.$value['1']);
 
             $response = $curlClient->post(
                 'crm/v1/deals',
                 [
-                    'json' => $deal
+                    'json' => $deal,
                 ]
             );
-
 
             $responseDeal = json_decode($response->getBody()->getContents(), true);
             $output->writeln(json_encode($responseDeal));
@@ -174,24 +165,20 @@ final class SyncSheetsToCRMIndividualLeads extends Command
             $dealId = $responseDeal['data']['id'];
 
             $response = $curlClient->post(
-                'crm/v1/deals/' . $dealId . '/comments',
+                'crm/v1/deals/'.$dealId.'/comments',
                 [
                     'json' => [
                         'message' => $value['11'] ?? '-',
-                    ]
+                    ],
                 ]
             );
             $responseComment = json_decode($response->getBody()->getContents(), true);
 
             $output->writeln(json_encode($responseComment));
-
         }
-
 
         $output->writeln('Done.');
 
         return 0;
     }
-
-
 }

@@ -1,10 +1,8 @@
 <?php
+
 declare(strict_types=1);
 
-
 namespace Domain\Common;
-
-use ReflectionClass;
 
 abstract readonly class Cloneable
 {
@@ -13,17 +11,17 @@ abstract readonly class Cloneable
      */
     public function with(...$values): static
     {
-        $refClass = new ReflectionClass(static::class);
+        $refClass = new \ReflectionClass(static::class);
         $clone = $refClass->newInstanceWithoutConstructor();
 
         foreach (get_object_vars($this) as $objectField => $objectValue) {
-            $objectValue = array_key_exists($objectField, $values) ? $values[$objectField] : $objectValue;
+            $objectValue = \array_key_exists($objectField, $values) ? $values[$objectField] : $objectValue;
 
             $declarationScope = $refClass->getProperty($objectField)->getDeclaringClass()->getName();
-            if ($declarationScope === self::class) {
-                $clone->$objectField = $objectValue;
+            if (self::class === $declarationScope) {
+                $clone->{$objectField} = $objectValue;
             } else {
-                (fn () => $this->$objectField = $objectValue)
+                (fn () => $this->{$objectField} = $objectValue)
                     ->bindTo($clone, $declarationScope)();
             }
         }
@@ -36,12 +34,12 @@ abstract readonly class Cloneable
      */
     public function withField(string $field, mixed $value): static
     {
-        $refClass = new ReflectionClass(static::class);
+        $refClass = new \ReflectionClass(static::class);
         $clone = $refClass->newInstanceWithoutConstructor();
 
         $objectVars = get_object_vars($this);
 
-        if (false === array_key_exists($field, $objectVars)) {
+        if (false === \array_key_exists($field, $objectVars)) {
             throw new \InvalidArgumentException(sprintf('Field "%s" does not exist in class "%s"', $field, static::class));
         }
 
@@ -49,15 +47,14 @@ abstract readonly class Cloneable
             $objectValue = $objectField === $field ? $value : $objectValue;
 
             $declarationScope = $refClass->getProperty($objectField)->getDeclaringClass()->getName();
-            if ($declarationScope === self::class) {
-                $clone->$objectField = $objectValue;
+            if (self::class === $declarationScope) {
+                $clone->{$objectField} = $objectValue;
             } else {
-                (fn () => $this->$objectField = $objectValue)
+                (fn () => $this->{$objectField} = $objectValue)
                     ->bindTo($clone, $declarationScope)();
             }
         }
 
         return $clone;
     }
-
 }

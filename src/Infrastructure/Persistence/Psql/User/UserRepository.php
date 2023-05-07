@@ -10,7 +10,6 @@ use Doctrine\DBAL\Types\Types;
 use Domain\User\User;
 use Domain\User\UserId;
 use Domain\User\UserRepositoryInterface;
-use JsonException;
 use Symfony\Component\Uid\Factory\UuidFactory;
 
 final readonly class UserRepository implements UserRepositoryInterface
@@ -26,11 +25,11 @@ final readonly class UserRepository implements UserRepositoryInterface
     {
         $uuid = $this->uuidGenerator->create();
 
-        return new UserId((string)$uuid);
+        return new UserId((string) $uuid);
     }
 
     /**
-     * @throws Exception|JsonException
+     * @throws Exception|\JsonException
      */
     public function findById(UserId $userId): ?User
     {
@@ -38,7 +37,7 @@ final readonly class UserRepository implements UserRepositoryInterface
             'SELECT user_id, roles, email, avatar_url, name, surname, created_at, updated_at
              FROM auth_user
              WHERE user_id = :user_id',
-            ['user_id' => (string)$userId],
+            ['user_id' => (string) $userId],
         );
 
         $data = $result->fetchAssociative();
@@ -51,7 +50,7 @@ final readonly class UserRepository implements UserRepositoryInterface
     }
 
     /**
-     * @throws Exception|JsonException
+     * @throws Exception|\JsonException
      */
     public function getList(
         int $limit = 10,
@@ -83,7 +82,7 @@ final readonly class UserRepository implements UserRepositoryInterface
     }
 
     /**
-     * @throws Exception|JsonException
+     * @throws Exception|\JsonException
      */
     public function findByEmail(string $email): ?User
     {
@@ -134,7 +133,7 @@ final readonly class UserRepository implements UserRepositoryInterface
     }
 
     /**
-     * @throws JsonException
+     * @throws \JsonException
      * @throws Exception
      */
     public function getById(UserId $userId): User

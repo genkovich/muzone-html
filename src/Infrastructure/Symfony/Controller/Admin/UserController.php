@@ -1,6 +1,6 @@
 <?php
-declare(strict_types=1);
 
+declare(strict_types=1);
 
 namespace Infrastructure\Symfony\Controller\Admin;
 
@@ -12,14 +12,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
-final  class UserController extends AbstractController
+final class UserController extends AbstractController
 {
-
     public function __construct(
         private readonly UserRepositoryInterface $userRepository,
         private readonly ChangeUserFieldHandler $changeUserFieldHandler,
-    )
-    {
+    ) {
     }
 
     public function singleUser(string $id): Response
@@ -55,5 +53,4 @@ final  class UserController extends AbstractController
             ],
         );
     }
-
 }

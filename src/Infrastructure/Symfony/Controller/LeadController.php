@@ -1,6 +1,6 @@
 <?php
-declare(strict_types=1);
 
+declare(strict_types=1);
 
 namespace Infrastructure\Symfony\Controller;
 
@@ -12,7 +12,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 final class LeadController extends AbstractController
 {
-
     public function __construct(private readonly SaveLeadHandler $handler)
     {
     }
@@ -23,8 +22,7 @@ final class LeadController extends AbstractController
 
         return new JsonResponse([
             'success' => 'true',
-            'message' => 'Lead saved'
+            'message' => 'Lead saved',
         ], Response::HTTP_CREATED);
     }
-
 }

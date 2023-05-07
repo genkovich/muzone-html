@@ -1,6 +1,6 @@
 <?php
-declare(strict_types=1);
 
+declare(strict_types=1);
 
 namespace Domain\Service;
 
@@ -18,8 +18,6 @@ final readonly class Service
         public Age $age,
         public \DateTimeImmutable $createdAt,
         public \DateTimeImmutable $updatedAt,
-    )
-    {
+    ) {
     }
-
 }

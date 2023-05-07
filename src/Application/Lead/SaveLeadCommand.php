@@ -1,6 +1,6 @@
 <?php
-declare(strict_types=1);
 
+declare(strict_types=1);
 
 namespace Application\Lead;
 
@@ -13,6 +13,6 @@ final readonly class SaveLeadCommand
         public string $direction = '',
         public string $groupType = '',
         public string $age = '',
-    ) {}
-
+    ) {
+    }
 }

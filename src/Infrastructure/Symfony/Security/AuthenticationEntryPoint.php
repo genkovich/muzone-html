@@ -1,6 +1,6 @@
 <?php
-declare(strict_types=1);
 
+declare(strict_types=1);
 
 namespace Infrastructure\Symfony\Security;
 
@@ -12,7 +12,6 @@ use Symfony\Component\Security\Http\EntryPoint\AuthenticationEntryPointInterface
 
 final readonly class AuthenticationEntryPoint implements AuthenticationEntryPointInterface
 {
-
     public function __construct(
         private UrlGeneratorInterface $urlGenerator,
     ) {

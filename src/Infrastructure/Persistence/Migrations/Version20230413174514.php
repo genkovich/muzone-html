@@ -38,6 +38,5 @@ final class Version20230413174514 extends AbstractMigration
     public function down(Schema $schema): void
     {
         $this->addSql('DROP TABLE auth_user');
-
     }
 }

@@ -1,6 +1,6 @@
 <?php
-declare(strict_types=1);
 
+declare(strict_types=1);
 
 namespace Domain\Service;
 
@@ -23,5 +23,4 @@ final readonly class ServiceFactory
             new \DateTimeImmutable($data['updated_at']),
         );
     }
-
 }

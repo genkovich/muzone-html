@@ -1,6 +1,6 @@
 <?php
-declare(strict_types=1);
 
+declare(strict_types=1);
 
 namespace Application\Lead;
 
@@ -18,7 +18,8 @@ final readonly class SaveLeadHandler
         private LeadRepositoryInterface $leadRepository,
         private ContactFactory $contactFactory,
         private NotifierInterface $notifier,
-    ) {}
+    ) {
+    }
 
     public function handle(SaveLeadCommand $command): void
     {
@@ -46,5 +47,4 @@ final readonly class SaveLeadHandler
 
         $this->notifier->notify($lead);
     }
-
 }

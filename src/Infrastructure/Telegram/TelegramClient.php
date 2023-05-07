@@ -1,6 +1,6 @@
 <?php
-declare(strict_types=1);
 
+declare(strict_types=1);
 
 namespace Infrastructure\Telegram;
 
@@ -9,13 +9,12 @@ use GuzzleHttp\Exception\GuzzleException;
 
 final readonly class TelegramClient
 {
-
     private string $baseUrl;
+
     public function __construct(
         private string $botToken,
         private Client $client,
-    )
-    {
+    ) {
         $this->baseUrl = 'https://api.telegram.org';
     }
 
@@ -29,8 +28,8 @@ final readonly class TelegramClient
                 'chat_id' => $chatId,
                 'message_thread_id' => $threadId,
                 'text' => $message,
-                'parse_mode' => 'HTML'
-            ]
+                'parse_mode' => 'HTML',
+            ],
         ]);
     }
 

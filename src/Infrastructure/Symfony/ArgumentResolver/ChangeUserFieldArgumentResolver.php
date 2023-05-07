@@ -1,6 +1,6 @@
 <?php
-declare(strict_types=1);
 
+declare(strict_types=1);
 
 namespace Infrastructure\Symfony\ArgumentResolver;
 
@@ -11,7 +11,6 @@ use Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata;
 
 final readonly class ChangeUserFieldArgumentResolver implements ValueResolverInterface
 {
-
     public function resolve(Request $request, ArgumentMetadata $argument): iterable
     {
         if (ChangeUserFieldCommand::class !== $argument->getType()) {
@@ -23,6 +22,5 @@ final readonly class ChangeUserFieldArgumentResolver implements ValueResolverInt
             $request->request->get('field'),
             $request->request->get('value'),
         );
-
     }
 }

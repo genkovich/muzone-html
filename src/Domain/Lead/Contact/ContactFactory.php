@@ -1,6 +1,6 @@
 <?php
-declare(strict_types=1);
 
+declare(strict_types=1);
 
 namespace Domain\Lead\Contact;
 
@@ -13,7 +13,6 @@ final readonly class ContactFactory
 {
     public function __construct()
     {
-
     }
 
     public function create(string $type, string $value): Contact

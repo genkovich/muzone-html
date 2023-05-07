@@ -5,7 +5,9 @@ namespace Domain;
 enum Age: string
 {
     case Kids = 'kids';
+
     case Adult = 'adult';
+
     case Unknown = 'unknown';
 
     public function icon(): string
@@ -16,5 +18,4 @@ enum Age: string
             default => '?',
         };
     }
-
 }

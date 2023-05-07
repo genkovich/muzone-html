@@ -1,6 +1,6 @@
 <?php
-declare(strict_types=1);
 
+declare(strict_types=1);
 
 namespace Infrastructure\Symfony\Messenger\Handler;
 
@@ -12,7 +12,6 @@ use Infrastructure\InMemory\InMemoryPipelineRepository;
 use Infrastructure\Sendpulse\Convertors\LeadToContactConvertor;
 use Infrastructure\Sendpulse\Internal\PipelineId;
 use Infrastructure\Sendpulse\SendpulseClient;
-use JsonException;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
 #[AsMessageHandler]
@@ -23,13 +22,12 @@ final readonly class SendpulseCreateLeadHandler
         private SendpulseClient $sendpulseClient,
         private InMemoryPipelineRepository $pipelineRepository,
         private LeadRepositoryInterface $leadRepository,
-    )
-    {
+    ) {
     }
 
     /**
      * @throws GuzzleException
-     * @throws JsonException
+     * @throws \JsonException
      */
     public function __invoke(Lead $lead): void
     {

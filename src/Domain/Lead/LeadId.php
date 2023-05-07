@@ -1,6 +1,6 @@
 <?php
-declare(strict_types=1);
 
+declare(strict_types=1);
 
 namespace Domain\Lead;
 
@@ -17,5 +17,4 @@ final readonly class LeadId
     {
         return $this->id;
     }
-
 }

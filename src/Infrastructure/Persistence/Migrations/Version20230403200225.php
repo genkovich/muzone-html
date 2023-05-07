@@ -30,7 +30,6 @@ final class Version20230403200225 extends AbstractMigration
                 PRIMARY KEY(lead_id)
             )
         ');
-
     }
 
     public function down(Schema $schema): void

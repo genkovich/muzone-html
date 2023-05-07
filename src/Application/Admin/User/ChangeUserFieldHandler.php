@@ -1,6 +1,6 @@
 <?php
-declare(strict_types=1);
 
+declare(strict_types=1);
 
 namespace Application\Admin\User;
 
@@ -11,8 +11,7 @@ final readonly class ChangeUserFieldHandler
 {
     public function __construct(
         private UserRepositoryInterface $userRepository,
-    )
-    {
+    ) {
     }
 
     /**
@@ -24,5 +23,4 @@ final readonly class ChangeUserFieldHandler
         $user = $user->withField($changeUserFieldCommand->field, $changeUserFieldCommand->value);
         $this->userRepository->upsert($user);
     }
-
 }

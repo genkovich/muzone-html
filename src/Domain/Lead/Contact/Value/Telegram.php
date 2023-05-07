@@ -1,12 +1,11 @@
 <?php
-declare(strict_types=1);
 
+declare(strict_types=1);
 
 namespace Domain\Lead\Contact\Value;
 
 final readonly class Telegram implements ContactValueInterface
 {
-
     public function __construct(public string $value)
     {
         if (empty($value)) {

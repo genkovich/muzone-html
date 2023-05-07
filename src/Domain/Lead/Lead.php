@@ -1,6 +1,6 @@
 <?php
-declare(strict_types=1);
 
+declare(strict_types=1);
 
 namespace Domain\Lead;
 
@@ -13,6 +13,7 @@ final readonly class Lead implements \JsonSerializable
 {
     public const DEFAULT_TELEGRAM_SENT_AT = null;
     public const DEFAULT_SENDPULSE_SENT_AT = null;
+
     public function __construct(
         public LeadId $id,
         public Contact $contact,

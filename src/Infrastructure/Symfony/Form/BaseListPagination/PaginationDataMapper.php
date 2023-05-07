@@ -1,6 +1,6 @@
 <?php
-declare(strict_types=1);
 
+declare(strict_types=1);
 
 namespace Infrastructure\Symfony\Form\BaseListPagination;
 
@@ -10,14 +10,14 @@ class PaginationDataMapper extends DataMapper
 {
     public function mapFormsToData(iterable $forms, &$data): void
     {
-        /** @var \Traversable $forms */
+        // @var \Traversable $forms
         parent::mapFormsToData($forms, $data);
 
         if (null === $data) {
             return;
         }
 
-        $forms = \iterator_to_array($forms);
+        $forms = iterator_to_array($forms);
 
         $data->processOffset(
             $forms['next']->isClicked(),

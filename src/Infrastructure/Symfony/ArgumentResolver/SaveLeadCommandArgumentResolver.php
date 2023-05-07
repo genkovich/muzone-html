@@ -1,9 +1,8 @@
 <?php
+
 declare(strict_types=1);
 
-
 namespace Infrastructure\Symfony\ArgumentResolver;
-
 
 use Application\Lead\SaveLeadCommand;
 use Domain\Lead\Contact\ContactType;
@@ -13,7 +12,6 @@ use Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata;
 
 final class SaveLeadCommandArgumentResolver implements ValueResolverInterface
 {
-
     /**
      * @throws \Exception
      */

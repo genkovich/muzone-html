@@ -23,7 +23,7 @@ final class UserProvider implements UserLoaderInterface, UserProviderInterface
         $user = $this->userRepository->findByEmail($identifier);
 
         if (null === $user) {
-            throw new UserNotFoundException('User not found for email: ' . $identifier);
+            throw new UserNotFoundException('User not found for email: '.$identifier);
         }
 
         return $user;
@@ -36,6 +36,6 @@ final class UserProvider implements UserLoaderInterface, UserProviderInterface
 
     public function supportsClass(string $class): bool
     {
-        return User::class === $class || \is_subclass_of($class, User::class);
+        return User::class === $class || is_subclass_of($class, User::class);
     }
 }

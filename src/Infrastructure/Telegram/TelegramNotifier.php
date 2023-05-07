@@ -1,6 +1,6 @@
 <?php
-declare(strict_types=1);
 
+declare(strict_types=1);
 
 namespace Infrastructure\Telegram;
 
@@ -11,14 +11,12 @@ use Twig\Environment;
 
 final readonly class TelegramNotifier implements NotifierInterface
 {
-
     public function __construct(
         private string $chatId,
         private string $threadId,
         private TelegramClient $client,
         private Environment $twig,
-    )
-    {
+    ) {
     }
 
     /**

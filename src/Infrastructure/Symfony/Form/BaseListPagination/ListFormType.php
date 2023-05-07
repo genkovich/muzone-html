@@ -1,6 +1,6 @@
 <?php
-declare(strict_types=1);
 
+declare(strict_types=1);
 
 namespace Infrastructure\Symfony\Form\BaseListPagination;
 
@@ -13,7 +13,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 final class ListFormType extends AbstractType
 {
-
     private PaginationDataMapper $mapper;
 
     public function __construct()
@@ -58,8 +57,8 @@ final class ListFormType extends AbstractType
                 'row_attr' => [
                     'class' => 'input-group',
                 ],
-            ]);
-
+            ])
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void

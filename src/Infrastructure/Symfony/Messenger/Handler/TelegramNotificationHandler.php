@@ -1,6 +1,6 @@
 <?php
-declare(strict_types=1);
 
+declare(strict_types=1);
 
 namespace Infrastructure\Symfony\Messenger\Handler;
 
@@ -10,13 +10,12 @@ use Domain\Lead\LeadRepositoryInterface;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
 #[AsMessageHandler]
-final readonly class TelegramNotificationHandler 
+final readonly class TelegramNotificationHandler
 {
     public function __construct(
         private NotifierInterface $notifier,
         private LeadRepositoryInterface $leadRepository,
-    )
-    {
+    ) {
     }
 
     public function __invoke(Lead $lead): void

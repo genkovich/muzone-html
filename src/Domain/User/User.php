@@ -33,7 +33,7 @@ final readonly class User extends Cloneable implements \JsonSerializable, UserIn
     public function jsonSerialize(): array
     {
         return [
-            'user_id' => (string)$this->userId,
+            'user_id' => (string) $this->userId,
             'email' => $this->email,
             'avatar' => $this->avatar,
             'name' => $this->name,
@@ -41,7 +41,6 @@ final readonly class User extends Cloneable implements \JsonSerializable, UserIn
             'roles' => $this->roles,
         ];
     }
-
 
     /**
      * @return string[]

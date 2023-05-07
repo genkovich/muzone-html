@@ -1,30 +1,25 @@
 <?php
-declare(strict_types=1);
 
+declare(strict_types=1);
 
 namespace Infrastructure\Symfony\Controller\Admin;
 
 use Domain\Lead\LeadRepositoryInterface;
 use Infrastructure\Symfony\Form\Admin\Lead\LeadListFormType;
 use Infrastructure\Symfony\Form\Admin\Lead\LeadPaginationList;
-use Infrastructure\Symfony\Form\BaseListPagination\ListFormType;
-use Infrastructure\Symfony\Form\BaseListPagination\ListPagination;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-final  class LeadController extends AbstractController
+final class LeadController extends AbstractController
 {
-
     public function __construct(
         private readonly LeadRepositoryInterface $leadRepository,
-    )
-    {
+    ) {
     }
 
     public function list(Request $request): Response
     {
-
         $listPagination = new LeadPaginationList();
         $listPagination->setFromDate((new \DateTimeImmutable('-7 days'))->setTime(0, 0, 0));
         $listPagination->setToDate((new \DateTimeImmutable())->setTime(23, 59, 59));

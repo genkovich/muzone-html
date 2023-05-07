@@ -1,6 +1,6 @@
 <?php
-declare(strict_types=1);
 
+declare(strict_types=1);
 
 namespace Infrastructure\Symfony\Messenger\Notifier;
 
@@ -12,8 +12,7 @@ final readonly class MessengerNotifier implements NotifierInterface
 {
     public function __construct(
         private MessageBusInterface $bus,
-    )
-    {
+    ) {
     }
 
     public function notify(Lead $lead): void

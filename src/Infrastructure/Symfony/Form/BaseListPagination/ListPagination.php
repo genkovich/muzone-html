@@ -1,20 +1,17 @@
 <?php
+
 declare(strict_types=1);
 
-
 namespace Infrastructure\Symfony\Form\BaseListPagination;
-
-use DateTimeInterface;
 
 class ListPagination
 {
     public function __construct(
         private int $limit = 5,
         private int $offset = 0,
-        private ?DateTimeInterface $fromDate = null,
-        private ?DateTimeInterface $toDate = null,
-    )
-    {
+        private ?\DateTimeInterface $fromDate = null,
+        private ?\DateTimeInterface $toDate = null,
+    ) {
     }
 
     public function getLimit(): int
@@ -27,7 +24,7 @@ class ListPagination
         return $this->offset;
     }
 
-    public function getFromDate(): ?DateTimeInterface
+    public function getFromDate(): ?\DateTimeInterface
     {
         return $this->fromDate;
     }
@@ -42,17 +39,17 @@ class ListPagination
         $this->offset = $offset;
     }
 
-    public function setFromDate(?DateTimeInterface $fromDate): void
+    public function setFromDate(?\DateTimeInterface $fromDate): void
     {
         $this->fromDate = $fromDate;
     }
 
-    public function getToDate(): ?DateTimeInterface
+    public function getToDate(): ?\DateTimeInterface
     {
         return $this->toDate;
     }
 
-    public function setToDate(?DateTimeInterface $toDate): void
+    public function setToDate(?\DateTimeInterface $toDate): void
     {
         $this->toDate = $toDate;
     }
@@ -77,5 +74,4 @@ class ListPagination
 
         return $this;
     }
-
 }

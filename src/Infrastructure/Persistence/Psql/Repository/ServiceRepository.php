@@ -1,6 +1,6 @@
 <?php
-declare(strict_types=1);
 
+declare(strict_types=1);
 
 namespace Infrastructure\Persistence\Psql\Repository;
 
@@ -19,13 +19,12 @@ final readonly class ServiceRepository implements ServiceRepositoryInterface
         private Connection $connection,
         private UuidFactory $uuidFactory,
         private ServiceFactory $serviceFactory,
-    )
-    {
+    ) {
     }
 
     public function nextIdentity(): ServiceId
     {
-        return new ServiceId((string)$this->uuidFactory->create());
+        return new ServiceId((string) $this->uuidFactory->create());
     }
 
     /**
@@ -103,7 +102,6 @@ final readonly class ServiceRepository implements ServiceRepositoryInterface
                 'updated_at' => Types::DATETIMETZ_IMMUTABLE,
             ],
         );
-
     }
 
     public function remove(ServiceId $serviceId): void
@@ -135,8 +133,6 @@ final readonly class ServiceRepository implements ServiceRepositoryInterface
 
         $data = $result->fetchAllAssociative();
 
-        return array_map(fn(array $item) => $this->serviceFactory->fromArray($item), $data);
+        return array_map(fn (array $item) => $this->serviceFactory->fromArray($item), $data);
     }
-
-
 }

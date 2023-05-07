@@ -1,6 +1,6 @@
 <?php
-declare(strict_types=1);
 
+declare(strict_types=1);
 
 namespace Infrastructure\Symfony\Controller;
 
@@ -11,11 +11,9 @@ use Symfony\Component\HttpFoundation\Response;
 
 final class AdminController extends AbstractController
 {
-
     public function __construct(
         private readonly UserRepositoryInterface $userRepository,
-    )
-    {
+    ) {
     }
 
     public function dashboard(): Response
@@ -29,8 +27,6 @@ final class AdminController extends AbstractController
             ],
         );
     }
-
-
 
     public function setSidebarState(Request $request): Response
     {

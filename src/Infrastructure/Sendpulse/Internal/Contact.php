@@ -1,6 +1,6 @@
 <?php
-declare(strict_types=1);
 
+declare(strict_types=1);
 
 namespace Infrastructure\Sendpulse\Internal;
 
@@ -12,8 +12,7 @@ final readonly class Contact implements \JsonSerializable
         public string $phone,
         public array $messengers,
         public int $responsibleId,
-    )
-    {
+    ) {
     }
 
     public function jsonSerialize(): array

@@ -1,16 +1,16 @@
 <?php
-declare(strict_types=1);
 
+declare(strict_types=1);
 
 namespace Infrastructure\Persistence\Psql\Repository;
 
+use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Exception;
 use Doctrine\DBAL\Types\Types;
 use Domain\Lead\Lead;
 use Domain\Lead\LeadFactory;
 use Domain\Lead\LeadId;
 use Domain\Lead\LeadRepositoryInterface;
-use Doctrine\DBAL\Connection;
 use Symfony\Component\Uid\Factory\UuidFactory;
 
 final readonly class LeadRepository implements LeadRepositoryInterface
@@ -19,13 +19,12 @@ final readonly class LeadRepository implements LeadRepositoryInterface
         private Connection $connection,
         private UuidFactory $uuidFactory,
         private LeadFactory $leadFactory,
-    )
-    {
+    ) {
     }
 
     public function generateNext(): LeadId
     {
-       return new LeadId((string)$this->uuidFactory->create());
+        return new LeadId((string) $this->uuidFactory->create());
     }
 
     public function insert(Lead $lead): void
@@ -56,7 +55,6 @@ final readonly class LeadRepository implements LeadRepositoryInterface
                 'updated_at' => Types::DATETIMETZ_IMMUTABLE,
             ],
         );
-
     }
 
     /**
@@ -70,27 +68,31 @@ final readonly class LeadRepository implements LeadRepositoryInterface
             ->from('leads')
             ->orderBy('created_at', 'DESC')
             ->setMaxResults($limit)
-            ->setFirstResult($offset);
+            ->setFirstResult($offset)
+        ;
 
         if (!empty($filters['date_from'])) {
             $qb->andWhere('created_at >= :date_from')
-                ->setParameter('date_from', $filters['date_from'], Types::DATETIME_MUTABLE);
+                ->setParameter('date_from', $filters['date_from'], Types::DATETIME_MUTABLE)
+            ;
         }
 
         if (!empty($filters['date_to'])) {
             $qb->andWhere('created_at <= :date_to')
-                ->setParameter('date_to', $filters['date_to'], Types::DATETIME_MUTABLE);
+                ->setParameter('date_to', $filters['date_to'], Types::DATETIME_MUTABLE)
+            ;
         }
 
         if (!empty($filters['search'])) {
             $search = $filters['search'];
             $qb->andWhere('contact_value LIKE :search')
-                ->setParameter('search', '%' . $search . '%');
+                ->setParameter('search', '%'.$search.'%')
+            ;
         }
 
         $leads = $qb->executeQuery()->fetchAllAssociative();
 
-        return array_map(fn(array $lead) => $this->leadFactory->create($lead), $leads);
+        return array_map(fn (array $lead) => $this->leadFactory->create($lead), $leads);
     }
 
     public function markTelegramSent(LeadId $leadId): void

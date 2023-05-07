@@ -1,6 +1,6 @@
 <?php
-declare(strict_types=1);
 
+declare(strict_types=1);
 
 namespace App\Tests\Sendpulse;
 
@@ -14,7 +14,12 @@ use Infrastructure\Sendpulse\Internal\Messenger;
 use Infrastructure\Sendpulse\Internal\Responsible;
 use PHPUnit\Framework\TestCase;
 
-final  class LeadToContactConvertorTest extends TestCase
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
+final class LeadToContactConvertorTest extends TestCase
 {
     public function testConvert(): void
     {
@@ -41,13 +46,12 @@ final  class LeadToContactConvertorTest extends TestCase
         $converter = new LeadToContactConvertor();
         $convertedContact = $converter->convert($lead);
 
-        $this->assertSame('example', $convertedContact->firstName);
-        $this->assertSame('', $convertedContact->lastName);
-        $this->assertSame('', $convertedContact->phone);
-        $this->assertCount(1, $convertedContact->messengers);
-        $this->assertSame(Messenger::Instagram->value, $convertedContact->messengers[0]['typeId']);
-        $this->assertSame('example', $convertedContact->messengers[0]['login']);
-        $this->assertSame(Responsible::Muzone->value, $convertedContact->responsibleId);
+        static::assertSame('example', $convertedContact->firstName);
+        static::assertSame('', $convertedContact->lastName);
+        static::assertSame('', $convertedContact->phone);
+        static::assertCount(1, $convertedContact->messengers);
+        static::assertSame(Messenger::Instagram->value, $convertedContact->messengers[0]['typeId']);
+        static::assertSame('example', $convertedContact->messengers[0]['login']);
+        static::assertSame(Responsible::Muzone->value, $convertedContact->responsibleId);
     }
-
 }

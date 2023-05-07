@@ -1,6 +1,6 @@
 <?php
-declare(strict_types=1);
 
+declare(strict_types=1);
 
 namespace Infrastructure\Sendpulse\Internal;
 
@@ -13,8 +13,6 @@ final readonly class Pipeline
         public array $teachers,
         public array $sources,
         public array $age,
-    )
-    {
+    ) {
     }
-
 }

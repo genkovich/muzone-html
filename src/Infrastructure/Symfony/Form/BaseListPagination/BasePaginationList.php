@@ -1,6 +1,6 @@
 <?php
-declare(strict_types=1);
 
+declare(strict_types=1);
 
 namespace Infrastructure\Symfony\Form\BaseListPagination;
 
@@ -33,7 +33,6 @@ class BasePaginationList extends AbstractType
                 self::OPTION_HAS_NEXT,
             ]
         );
-
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options): void
@@ -41,14 +40,14 @@ class BasePaginationList extends AbstractType
         $builder
             ->add(self::FORM_ELEMENT_OFFSET_NAME, HiddenType::class, $this->getOffsetOptions())
             ->add(self::FORM_ELEMENT_PREV_NAME, SubmitType::class, $this->getPrevOptions($options))
-            ->add(self::FORM_ELEMENT_NEXT_NAME, SubmitType::class, $this->getNextOptions($options));
+            ->add(self::FORM_ELEMENT_NEXT_NAME, SubmitType::class, $this->getNextOptions($options))
+        ;
     }
 
     protected function isButtonDisabled(string $optionName, array $options): bool
     {
         return true === \array_key_exists($optionName, $options) && false === $options[$optionName];
     }
-
 
     protected function getPrevOptions(array $options): array
     {
@@ -72,14 +71,13 @@ class BasePaginationList extends AbstractType
         return $buttonOptions;
     }
 
-
     protected function getOffsetOptions(): array
     {
         return [
             'empty_data' => '0',
             'label' => false,
             'attr' => [
-                'class' => 'hidden-field'
+                'class' => 'hidden-field',
             ],
         ];
     }
