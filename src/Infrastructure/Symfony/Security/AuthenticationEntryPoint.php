@@ -17,7 +17,7 @@ final readonly class AuthenticationEntryPoint implements AuthenticationEntryPoin
     ) {
     }
 
-    public function start(Request $request, AuthenticationException $authException = null): RedirectResponse
+    public function start(Request $request, ?AuthenticationException $authException = null): RedirectResponse
     {
         // add a custom flash message and redirect to the login page
         $request->getSession()->getFlashBag()->add('note', 'You have to login in order to access this page.');
