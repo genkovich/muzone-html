@@ -14,7 +14,7 @@ abstract readonly class Cloneable
         $refClass = new \ReflectionClass(static::class);
         $clone = $refClass->newInstanceWithoutConstructor();
 
-        foreach (get_object_vars($this) as $objectField => $objectValue) {
+        foreach (\get_object_vars($this) as $objectField => $objectValue) {
             $objectValue = \array_key_exists($objectField, $values) ? $values[$objectField] : $objectValue;
 
             $declarationScope = $refClass->getProperty($objectField)->getDeclaringClass()->getName();
@@ -37,10 +37,10 @@ abstract readonly class Cloneable
         $refClass = new \ReflectionClass(static::class);
         $clone = $refClass->newInstanceWithoutConstructor();
 
-        $objectVars = get_object_vars($this);
+        $objectVars = \get_object_vars($this);
 
         if (false === \array_key_exists($field, $objectVars)) {
-            throw new \InvalidArgumentException(sprintf('Field "%s" does not exist in class "%s"', $field, static::class));
+            throw new \InvalidArgumentException(\sprintf('Field "%s" does not exist in class "%s"', $field, static::class));
         }
 
         foreach ($objectVars as $objectField => $objectValue) {

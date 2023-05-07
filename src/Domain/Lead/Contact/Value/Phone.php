@@ -12,7 +12,7 @@ final readonly class Phone implements ContactValueInterface
             throw new \InvalidArgumentException('Phone cannot be empty');
         }
 
-        if (!preg_match('/^[+]?\d{6,14}$/', $this->value)) {
+        if (!\preg_match('/^[+]?\d{6,14}$/', $this->value)) {
             throw new \InvalidArgumentException('Phone is not valid');
         }
     }
@@ -24,7 +24,7 @@ final readonly class Phone implements ContactValueInterface
 
     public static function fromString(string $value): self
     {
-        $phone = preg_replace('/[^\d+]/', '', $value);
+        $phone = \preg_replace('/[^\d+]/', '', $value);
 
         return new self($phone);
     }

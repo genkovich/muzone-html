@@ -35,13 +35,13 @@ final class SendpulseClient
     ) {
         $this->token = '';
 
-        $credentialString = sprintf(
+        $credentialString = \sprintf(
             '%s-%s',
             $this->clientSecret,
             $this->clientId
         );
 
-        $sessionKey = sprintf('%s-%s', self::SESSION_CACHE_PREFIX, hash(self::HASH_ALGO, $credentialString));
+        $sessionKey = \sprintf('%s-%s', self::SESSION_CACHE_PREFIX, \hash(self::HASH_ALGO, $credentialString));
 
         $accessToken = $this->cache->get($sessionKey);
 
@@ -138,7 +138,7 @@ final class SendpulseClient
         $response = $this->sendRequest('POST', '/oauth/access_token', $data);
 
         if (!isset($response['access_token'])) {
-            throw new \RuntimeException('SendPulse authentication failed: '.json_encode($response, JSON_THROW_ON_ERROR));
+            throw new \RuntimeException('SendPulse authentication failed: '.\json_encode($response, JSON_THROW_ON_ERROR));
         }
 
         return $response['access_token'];
@@ -160,12 +160,12 @@ final class SendpulseClient
             $headers['Authorization'] = 'Bearer '.$this->token;
         }
 
-        $request = new Request($method, $url, $headers, json_encode($data, JSON_THROW_ON_ERROR));
+        $request = new Request($method, $url, $headers, \json_encode($data, JSON_THROW_ON_ERROR));
 
         $response = $this->client->send($request);
 
         $body = $response->getBody()->getContents();
 
-        return json_decode($body, true, 512, JSON_THROW_ON_ERROR);
+        return \json_decode($body, true, 512, JSON_THROW_ON_ERROR);
     }
 }

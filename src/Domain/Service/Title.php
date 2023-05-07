@@ -13,11 +13,11 @@ final readonly class Title
             throw new \InvalidArgumentException('Service title cannot be empty');
         }
 
-        if (mb_strlen($this->title) > 255) {
+        if (\mb_strlen($this->title) > 255) {
             throw new \InvalidArgumentException('Service title cannot be longer than 255 characters');
         }
 
-        if (mb_strlen($this->title) < 3) {
+        if (\mb_strlen($this->title) < 3) {
             throw new \InvalidArgumentException('Service title cannot be less than 3 characters');
         }
     }

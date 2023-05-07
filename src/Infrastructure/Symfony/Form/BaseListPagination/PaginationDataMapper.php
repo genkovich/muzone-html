@@ -17,7 +17,7 @@ class PaginationDataMapper extends DataMapper
             return;
         }
 
-        $forms = iterator_to_array($forms);
+        $forms = \iterator_to_array($forms);
 
         $data->processOffset(
             $forms['next']->isClicked(),

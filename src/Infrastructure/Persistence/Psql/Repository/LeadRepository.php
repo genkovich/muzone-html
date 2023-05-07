@@ -92,7 +92,7 @@ final readonly class LeadRepository implements LeadRepositoryInterface
 
         $leads = $qb->executeQuery()->fetchAllAssociative();
 
-        return array_map(fn (array $lead) => $this->leadFactory->create($lead), $leads);
+        return \array_map(fn (array $lead) => $this->leadFactory->create($lead), $leads);
     }
 
     public function markTelegramSent(LeadId $leadId): void

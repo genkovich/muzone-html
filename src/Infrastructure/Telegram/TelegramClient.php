@@ -35,6 +35,6 @@ final readonly class TelegramClient
 
     private function generateEndpoint(string $method): string
     {
-        return sprintf('%s/bot%s/%s', $this->baseUrl, $this->botToken, $method);
+        return \sprintf('%s/bot%s/%s', $this->baseUrl, $this->botToken, $method);
     }
 }

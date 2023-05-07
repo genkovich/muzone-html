@@ -36,6 +36,6 @@ final class UserProvider implements UserLoaderInterface, UserProviderInterface
 
     public function supportsClass(string $class): bool
     {
-        return User::class === $class || is_subclass_of($class, User::class);
+        return User::class === $class || \is_subclass_of($class, User::class);
     }
 }

@@ -21,7 +21,7 @@ final class UserFactory
      */
     public function createFromData(array $data): User
     {
-        $roles = json_decode((string) $data[self::FIELD_ROLES], true, 512, JSON_THROW_ON_ERROR);
+        $roles = \json_decode((string) $data[self::FIELD_ROLES], true, 512, JSON_THROW_ON_ERROR);
 
         return new User(
             userId: new UserId($data[self::FIELD_USER_ID]),

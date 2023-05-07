@@ -133,6 +133,6 @@ final readonly class ServiceRepository implements ServiceRepositoryInterface
 
         $data = $result->fetchAllAssociative();
 
-        return array_map(fn (array $item) => $this->serviceFactory->fromArray($item), $data);
+        return \array_map(fn (array $item) => $this->serviceFactory->fromArray($item), $data);
     }
 }

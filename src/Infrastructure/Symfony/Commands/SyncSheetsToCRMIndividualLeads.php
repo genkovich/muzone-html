@@ -18,8 +18,8 @@ final class SyncSheetsToCRMIndividualLeads extends Command
     {
         $output->writeln('Syncing leads from Google Sheets to CRM...');
 
-        ini_set('max_execution_time', 0); // 0=NOLIMIT
-        putenv('GOOGLE_APPLICATION_CREDENTIALS='.__DIR__.'/../../weberg-39d08063d530.json');
+        \ini_set('max_execution_time', 0); // 0=NOLIMIT
+        \putenv('GOOGLE_APPLICATION_CREDENTIALS='.__DIR__.'/../../weberg-39d08063d530.json');
         $client = new Client();
         $client->useApplicationDefaultCredentials();
 
@@ -90,7 +90,7 @@ final class SyncSheetsToCRMIndividualLeads extends Command
                 'messengers' => [
                     [
                         'typeId' => 4, // instgram
-                        'login' => str_replace('@', '', $value[1]),
+                        'login' => \str_replace('@', '', $value[1]),
                     ],
                 ],
             ];
@@ -101,7 +101,7 @@ final class SyncSheetsToCRMIndividualLeads extends Command
                     'json' => $contact,
                 ]
             );
-            $responseContact = json_decode($response->getBody()->getContents(), true);
+            $responseContact = \json_decode($response->getBody()->getContents(), true);
 
             $contactId = $responseContact['data']['id'];
 
@@ -159,8 +159,8 @@ final class SyncSheetsToCRMIndividualLeads extends Command
                 ]
             );
 
-            $responseDeal = json_decode($response->getBody()->getContents(), true);
-            $output->writeln(json_encode($responseDeal));
+            $responseDeal = \json_decode($response->getBody()->getContents(), true);
+            $output->writeln(\json_encode($responseDeal));
 
             $dealId = $responseDeal['data']['id'];
 
@@ -172,9 +172,9 @@ final class SyncSheetsToCRMIndividualLeads extends Command
                     ],
                 ]
             );
-            $responseComment = json_decode($response->getBody()->getContents(), true);
+            $responseComment = \json_decode($response->getBody()->getContents(), true);
 
-            $output->writeln(json_encode($responseComment));
+            $output->writeln(\json_encode($responseComment));
         }
 
         $output->writeln('Done.');
