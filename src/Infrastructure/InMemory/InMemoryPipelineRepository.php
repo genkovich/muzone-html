@@ -12,6 +12,8 @@ final class InMemoryPipelineRepository
 
     public function __construct(array $config)
     {
+        $this->pipelines = [];
+
         foreach ($config as $pipelineConfig) {
             $pipeline = new Pipeline(
                 $pipelineConfig['id'],

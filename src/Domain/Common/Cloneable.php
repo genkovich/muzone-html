@@ -7,9 +7,11 @@ namespace Domain\Common;
 abstract readonly class Cloneable
 {
     /**
+     * @psalm-suppress PossiblyNullFunctionCall
+     *
      * @throws \ReflectionException
      */
-    public function with(...$values): static
+    public function with(mixed ...$values): static
     {
         $refClass = new \ReflectionClass(static::class);
         $clone = $refClass->newInstanceWithoutConstructor();
@@ -30,11 +32,12 @@ abstract readonly class Cloneable
     }
 
     /**
-     *
      * @param string $field
-     * @param mixed $value
+     * @param mixed  $value
      *
      * @throws \ReflectionException
+     *
+     * @psalm-suppress PossiblyNullFunctionCall
      */
     public function withField(string $field, mixed $value): static
     {

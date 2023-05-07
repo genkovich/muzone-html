@@ -10,7 +10,7 @@ interface ServiceRepositoryInterface
 
     public function add(Service $service): void;
 
-    public function get(ServiceId $serviceId): Service;
+    public function find(ServiceId $serviceId): ?Service;
 
     public function update(Service $service): void;
 

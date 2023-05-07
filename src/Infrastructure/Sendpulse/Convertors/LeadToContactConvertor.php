@@ -16,9 +16,8 @@ final readonly class LeadToContactConvertor
     {
         $contactValue = match ($lead->contact->type) {
             ContactType::Instagram => $this->extractInstagramUsername((string) $lead->contact->value),
-            ContactType::Phone => (string) $lead->contact->value,
-            ContactType::Telegram => \str_replace('@', '', (string) $lead->contact->value),
-            ContactType::Other => (string) $lead->contact->value,
+            ContactType::Telegram => $this->extractTelegramUsername((string) $lead->contact->value),
+            default => (string) $lead->contact->value,
         };
 
         $phone = ContactType::Phone === $lead->contact->type ? (string) $lead->contact->value : '';
@@ -55,5 +54,15 @@ final readonly class LeadToContactConvertor
         $input = \preg_replace($urlPattern, '', $input);
 
         return \str_replace('@', '', $input);
+    }
+
+    public function extractTelegramUsername(string $input): ?string
+    {
+        $input = \trim($input);
+
+        $urlPattern = '/^https?:\/\/(t\.me|telegram\.me)\//';
+        $input = \preg_replace($urlPattern, '', $input);
+
+        return \ltrim($input, '@');
     }
 }

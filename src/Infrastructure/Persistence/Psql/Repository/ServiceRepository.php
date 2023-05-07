@@ -60,7 +60,7 @@ final readonly class ServiceRepository implements ServiceRepositoryInterface
         );
     }
 
-    public function get(ServiceId $serviceId): Service
+    public function find(ServiceId $serviceId): ?Service
     {
         $result = $this->connection->executeQuery(
             'SELECT * FROM services WHERE service_id = :service_id',
@@ -73,6 +73,10 @@ final readonly class ServiceRepository implements ServiceRepositoryInterface
         );
 
         $data = $result->fetchAssociative();
+
+        if (false === $data) {
+            return null;
+        }
 
         return $this->serviceFactory->fromArray($data);
     }

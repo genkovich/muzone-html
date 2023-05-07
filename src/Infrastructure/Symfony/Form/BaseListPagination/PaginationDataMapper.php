@@ -10,6 +10,8 @@ class PaginationDataMapper extends DataMapper
 {
     /**
      * @psalm-suppress ParamNameMismatch, InvalidArgument
+     *
+     * @param mixed $data
      */
     public function mapFormsToData(iterable $forms, &$data): void
     {

@@ -54,7 +54,7 @@ class ListPagination
         $this->toDate = $toDate;
     }
 
-    public function processOffset(bool $increase = false, bool $decrease = false)
+    public function processOffset(bool $increase = false, bool $decrease = false): static
     {
         $limit = $this->getLimit();
         $offset = $this->getOffset();
