@@ -12,7 +12,7 @@ final readonly class Other implements ContactValueInterface
             throw new \InvalidArgumentException('Contact value cannot be empty');
         }
 
-        if (\strlen($value) > 255) {
+        if (\mb_strlen($value) > 255) {
             throw new \InvalidArgumentException('Contact value cannot be longer than 255 characters');
         }
     }
