@@ -44,7 +44,7 @@ final class SaveLeadCommandArgumentResolver implements ValueResolverInterface
         }
 
         yield new SaveLeadCommand(
-            $contactValue,
+            (string) $contactValue,
             $contactType->value,
             (int) $lessonsCount,
             (string) $direction,

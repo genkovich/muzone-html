@@ -38,7 +38,7 @@ final class ServiceTest extends TestCase
         $title = new Title($this->faker->sentence(3));
         $price = new Price(
             $this->faker->numberBetween(100, 10000),
-            Currency::tryFrom($this->faker->randomElement(['UAH', 'USD', 'EUR']))
+            Currency::from($this->faker->randomElement(['UAH', 'USD', 'EUR']))
         );
         $direction = $this->faker->randomElement([
             Direction::Guitar,

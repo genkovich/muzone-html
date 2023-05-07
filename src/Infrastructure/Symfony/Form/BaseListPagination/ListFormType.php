@@ -11,6 +11,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/** @psalm-suppress MissingTemplateParam */
 final class ListFormType extends AbstractType
 {
     private PaginationDataMapper $mapper;

@@ -11,6 +11,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/** @psalm-suppress MissingTemplateParam */
 class BasePaginationList extends AbstractType
 {
     public const OPTION_HAS_PREV = 'has_prev';

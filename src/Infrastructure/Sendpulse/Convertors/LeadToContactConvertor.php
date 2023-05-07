@@ -38,7 +38,7 @@ final readonly class LeadToContactConvertor
         }
 
         return new Contact(
-            firstName: $contactValue,
+            firstName: $contactValue ?? '',
             lastName: '',
             phone: $phone,
             messengers: $messengers,

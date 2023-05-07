@@ -47,6 +47,10 @@ final class GoogleAuthenticator extends OAuth2Authenticator implements Authentic
 
                 $email = $googleUser->getEmail();
 
+                if (null === $email) {
+                    throw new AuthenticationException('Email is not provided by Google');
+                }
+
                 $existingUser = $this->userRepository->findByEmail($email);
                 if ($existingUser) {
                     return $existingUser;
@@ -56,9 +60,9 @@ final class GoogleAuthenticator extends OAuth2Authenticator implements Authentic
                 $googleUser = new User(
                     $this->userRepository->nextIdentity(),
                     $email,
-                    $googleUser->getAvatar(),
+                    $googleUser->getAvatar() ?? '',
                     $googleUser->getName(),
-                    $googleUser->getLastName(),
+                    $googleUser->getLastName() ?? 'unknown',
                     [UserRole::User->value],
                     $now,
                     $now,
@@ -75,7 +79,9 @@ final class GoogleAuthenticator extends OAuth2Authenticator implements Authentic
     {
         $route = $this->urlGenerator->generate('user.dashboard');
 
-        if (\in_array(UserRole::Admin->value, $token->getUser()?->getRoles(), true)) {
+        $roles = $token->getUser()?->getRoles() ?? [];
+
+        if (\in_array(UserRole::Admin->value, $roles, true)) {
             $route = $this->urlGenerator->generate('admin.dashboard');
         }
 

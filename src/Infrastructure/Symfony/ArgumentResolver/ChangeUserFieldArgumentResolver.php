@@ -17,10 +17,10 @@ final readonly class ChangeUserFieldArgumentResolver implements ValueResolverInt
             return [];
         }
 
-        yield new ChangeUserFieldCommand(
-            $request->request->get('user_id') ?? '',
-            $request->request->get('field') ?? '',
-            $request->request->get('value') ?? '',
-        );
+        $userId = $request->request->get('user_id') ?? '';
+        $field = $request->request->get('field') ?? '';
+        $value = $request->request->get('value') ?? '';
+
+        yield new ChangeUserFieldCommand((string) $userId, (string) $field, (string) $value);
     }
 }
