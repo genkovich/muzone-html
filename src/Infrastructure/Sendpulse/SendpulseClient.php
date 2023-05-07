@@ -81,7 +81,7 @@ final class SendpulseClient
             'pipelineId' => $pipeline->id,
             'stepId' => $pipeline->statuses['contacted'],
             'responsibleId' => Responsible::Muzone->value,
-            'name' => 'Site: '.$lead->contact->type->value.' '.$lead->contact->value,
+            'name' => 'Site: ' . $lead->contact->type->value . ' ' . $lead->contact->value,
             'contact' => [
                 'id' => $contactId,
             ],
@@ -112,7 +112,7 @@ final class SendpulseClient
 
     public function getDealAttributes(int $dealId): array
     {
-        return $this->sendRequest('GET', '/crm/v1/deals/'.$dealId.'/attributes');
+        return $this->sendRequest('GET', '/crm/v1/deals/' . $dealId . '/attributes');
     }
 
     /**
@@ -138,7 +138,7 @@ final class SendpulseClient
         $response = $this->sendRequest('POST', '/oauth/access_token', $data);
 
         if (!isset($response['access_token'])) {
-            throw new \RuntimeException('SendPulse authentication failed: '.\json_encode($response, JSON_THROW_ON_ERROR));
+            throw new \RuntimeException('SendPulse authentication failed: ' . \json_encode($response, JSON_THROW_ON_ERROR));
         }
 
         return $response['access_token'];
@@ -157,7 +157,7 @@ final class SendpulseClient
         ];
 
         if ('' !== $this->token) {
-            $headers['Authorization'] = 'Bearer '.$this->token;
+            $headers['Authorization'] = 'Bearer ' . $this->token;
         }
 
         $request = new Request($method, $url, $headers, \json_encode($data, JSON_THROW_ON_ERROR));

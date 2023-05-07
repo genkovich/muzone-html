@@ -140,27 +140,27 @@ final class MainPageController extends AbstractController
                 'title' => 'Послуги',
                 'subitems' => [
                     [
-                        'url' => '#'.Direction::Drums->value,
+                        'url' => '#' . Direction::Drums->value,
                         'title' => '🥁  Барабани',
                     ],
                     [
-                        'url' => '#'.Direction::Vocal->value,
+                        'url' => '#' . Direction::Vocal->value,
                         'title' => '🎤  Вокал',
                     ],
                     [
-                        'url' => '#'.Direction::Piano->value,
+                        'url' => '#' . Direction::Piano->value,
                         'title' => '🎹  Клавішні',
                     ],
                     [
-                        'url' => '#'.Direction::Guitar->value,
+                        'url' => '#' . Direction::Guitar->value,
                         'title' => '🎸  Гітара',
                     ],
                     [
-                        'url' => '#'.Direction::Ukulele->value,
+                        'url' => '#' . Direction::Ukulele->value,
                         'title' => '🏝️  Укулеле',
                     ],
                     [
-                        'url' => '#'.Direction::Saxophone->value,
+                        'url' => '#' . Direction::Saxophone->value,
                         'title' => '🎷  Саксофон',
                     ],
                 ],

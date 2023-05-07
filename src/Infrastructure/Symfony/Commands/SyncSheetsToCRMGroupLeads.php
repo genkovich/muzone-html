@@ -19,7 +19,7 @@ final class SyncSheetsToCRMGroupLeads extends Command
         $output->writeln('Syncing group leads from Google Sheets to CRM...');
 
         \ini_set('max_execution_time', 0); // 0=NOLIMIT
-        \putenv('GOOGLE_APPLICATION_CREDENTIALS='.__DIR__.'/../../weberg-39d08063d530.json');
+        \putenv('GOOGLE_APPLICATION_CREDENTIALS=' . __DIR__ . '/../../weberg-39d08063d530.json');
 
         $client = new Client();
         $client->useApplicationDefaultCredentials();
@@ -62,13 +62,13 @@ final class SyncSheetsToCRMGroupLeads extends Command
             'base_uri' => 'https://api.sendpulse.com/',
             'headers' => [
                 'Content-Type' => 'application/json',
-                'Authorization' => 'Bearer '.$accessToken,
+                'Authorization' => 'Bearer ' . $accessToken,
             ],
         ]);
 
         $pipelineId = 50685;
 
-        $output->writeln('Total leads: '.\count($sheetsValues));
+        $output->writeln('Total leads: ' . \count($sheetsValues));
 
         foreach ($sheetsValues as $value) {
             $contact = [
@@ -95,12 +95,12 @@ final class SyncSheetsToCRMGroupLeads extends Command
 
             $contactId = $responseContact['data']['id'];
 
-            $date = empty($value[9]) || '-' === $value[9] ? new \DateTimeImmutable('1970-01-01') : (new \DateTimeImmutable($value[9].' '.$value[10]));
+            $date = empty($value[9]) || '-' === $value[9] ? new \DateTimeImmutable('1970-01-01') : (new \DateTimeImmutable($value[9] . ' ' . $value[10]));
             $deal = [
                 'pipelineId' => $pipelineId,
                 'stepId' => $statuses[$value['8']],
                 'responsibleId' => 8194976,
-                'name' => $value['2'].' '.$value['1'],
+                'name' => $value['2'] . ' ' . $value['1'],
                 'price' => 'Детская' === $value['6'] ? 1100 : 1400,
                 'currency' => 'UAH',
                 'sourceId' => null,
@@ -133,7 +133,7 @@ final class SyncSheetsToCRMGroupLeads extends Command
                     'value' => $value[5],
                 ];
             }
-            $output->writeln('Deal: '.$value['2'].' '.$value['1']);
+            $output->writeln('Deal: ' . $value['2'] . ' ' . $value['1']);
 
             $response = $curlClient->post(
                 'crm/v1/deals',
@@ -148,7 +148,7 @@ final class SyncSheetsToCRMGroupLeads extends Command
             $dealId = $responseDeal['data']['id'];
 
             $response = $curlClient->post(
-                'crm/v1/deals/'.$dealId.'/comments',
+                'crm/v1/deals/' . $dealId . '/comments',
                 [
                     'json' => [
                         'message' => $value['11'] ?? '-',

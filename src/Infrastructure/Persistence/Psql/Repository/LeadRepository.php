@@ -86,7 +86,7 @@ final readonly class LeadRepository implements LeadRepositoryInterface
         if (!empty($filters['search'])) {
             $search = $filters['search'];
             $qb->andWhere('contact_value LIKE :search')
-                ->setParameter('search', '%'.$search.'%')
+                ->setParameter('search', '%' . $search . '%')
             ;
         }
 
