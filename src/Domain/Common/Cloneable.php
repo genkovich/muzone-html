@@ -30,6 +30,10 @@ abstract readonly class Cloneable
     }
 
     /**
+     *
+     * @param string $field
+     * @param mixed $value
+     *
      * @throws \ReflectionException
      */
     public function withField(string $field, mixed $value): static

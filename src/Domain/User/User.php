@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Domain\User;
 
 use Domain\Common\Cloneable;
-use JetBrains\PhpStorm\ArrayShape;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 final readonly class User extends Cloneable implements \JsonSerializable, UserInterface
@@ -22,14 +21,6 @@ final readonly class User extends Cloneable implements \JsonSerializable, UserIn
     ) {
     }
 
-    #[ArrayShape([
-        'user_id' => 'string',
-        'email' => 'string',
-        'avatar' => 'string',
-        'name' => 'string',
-        'surname' => 'string',
-        'roles' => 'array',
-    ])]
     public function jsonSerialize(): array
     {
         return [

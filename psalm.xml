@@ -13,4 +13,14 @@
             <directory name="vendor" />
         </ignoreFiles>
     </projectFiles>
+
+    <issueHandlers>
+        <TooManyArguments>
+            <errorLevel type="suppress">
+                <referencedFunction name="Doctrine\Common\Collections\ExpressionBuilder::orx"/>
+                <referencedFunction name="Doctrine\Common\Collections\ExpressionBuilder::andx"/>
+                <referencedFunction name="Doctrine\DBAL\Query\QueryBuilder::select"/>
+            </errorLevel>
+        </TooManyArguments>
+    </issueHandlers>
 </psalm>

@@ -8,6 +8,9 @@ use Symfony\Component\Form\Extension\Core\DataMapper\DataMapper;
 
 class PaginationDataMapper extends DataMapper
 {
+    /**
+     * @psalm-suppress ParamNameMismatch, InvalidArgument
+     */
     public function mapFormsToData(iterable $forms, &$data): void
     {
         // @var \Traversable $forms

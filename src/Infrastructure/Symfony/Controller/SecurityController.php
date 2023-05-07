@@ -24,7 +24,7 @@ final class SecurityController extends AbstractController
         ]);
     }
 
-    public function logout(Security $security): Response
+    public function logout(Security $security): ?Response
     {
         return $security->logout(false);
     }

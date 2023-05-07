@@ -14,7 +14,8 @@ final class GoogleController extends AbstractController
 {
     public function connectGoogleStart(ClientRegistry $clientRegistry): Response
     {
-        return $clientRegistry->getClient('google')->redirect();
+        $defaultScope = $defaultOptions = [];
+        return $clientRegistry->getClient('google')->redirect($defaultScope, $defaultOptions);
     }
 
     public function connectCheckAction(UrlGeneratorInterface $urlGenerator): Response

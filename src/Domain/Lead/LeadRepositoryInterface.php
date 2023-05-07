@@ -10,7 +10,7 @@ interface LeadRepositoryInterface
 
     public function insert(Lead $lead): void;
 
-    public function getList(int $limit, int $offset): array;
+    public function getList(int $limit, int $offset, array $filters = []): array;
 
     public function markTelegramSent(LeadId $leadId): void;
 

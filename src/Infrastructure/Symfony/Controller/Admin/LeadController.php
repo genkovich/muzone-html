@@ -34,6 +34,7 @@ final class LeadController extends AbstractController
             $listPagination = $form->getData();
         }
 
+        /** @psalm-suppress UndefinedInterfaceMethod */
         $filters = [
             'date_from' => $listPagination->getFromDate()?->setTime(0, 0, 0),
             'date_to' => $listPagination->getToDate()?->setTime(23, 59, 59),

@@ -19,5 +19,5 @@ interface UserRepositoryInterface
     /**
      * @return User[]
      */
-    public function getList(int $limit, int $offset): array;
+    public function getList(int $limit = 10, int $offset = 0): array;
 }
