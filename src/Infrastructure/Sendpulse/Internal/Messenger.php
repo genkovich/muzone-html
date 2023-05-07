@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Infrastructure\Sendpulse\Internal;
 
 enum Messenger: int
