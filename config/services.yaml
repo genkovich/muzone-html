@@ -1,6 +1,7 @@
 imports:
   - { resource: './sendpulse/**.yaml' }
   - { resource: 'controllers.yaml' }
+  - { resource: './admin/**.yaml' }
 
 parameters:
   telegram_chat_id_notify: '%env(TELEGRAM_CHAT_ID_NOTIFY)%'

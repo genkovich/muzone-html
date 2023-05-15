@@ -3,6 +3,8 @@
 @import '~bootstrap-icons/font/bootstrap-icons';
 @import '~toastr/toastr';
 
+@import "./services";
+
 .toast-custom {
   top: 68px;
   right: 12px;

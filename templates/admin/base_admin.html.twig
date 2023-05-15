@@ -23,7 +23,7 @@
     {{ encore_entry_link_tags('admin_style') }}
 </head>
 <body>
-<div class="wrapper">
+<div class="wrapper" id="app">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid d-flex align-items-center">
                 <div >
@@ -80,12 +80,14 @@
         </div>
 
         <main  class="d-flex container-fluid">
-            {% block body %} {% endblock %}
+            {% block content %} {% endblock %}
         </main>
     </div>
 
 </div>
 {{ encore_entry_script_tags('admin') }}
+{% block javascripts %} {% endblock %}
+{{ encore_entry_script_tags('app') }}
 
 </body>
 </html>

@@ -1,3 +1,5 @@
+
+import './app-vue';
 import '@popperjs/core';
 import 'bootstrap/dist/js/bootstrap.bundle';
 
@@ -17,9 +19,6 @@ const images = imagesContext.keys().reduce((images, key) => {
 }, {});
 
 window.images = images;
-
-const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 
 $(document).ready(function() {
 

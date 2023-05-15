@@ -1,0 +1,27 @@
+services:
+  service.repository.psql:
+    class: Infrastructure\Persistence\Psql\Repository\ServiceRepository
+    arguments:
+      - '@database_connection'
+      - '@uuid.factory'
+      - '@service.factory'
+
+  service.repository:
+    alias: service.repository.psql
+
+  service.factory:
+    class: Domain\Service\ServiceFactory
+    arguments:
+      - '@service.price.factory'
+
+  service.price.factory:
+    class: Domain\Service\Price\ServicePriceFactory
+
+  service.handler.create_service:
+    class: Application\Admin\Service\ServiceCreateHandler
+    arguments:
+      - '@service.repository'
+      - '@service.factory'
+
+  Infrastructure\Symfony\ArgumentResolver\Service\ServiceCreateCommandArgumentResolver:
+    tags: [ 'controller.argument_value_resolver' ]

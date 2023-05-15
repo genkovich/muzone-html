@@ -8,7 +8,7 @@ use Domain\Age;
 use Domain\Common\Currency;
 use Domain\Direction;
 use Domain\Service\LessonsCount;
-use Domain\Service\Price;
+use Domain\Service\Price\ServicePrice;
 use Domain\Service\Service;
 use Domain\Service\ServiceId;
 use Domain\Service\Title;
@@ -36,7 +36,7 @@ final class ServiceTest extends TestCase
     {
         $serviceId = new ServiceId(Uuid::v4()->toRfc4122());
         $title = new Title($this->faker->sentence(3));
-        $price = new Price(
+        $price = new ServicePrice(
             $this->faker->numberBetween(100, 10000),
             Currency::from($this->faker->randomElement(['UAH', 'USD', 'EUR']))
         );

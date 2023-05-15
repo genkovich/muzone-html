@@ -61,6 +61,7 @@ Encore
         from: './assets/styles/favicon',
         to: 'favicon/[path][name].[ext]',
     })
+    .enableVueLoader()
 ;
 
 const adminJsPath = './assets/admin/js';

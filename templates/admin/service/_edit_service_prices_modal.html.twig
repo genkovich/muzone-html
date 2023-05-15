@@ -1,0 +1,30 @@
+<div class="modal fade" id="price-history-modal" tabindex="-1" aria-labelledby="priceHistoryModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="priceHistoryModalLabel">Історія цін</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрити"></button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Ціна</th>
+                        <th>Валюта</th>
+                        <th>Дата початку</th>
+                        <th>Дата закінчення</th>
+                        <th>Дії</th>
+                    </tr>
+                    </thead>
+                    <tbody id="price-history-table">
+                    </tbody>
+                </table>
+                <button id="add-new-price" class="btn btn-primary mb-3">Додати нову ціну</button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрити</button>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -323,6 +323,9 @@
             "config/packages/uid.yaml"
         ]
     },
+    "symfony/ux-vue": {
+        "version": "v2.8.0"
+    },
     "symfony/validator": {
         "version": "6.1",
         "recipe": {

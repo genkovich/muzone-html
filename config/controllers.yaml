@@ -52,6 +52,15 @@ services:
     arguments:
       - '@lead_repository'
 
+  Infrastructure\Symfony\Controller\Admin\ServiceController:
+    public: true
+    tags: [ 'controller.service_arguments', 'container.service_subscriber' ]
+    calls:
+      - [ setContainer, [ '' ] ]
+    arguments:
+      - '@service.repository'
+      - '@service.handler.create_service'
+
   Infrastructure\Symfony\Controller\Cabinet\MainController:
     public: true
     tags: [ 'controller.service_arguments', 'container.service_subscriber' ]
