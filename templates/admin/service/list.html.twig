@@ -3,59 +3,7 @@
 {% block content %}
     <div class="col-lg-12">
     <div class="row w-100">
-        <div class="col-md-12">
-            <h2 class="mb-2 mt-2">Послуги</h2>
 
-            <div class="d-flex flex-wrap align-items-center justify-content-end gap-2 mb-3">
-                <div>
-                    <a href="#" data-bs-toggle="modal" data-bs-target="#add-new-service-modal"
-                       class="btn btn-success"><i class="bi bi-plus-lg me-1"></i> Add New</a>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="table-responsive">
-                        <table class="table project-list-table table-nowrap table-borderless">
-                            <thead>
-                            <tr>
-                                <th>#</th>
-                                <th scope="col">Назва</th>
-                                <th scope="col">Ціна</th>
-                                <th scope="col">Вік</th>
-                                <th scope="col">Кількість занять</th>
-                                <th scope="col">Дії</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {% for service in services %}
-                                <tr>
-                                    <td>{{ loop.index + offset }}</td>
-                                    <td>
-                                        {{ service.direction.icon }} {{ service.title }}
-                                    </td>
-                                    <td>
-                                        {{ service.price | trans }}
-                                    </td>
-                                    <td>
-                                        {{ service.age.icon }} {{ service.age.value }}
-                                    </td>
-                                    <td>
-                                        {{ service.lessonsCount }}
-                                    </td>
-                                    <td class="actions-cell">
-                                        <i class="bi bi-currency-dollar me-1 i-green open-service-prices-modal" data-service-id="{{ service.serviceId }}" title="Ціни"></i>
-                                        <i class="bi bi-pencil me-1 text-secondary" title="Редагувати"></i>
-                                        <i class="bi bi-trash me-1 text-danger" title="Видалити"></i>
-                                    </td>
-                                </tr>
-                            {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
         <edit-service-modal
                 :directions="{{ directions|json_encode }}"

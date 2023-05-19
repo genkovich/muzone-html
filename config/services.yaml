@@ -12,6 +12,10 @@ services:
   Monolog\Processor\PsrLogMessageProcessor:
     tags: { name: monolog.processor, handler: sentry }
 
+  Infrastructure\Symfony\EventListener\JsonRequestListener:
+    tags:
+      - { name: kernel.event_listener, event: kernel.request, priority: 100 }
+
   Infrastructure\Symfony\ArgumentResolver\SaveLeadCommandArgumentResolver:
     tags: [ 'controller.argument_value_resolver' ]
 

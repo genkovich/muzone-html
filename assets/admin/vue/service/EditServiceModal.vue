@@ -21,6 +21,25 @@
                             </div>
                         </div>
 
+                        <div class="mb-3">
+                            <label for="direction" class="visually-hidden">Напрямок</label>
+                            <div class="input-group">
+                            <span class="input-group-text">
+                                <i class="bi bi-person"></i>
+                            </span>
+                                <select class="form-select" id="direction" v-model="service.direction" required>
+                                    <option value="" disabled>Виберіть напрямок...</option>
+                                    <option v-for="direction in directions" :key="direction.value" :value="direction.value">
+                                        {{ direction.icon }} {{ direction.label }}
+                                    </option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Будь ласка, виберіь напрямок.
+                                </div>
+                            </div>
+                        </div>
+
+
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <label for="price" class="visually-hidden">Ціна</label>
@@ -103,8 +122,6 @@
 
 <script setup>
 import {defineProps, reactive, watch, onMounted} from 'vue';
-import { useField, useForm, defineRule } from 'vee-validate';
-import { required, min, numeric, length } from '@vee-validate/rules';
 import axios from 'axios';
 import toastr from 'toastr';
 
@@ -119,35 +136,13 @@ let service = reactive({
     age: ''
 });
 
-const { form } = useForm(service);
-
-defineRule('required', required);
-defineRule('min', min);
-defineRule('numeric', numeric);
-
-const { errors, validate } = useForm();
-
-const rules = {
-    title: { required: true},
-    direction: 'required',
-    price: { required: true, numeric: true, min: 0 },
-    currency: 'required',
-    lessons_count: { required: true, numeric: true, min: 1 },
-    age: 'required'
-};
-
-Object.keys(service).forEach(key => {
-    form[key] = useField(key, rules[key]);
+let errors = reactive({
+    title: '',
+    price: '',
+    currency: '',
+    lessons_count: '',
+    age: ''
 });
-
-onMounted(() => {
-    fetchData();
-});
-
-function fetchData() {
-    // Fetch directions, currencies, ages from your backend or API
-    // This is a placeholder, replace with actual calls
-}
 
 function addNewService() {
     axios.post(props.create_route, service)

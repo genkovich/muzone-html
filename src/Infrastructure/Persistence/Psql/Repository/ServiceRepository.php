@@ -7,6 +7,7 @@ namespace Infrastructure\Persistence\Psql\Repository;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Exception;
 use Doctrine\DBAL\Types\Types;
+use Domain\Service\Price\ServicePriceId;
 use Domain\Service\Service;
 use Domain\Service\ServiceFactory;
 use Domain\Service\ServiceId;
@@ -25,6 +26,11 @@ final readonly class ServiceRepository implements ServiceRepositoryInterface
     public function nextIdentity(): ServiceId
     {
         return new ServiceId((string) $this->uuidFactory->create());
+    }
+
+    public function nextServicePriceIdentity(): ServicePriceId
+    {
+        return new ServicePriceId((string) $this->uuidFactory->create());
     }
 
     /**

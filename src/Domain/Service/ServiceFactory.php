@@ -9,6 +9,7 @@ use Domain\Common\Currency;
 use Domain\Direction;
 use Domain\Service\Price\ServicePrice;
 use Domain\Service\Price\ServicePriceFactory;
+use Domain\Service\Price\ServicePriceId;
 
 final readonly class ServiceFactory
 {
@@ -45,6 +46,7 @@ final readonly class ServiceFactory
     public function create(
         ServiceId $serviceId,
         string $title,
+        ServicePriceId $servicePriceId,
         int $price,
         string $currency,
         string $direction,
@@ -56,7 +58,14 @@ final readonly class ServiceFactory
         return new Service(
             $serviceId,
             new Title($title),
-            new ServicePrice($price, Currency::from($currency)),
+            new ServicePrice(
+                $servicePriceId,
+                $serviceId,
+                $price,
+                Currency::from($currency),
+                $now,
+                $now,
+            ),
             Direction::from($direction),
             new LessonsCount($lessonsCount),
             Age::from($age),

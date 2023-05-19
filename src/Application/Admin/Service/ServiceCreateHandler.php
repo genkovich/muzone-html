@@ -19,10 +19,12 @@ final readonly class ServiceCreateHandler
     public function handle(ServiceCreateCommand $serviceCreateCommand): void
     {
         $serviceId = $this->serviceRepository->nextIdentity();
+        $servicePriceId = $this->serviceRepository->nextServicePriceIdentity();
 
         $service = $this->serviceFactory->create(
             $serviceId,
             $serviceCreateCommand->title,
+            $servicePriceId,
             $serviceCreateCommand->price,
             $serviceCreateCommand->currency,
             $serviceCreateCommand->direction,
