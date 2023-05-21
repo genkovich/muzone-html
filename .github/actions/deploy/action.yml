@@ -51,6 +51,9 @@ runs:
           sops --decrypt ${{ inputs.folder }}${{ inputs.timestamp }}/.env.local.sops > ${{ inputs.folder }}${{ inputs.timestamp }}/.env.local
           cd ${{ inputs.project_folder }}
           ln -sfn deployment/{{ inputs.timestamp }}/ current
+          cd current
+          mkdir -p var/cache/ var/log/
+          chmod -R 777 var/
           cd ${{ inputs.folder }}
           ls -t | tail -n +6 | xargs -I {} rm -rf {}
           docker exec ${{ inputs.php_container }} ${{ inputs.container_folder }}bin/console doctrine:migrations:migrate --no-interaction
