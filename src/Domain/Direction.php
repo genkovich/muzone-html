@@ -20,6 +20,8 @@ enum Direction: string
 
     case Certificate = 'certificate';
 
+    case Sales = 'sales';
+
     case Other = 'other';
 
     case Unknown = 'unknown';
@@ -34,6 +36,7 @@ enum Direction: string
             self::Ukulele => '🪕',
             self::Saxophone => '🎷',
             self::Certificate => '📜',
+            self::Sales => '💰',
             default => '?',
         };
     }

@@ -28,6 +28,9 @@ const images = imagesContext.keys().reduce((images, key) => {
     return images;
 }, {});
 
+import videoSource from './landing/video/wow.webm';
+
+window.videoSource = videoSource;
 window.images = images;
 
 $(document).ready(() => {

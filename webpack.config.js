@@ -37,6 +37,13 @@ Encore
             };
         }
     )
+    .addLoader({
+        test: /\.webm$/,
+        loader: 'file-loader',
+        options: {
+            name: 'videos/[name].[hash].[ext]',
+        },
+    })
     .enablePostCssLoader()
     .addPlugin(new MiniCssExtractPlugin({
         filename: '[name].css'
