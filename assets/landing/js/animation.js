@@ -9,10 +9,6 @@ export function animationInit(gsap, ScrollToPlugin, ScrollTrigger, Quad, $) {
 	$window.on('resize', function () {
 		ScrollTrigger.refresh();
 	});
-	$window.on('scroll', function () {
-		ScrollTrigger.refresh();
-	});
-
 
 	// animate wow--------------------------------------------
 	$('.j-wow').each(function (e, el) {
@@ -34,37 +30,49 @@ export function animationInit(gsap, ScrollToPlugin, ScrollTrigger, Quad, $) {
 		if ($el.is('.j-wow-right')) {
 			gsap.from(el, {
 				x: 100,
-				autoAlpha: 0,
+				opacity: 0,
 				duration: duration,
 				delay: delay,
 				ease: ease,
+				onStart: function() {
+					el.style.visibility = 'visible';
+				}
 			});
 		}
 		if ($el.is('.j-wow-left')) {
 			gsap.from(el, {
 				x: -100,
-				autoAlpha: 0,
+				opacity: 0,
 				duration: duration,
 				delay: delay,
 				ease: ease,
+				onStart: function() {
+					el.style.visibility = 'visible';
+				}
 			});
 		}
 		if ($el.is('.j-wow-bottom')) {
 			gsap.from(el, {
 				y: 100,
-				autoAlpha: 0,
+				opacity: 0,
 				duration: duration,
 				delay: delay,
 				ease: ease,
+				onStart: function() {
+					el.style.visibility = 'visible';
+				}
 			});
 		}
 		if ($el.is('.j-wow-top')) {
 			gsap.from(el, {
 				y: -100,
-				autoAlpha: 0,
+				opacity: 0,
 				duration: duration,
 				delay: delay,
 				ease: ease,
+				onStart: function() {
+					el.style.visibility = 'visible';
+				}
 			});
 		}
 		if ($el.is('.j-wow-class')) {
