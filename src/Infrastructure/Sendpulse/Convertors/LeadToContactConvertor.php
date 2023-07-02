@@ -40,7 +40,7 @@ final readonly class LeadToContactConvertor
         return new Contact(
             firstName: $contactValue ?? '',
             lastName: '',
-            phone: $phone,
+            phone: $this->extractPhoneFromString($phone),
             messengers: $messengers,
             responsibleId: Responsible::Muzone->value,
         );
@@ -64,5 +64,13 @@ final readonly class LeadToContactConvertor
         $input = \preg_replace($urlPattern, '', $input);
 
         return \ltrim($input, '@');
+    }
+
+    public function extractPhoneFromString(string $input): int
+    {
+        $input = \trim($input);
+        $input = \preg_replace('/\D/', '', $input);
+
+        return (int) $input;
     }
 }

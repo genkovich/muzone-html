@@ -125,6 +125,6 @@ $(document).ready(function () {
         $form.find('input[name="direction"]').val(direction);
         $form.find('input[name="age"]').val(age);
         $form.find('input[name="group_type"]').val(groupType);
-        $form.find('input[name="count"]').val(count);
+        $form.find('[name="count"]').val(count);
     });
 });

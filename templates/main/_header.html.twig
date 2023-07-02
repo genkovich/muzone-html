@@ -4,76 +4,82 @@
             <a href="/" class="header__logo">
                 <img src="{{ asset('build/images/logo.png') }}" srcset="{{ asset('build/images/logo@2x.png') }}" alt="">
             </a>
-            <div class="header__menu" id="menu">
-                <div class="header__menu-inner">
-                    <nav class="header__nav">
-                        <ul class="header__nav-list ">
-                            {% for item in menu %}
-                                {% if item.subitems is defined and item.subitems is not empty %}
-                                <li class="header__nav-li dropdown">
-                                    <a href="{{ item.url }}" class="header__nav-a j-scroll">
-                                        {{ item.title }} <i class="caret-icon bi bi-caret-down-fill"></i>
-                                    </a>
-                                    <div class="dropdown-menu">
-                                        {% for subitem in item.subitems %}
-                                            <a href="{{ subitem.url }}" class="dropdown-item j-scroll">{{ subitem.title }}</a>
-                                        {% endfor %}
 
-                                    </div>
-                                </li>
-                                {% else %}
-                                <li class="header__nav-li ">
-                                    <a href="{{ item.url }}" class="header__nav-a j-scroll">
-                                        {{ item.title }}
-                                    </a>
-                                </li>
-                                {% endif %}
+            <div class="header__right">
+                <a href="tel:+380933010369" class="header__phone__mobile">
+                    +380 (93) 301-03-69
+                </a>
+                <div class="header__menu" id="menu">
+                    <div class="header__menu-inner">
+                        <nav class="header__nav">
+                            <ul class="header__nav-list ">
+                                {% for item in menu %}
+                                    {% if item.subitems is defined and item.subitems is not empty %}
+                                    <li class="header__nav-li dropdown">
+                                        <a href="{{ item.url }}" class="header__nav-a j-scroll">
+                                            {{ item.title }} <i class="caret-icon bi bi-caret-down-fill"></i>
+                                        </a>
+                                        <div class="dropdown-menu">
+                                            {% for subitem in item.subitems %}
+                                                <a href="{{ subitem.url }}" class="dropdown-item j-scroll">{{ subitem.title }}</a>
+                                            {% endfor %}
 
-                            {% endfor %}
-                        </ul>
-                    </nav>
-                    <div class="header__info">
-                        <a href="#contacts" class="header__address j-scroll">
-                            <svg>
-                                <use xlink:href="{{ asset('build/images/icons.svg') }}#marker"/>
-                            </svg>
-                            як нас знайти
-                        </a>
-                        <a href="tel:+380933010369" class="header__phone">
-                            +380 (93) 301-03-69
-                        </a>
-                    </div>
-                    <div class="header__social">
-                        <div class="social">
-                            <ul class="social__list">
-                                <li class="social__li">
-                                    <a href="https://www.tiktok.com/@muzone_hub" class="social__a social__a--linkedin" target="_blank">
-                                        <svg>
-                                            <use xlink:href="{{ asset('build/images/icons.svg') }}#tiktok"/>
-                                        </svg>
-                                    </a>
-                                </li>
-                                <li class="social__li">
-                                    <a href="https://t.me/muzonefam" class="social__a social__a--twitter" target="_blank">
-                                        <svg>
-                                            <use xlink:href="{{ asset('build/images/icons.svg') }}#telegram"/>
-                                        </svg>
-                                    </a>
-                                </li>
-                                <li class="social__li">
-                                    <a href="https://www.instagram.com/muzone_music_hub/" class="social__a social__a--instagram" target="_blank">
-                                        <svg>
-                                            <use xlink:href="{{ asset('build/images/icons.svg') }}#instagram"/>
-                                        </svg>
-                                    </a>
-                                </li>
+                                        </div>
+                                    </li>
+                                    {% else %}
+                                    <li class="header__nav-li ">
+                                        <a href="{{ item.url }}" class="header__nav-a j-scroll">
+                                            {{ item.title }}
+                                        </a>
+                                    </li>
+                                    {% endif %}
+
+                                {% endfor %}
                             </ul>
+                        </nav>
+                        <div class="header__info">
+                            <a href="#contacts" class="header__address j-scroll">
+                                <svg>
+                                    <use xlink:href="{{ asset('build/images/icons.svg') }}#marker"/>
+                                </svg>
+                                як нас знайти
+                            </a>
+                            <a href="tel:+380933010369" class="header__phone">
+                                +380 (93) 301-03-69
+                            </a>
+                        </div>
+                        <div class="header__social">
+                            <div class="social">
+                                <ul class="social__list">
+                                    <li class="social__li">
+                                        <a href="https://www.tiktok.com/@muzone_hub" class="social__a social__a--linkedin" target="_blank">
+                                            <svg>
+                                                <use xlink:href="{{ asset('build/images/icons.svg') }}#tiktok"/>
+                                            </svg>
+                                        </a>
+                                    </li>
+                                    <li class="social__li">
+                                        <a href="https://t.me/muzonefam" class="social__a social__a--twitter" target="_blank">
+                                            <svg>
+                                                <use xlink:href="{{ asset('build/images/icons.svg') }}#telegram"/>
+                                            </svg>
+                                        </a>
+                                    </li>
+                                    <li class="social__li">
+                                        <a href="https://www.instagram.com/muzone_music_hub/" class="social__a social__a--instagram" target="_blank">
+                                            <svg>
+                                                <use xlink:href="{{ asset('build/images/icons.svg') }}#instagram"/>
+                                            </svg>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="header__toggle" data-target="#menu">
-                <span></span><span></span><span></span>
+                <div class="header__toggle" data-target="#menu">
+                    <span></span><span></span><span></span>
+                </div>
             </div>
         </div>
     </div>

@@ -18,6 +18,10 @@
         width: 134px;
         flex-shrink: 0;
     }
+    &__right {
+        display: flex;
+        align-items: center;
+    }
     &__menu {
         font-size: 12px;
         text-transform: uppercase;
@@ -81,6 +85,9 @@
         &:hover {
             color: $text;
         }
+        &__mobile {
+            display: none;
+        }
     }
     &__social {
         margin: 0 0 0 25px;
@@ -90,6 +97,7 @@
         height: 22px;
         position: relative;
         display: none;
+        margin-left: 20px;
         span {
             height: 2px;
             width: 100%;
@@ -255,6 +263,13 @@
             display: none;
         }
 
+        &__phone {
+            &__mobile {
+                font-size: 12px;
+                display: inline-block;
+                color: $blue;
+            }
+        }
     }
 }
 

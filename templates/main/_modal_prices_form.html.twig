@@ -8,8 +8,18 @@
         </div>
         <form class="modal__form form j-form" novalidate>
             <input name="theme" type="hidden" class="j-theme">
-            <label class="input2">
-                <input name="count" type="number" placeholder="Кількість занять">
+            <label class="input2 ">
+                <select name="count">
+                    <option selected disabled hidden>Кількість занять</option>
+                    <option value="4">4</option>
+                    <option value="8">8</option>
+                    <option value="12">12</option>
+                </select>
+                <div class="select-arrow">
+                    <svg>
+                        <use xlink:href="{{ asset('build/images/icons.svg') }}#arrow"/>
+                    </svg>
+                </div>
             </label>
             <label class="input2">
                 <input name="direction_title" type="text" placeholder="Напрямок">

@@ -125,6 +125,13 @@
         font: 900 60px / 1.2 $font;
         text-align: center;
     }
+    &__btn {
+        button {
+            width: 100%;
+            max-width: 280px;
+            margin: 0 auto;
+        }
+    }
 }
 
 @media screen and (max-width: 1200px) {

@@ -9,7 +9,7 @@ final readonly class Contact implements \JsonSerializable
     public function __construct(
         public string $firstName,
         public string $lastName,
-        public string $phone,
+        public int $phone,
         public array $messengers,
         public int $responsibleId,
     ) {
@@ -20,7 +20,7 @@ final readonly class Contact implements \JsonSerializable
         return [
             'firstName' => $this->firstName,
             'lastName' => $this->lastName,
-            'phone' => $this->phone,
+            'phones' => [$this->phone], //todo: add other phones
             'messengers' => $this->messengers,
             'responsibleId' => $this->responsibleId,
         ];

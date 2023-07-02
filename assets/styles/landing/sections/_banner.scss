@@ -42,11 +42,9 @@
         position: absolute;
         width: 48px;
         height: 48px;
-        background: $green;
         border-radius: 12px;
         z-index: 1;
-        transform: rotate(22deg);
-        animation: 1.5s kv infinite linear;
+        animation: 1.5s kv infinite linear, 3s background-kv infinite alternate linear;
         &--1 {
             left: -155px;
             top: 22px;
@@ -83,10 +81,25 @@
 
 @keyframes kv {
     0% {
-        transform: 0;
+        transform: rotate(0deg);
     }
     100% {
         transform: rotate(360deg);
+    }
+}
+
+@keyframes background-kv {
+    0% {
+        background-color: $greenH;
+        opacity: 0.8;
+    }
+    30% {
+        background-color: $green;
+        opacity: 1;
+    }
+    100% {
+        background-color: $green;
+        opacity: 1;
     }
 }
 

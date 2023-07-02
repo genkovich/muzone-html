@@ -163,6 +163,38 @@
     position: relative;
     cursor: text;
     margin: 0 0 15px;
+    select {
+        display: block;
+        border: 1px solid #C2D1D9;
+        height: 40px;
+        padding: 0 20px;
+        background: #fff;
+        width: 100%;
+        font: 400 14px / 1 $font;
+        border-radius: 3px;
+        appearance:none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+    }
+    .select-arrow {
+        position: absolute;
+        top: 50%;
+        right: 20px;
+        transform: translateY(-50%);
+        width: 8px;
+        height: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        pointer-events: none;
+        fill: $blue;
+
+        svg {
+            width: 8px;
+            height: 5px;
+        }
+    }
+
     input {
         display: block;
         border: 1px solid #C2D1D9;
