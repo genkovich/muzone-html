@@ -1,6 +1,12 @@
 
 services:
 
+  Infrastructure\Symfony\Controller\SitemapController:
+    public: true
+    tags: ['controller.service_arguments', 'container.service_subscriber']
+    calls:
+      - [setContainer, ['']]
+
   Infrastructure\Symfony\Controller\MainPageController:
     public: true
     tags: ['controller.service_arguments', 'container.service_subscriber']

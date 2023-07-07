@@ -2,6 +2,21 @@ main_page:
     path: /
     controller: Infrastructure\Symfony\Controller\MainPageController
 
+sitemap_html:
+    path: /sitemap
+    controller: Infrastructure\Symfony\Controller\SitemapController::sitemapHtml
+
+sitemap_xml:
+    path: /sitemap.xml
+    controller: Infrastructure\Symfony\Controller\SitemapController::sitemapXml
+
+sitemap_uk_xml:
+    path: /sitemap_uk.xml
+    controller: Infrastructure\Symfony\Controller\SitemapController::sitemapUkXml
+
+robots:
+    path: /robots.txt
+    controller: Infrastructure\Symfony\Controller\SitemapController::robots
 
 contact.save:
     path: /contact

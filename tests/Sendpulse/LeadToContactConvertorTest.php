@@ -48,7 +48,7 @@ final class LeadToContactConvertorTest extends TestCase
 
         static::assertSame('example', $convertedContact->firstName);
         static::assertSame('', $convertedContact->lastName);
-        static::assertSame('', $convertedContact->phone);
+        static::assertSame(0, $convertedContact->phone);
         static::assertCount(1, $convertedContact->messengers);
         static::assertSame(Messenger::Instagram->value, $convertedContact->messengers[0]['typeId']);
         static::assertSame('example', $convertedContact->messengers[0]['login']);
