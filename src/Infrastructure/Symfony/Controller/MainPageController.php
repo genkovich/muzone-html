@@ -10,12 +10,16 @@ use Domain\GroupType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 #[Route('/', name: 'main_page')]
 final class MainPageController extends AbstractController
 {
-    public function __invoke(): Response
+    public function __invoke(Request $request, TranslatorInterface $translator): Response
     {
+        $request->setLocale($request->get('_locale'));
+
         $services = [
             1 => [
                 'img' => 'build/images/1.jpg',
@@ -130,58 +134,7 @@ final class MainPageController extends AbstractController
                 ', ],
         ];
 
-        $menu = [
-            [
-                'url' => '#banner',
-                'title' => 'Головна',
-            ],
-            [
-                'url' => '#services',
-                'title' => 'Послуги',
-                'subitems' => [
-                    [
-                        'url' => '#' . Direction::Drums->value,
-                        'title' => '🥁  Барабани',
-                    ],
-                    [
-                        'url' => '#' . Direction::Vocal->value,
-                        'title' => '🎤  Вокал',
-                    ],
-                    [
-                        'url' => '#' . Direction::Piano->value,
-                        'title' => '🎹  Клавішні',
-                    ],
-                    [
-                        'url' => '#' . Direction::Guitar->value,
-                        'title' => '🎸  Гітара',
-                    ],
-                    [
-                        'url' => '#' . Direction::Ukulele->value,
-                        'title' => '🏝️  Укулеле',
-                    ],
-                    [
-                        'url' => '#' . Direction::Saxophone->value,
-                        'title' => '🎷  Саксофон',
-                    ],
-                ],
-            ],
-            [
-                'url' => '#cost',
-                'title' => 'Вартість',
-            ],
-            [
-                'url' => '#gift',
-                'title' => 'Подарунки',
-            ],
-            [
-                'url' => '#reviews',
-                'title' => 'Відгуки',
-            ],
-            [
-                'url' => '#contacts',
-                'title' => 'Контакти',
-            ],
-        ];
+        $menu = $this->createMenu($translator);
 
         $tabs = [
             Direction::Drums->value => 'Барабани',
@@ -342,8 +295,61 @@ final class MainPageController extends AbstractController
         ]);
     }
 
-    public function leads(): Response
+    public function createMenu(TranslatorInterface $translator): array
     {
-        dd('ok');
+        return [
+            [
+                'url' => '#banner',
+                'title' => $translator->trans('menu.main'),
+            ],
+            [
+                'url' => '#services',
+                'title' => $translator->trans('menu.services'),
+                'subitems' => [
+                    [
+                        'url' => '#drums',
+                        'title' => $translator->trans('menu.drums'),
+                    ],
+                    [
+                        'url' => '#vocal',
+                        'title' => $translator->trans('menu.vocal'),
+                    ],
+                    [
+                        'url' => '#piano',
+                        'title' => $translator->trans('menu.piano'),
+                    ],
+                    [
+                        'url' => '#guitar',
+                        'title' => $translator->trans('menu.guitar'),
+                    ],
+                    [
+                        'url' => '#ukulele',
+                        'title' => $translator->trans('menu.ukulele'),
+                    ],
+                    [
+                        'url' => '#saxophone',
+                        'title' => $translator->trans('menu.saxophone'),
+                    ],
+                ],
+            ],
+            [
+                'url' => '#cost',
+                'title' => $translator->trans('menu.cost'),
+            ],
+            [
+                'url' => '#gift',
+                'title' => $translator->trans('menu.gift'),
+            ],
+            [
+                'url' => '#reviews',
+                'title' => $translator->trans('menu.reviews'),
+            ],
+            [
+                'url' => '#contacts',
+                'title' => $translator->trans('menu.contacts'),
+            ],
+        ];
     }
+
+
 }

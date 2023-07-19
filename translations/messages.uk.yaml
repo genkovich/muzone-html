@@ -1,0 +1,13 @@
+menu:
+  main: "Головна"
+  services: "Послуги"
+  drums: "🥁  Барабани"
+  vocal: "🎤  Вокал"
+  piano: "🎹  Клавішні"
+  guitar: "🎸  Гітара"
+  ukulele: "🏝️  Укулеле"
+  saxophone: "🎷  Саксофон"
+  cost: "Вартість"
+  gift: "Подарунки"
+  reviews: "Відгуки"
+  contacts: "Контакти"

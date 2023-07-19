@@ -1,5 +1,5 @@
 main_page:
-    path: /
+    path: /{_locale}
     controller: Infrastructure\Symfony\Controller\MainPageController
 
 sitemap_html:
@@ -17,6 +17,10 @@ sitemap_uk_xml:
 robots:
     path: /robots.txt
     controller: Infrastructure\Symfony\Controller\SitemapController::robots
+    defaults:
+        _locale: uk
+    requirements:
+        _locale: uk|ru
 
 contact.save:
     path: /contact
