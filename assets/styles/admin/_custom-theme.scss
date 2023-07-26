@@ -1,18 +1,22 @@
-// Основные цвета
-$primary: #3502FF;
-$secondary: #FAFDFF;
-$success: #BDFF02;
-$warning: #FF00B8;
-$danger: #FFFFFF;
-$dark: #000000;
+// Main colors
+$primary: #1A237E; // Indigo
+$secondary: #C5CAE9; // Indigo 100
+$success: #388E3C; // Green
+$dark-green: #2E7D32; // Green Darken
+$warning: #FF9800; // Orange
+$danger: #D32F2F; // Red
+$dark: #212121; // Dark Grey
 
-// Цвета фона
-$body-bg: #FAFDFF;
-$navbar-bg: $dark;
-$sidebar-bg: $dark;
+// Background colors
+$body-bg: #FAFAFA; // Light Grey
+$navbar-bg: $primary;
+$sidebar-bg: $primary;
 
-// Цвета текста
+// Text colors
 $body-color: $dark;
+$text-gray: #9E9E9E; // Grey
+$text-dark-gray: #616161; // Dark Grey
+$text-white: #FFFFFF;
 $navbar-color: #FFFFFF;
 $sidebar-color: #FFFFFF;
 

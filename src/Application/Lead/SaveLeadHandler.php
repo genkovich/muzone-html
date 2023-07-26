@@ -6,9 +6,9 @@ namespace Application\Lead;
 
 use Application\Lead\Notifier\NotifierInterface;
 use Domain\Age;
+use Domain\Common\Contact\ContactFactory;
 use Domain\Direction;
 use Domain\GroupType;
-use Domain\Lead\Contact\ContactFactory;
 use Domain\Lead\Lead;
 use Domain\Lead\LeadRepositoryInterface;
 

@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Domain\Lead\Contact\Value;
+namespace Domain\Common\Contact\Value;
 
-final readonly class Telegram implements ContactValueInterface
+final readonly class Instagram implements ContactValueInterface
 {
     public function __construct(public string $value)
     {
         if (empty($value)) {
-            throw new \InvalidArgumentException('Telegram cannot be empty');
+            throw new \InvalidArgumentException('Instagram cannot be empty');
         }
 
         if (!\preg_match('/^[-:\/@#$\w_.]{4,150}$/', $value)) {

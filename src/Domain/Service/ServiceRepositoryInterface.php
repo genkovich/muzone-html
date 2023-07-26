@@ -12,6 +12,8 @@ interface ServiceRepositoryInterface
 
     public function find(ServiceId $serviceId): ?Service;
 
+    public function servicePrices(ServiceId $serviceId): array;
+
     public function update(Service $service): void;
 
     public function remove(ServiceId $serviceId): void;

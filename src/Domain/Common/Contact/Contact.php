@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Domain\Lead\Contact;
+namespace Domain\Common\Contact;
 
-use Domain\Lead\Contact\Value\ContactValueInterface;
+use Domain\Common\Contact\Value\ContactValueInterface;
 
 final readonly class Contact implements \JsonSerializable
 {

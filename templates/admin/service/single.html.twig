@@ -1,0 +1,90 @@
+{% extends 'admin/base_admin.html.twig' %}
+
+{% block body %}
+    <div class="container-fluid">
+        <section class="single-service__header">
+            <h2>
+                {{ service.title }}
+            </h2>
+            <div class="single-service__header-controls">
+                <a href="#" class="btn btn-success"><i class="bi bi-check-circle"></i></a>
+                <a href="#" class="btn btn-outline-danger"><i class="bi bi-trash-fill"></i></a>
+                <a href="#" class="btn btn-outline-info"><i class="bi bi-arrow-left"></i></a>
+            </div>
+        </section>
+        <section class="single-service__main">
+            <div class="single-service__main__service-description" id="edit-container">
+                <div>
+                    <div>
+                        Назва:
+                    </div>
+                    <div class="prop-editable" data-editable="title">
+                        {{ service.title }}
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        Напрямок:
+                    </div>
+                    <div class="prop-editable" data-editable="direction">
+                        {{ service.direction.icon }} {{ service.direction.name }}
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        Вік:
+                    </div>
+                    <div class="prop-editable" data-editable="age">
+                        {{ service.age.icon }}  {{ service.age.name }}
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        Кількість занять:
+                    </div>
+                    <div class="prop-editable" data-editable="lessonsCount">
+                        {{ service.lessonsCount }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="single-service__service-prices">
+                <div class="price-item">
+                    <div>
+                        #
+                    </div>
+                    <div>
+                        Початок
+                    </div>
+                    <div>
+                        Кінець
+                    </div>
+                    <div>
+                        Ціна
+                    </div>
+                </div>
+                {% for price in prices %}
+                    <div class="price-item">
+                        <div>
+                            {{ loop.index }}.
+                        </div>
+                        <div>
+                            {{ price.start_date is null ? 'Не назначено' : price.start_date | date('d.m.Y') }}
+                        </div>
+                        <div>
+                            {{ price.end_date is null ? 'Не назначено' : price.end_date | date('d.m.Y') }}
+                        </div>
+                        <div>
+                            {{ price.price }} {{ price.currency }}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    {{ parent() }}
+    <script src="{{ asset('build/admin/js/service-single.js') }}"></script>
+{% endblock %}

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Infrastructure\Symfony\ArgumentResolver;
 
 use Application\Lead\SaveLeadCommand;
-use Domain\Lead\Contact\ContactType;
+use Domain\Common\Contact\ContactType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Controller\ValueResolverInterface;
 use Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata;

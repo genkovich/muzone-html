@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="uk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,7 +20,10 @@
     <!-- Site Manifest -->
     <link rel="manifest" href="{{ asset('build/favicon/site.webmanifest') }}">
 
-    {{ encore_entry_link_tags('admin_style') }}
+    {% block styles %}
+        {{ encore_entry_link_tags('admin_style') }}
+    {% endblock %}
+
 </head>
 <body>
 <div class="wrapper">
@@ -85,7 +88,10 @@
     </div>
 
 </div>
-{{ encore_entry_script_tags('admin') }}
+
+{% block scripts %}
+    {{ encore_entry_script_tags('admin') }}
+{% endblock %}
 
 </body>
 </html>

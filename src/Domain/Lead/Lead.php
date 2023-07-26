@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Domain\Lead;
 
 use Domain\Age;
+use Domain\Common\Contact\Contact;
 use Domain\Direction;
 use Domain\GroupType;
-use Domain\Lead\Contact\Contact;
 
 final readonly class Lead implements \JsonSerializable
 {

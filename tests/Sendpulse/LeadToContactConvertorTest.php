@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Tests\Sendpulse;
 
-use Domain\Lead\Contact\Contact;
-use Domain\Lead\Contact\ContactType;
-use Domain\Lead\Contact\Value\Instagram;
+use Domain\Common\Contact\Contact;
+use Domain\Common\Contact\ContactType;
+use Domain\Common\Contact\Value\Instagram;
 use Domain\Lead\Lead;
 use Domain\Lead\LeadId;
 use Infrastructure\Sendpulse\Convertors\LeadToContactConvertor;

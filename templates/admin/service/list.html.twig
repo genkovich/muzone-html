@@ -1,0 +1,69 @@
+{% extends 'admin/base_admin.html.twig' %}
+
+{% block body %}
+    <div class="container-fluid">
+        <section class="admin__header">
+            <h2>Послуги</h2>
+            <div class="admin__header__directions">
+                <ul class="directions-navigate">
+                    <li {% if active_direction == null %} class="active" {% endif %}>
+                        <a href="{{ url('admin.services.list') }}">Всі</a>
+                    </li>
+                    {% for direction in directions %}
+                        <li {% if active_direction == direction.value %} class="active" {% endif %}>
+                            <a href="{{ url('admin.services.list', {'direction': direction.value}) }}">{{ direction.name }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <a href="#" class="admin__header__add-button" data-bs-toggle="modal" data-bs-target="#createServiceModal">
+                <i class="bi bi-plus-circle"></i>
+                Додати послугу
+            </a>
+        </section>
+        {% if services|length == 0 %}
+            <div class="alert alert-danger w-100 m-0" role="alert">
+                Немає послуг
+            </div>
+        {% else %}
+            <section class="services">
+                <div class="services__table">
+                    {% for service in services %}
+                        <div class="services-item" data-service-url="{{ url('admin.services.single', {'service_id': service.serviceId}) }}">
+                            <div>
+                                {{ service.title }}
+                            </div>
+                            <div class="info-cell">
+                                <div>
+                                    {{ service.direction.icon }}
+                                    <span class="mobile-hide">{{ service.direction.name }}</span>
+                                </div>
+                                <div>
+                                    {{ service.age.icon }} <span class="mobile-hide">{{ service.age.name }}</span>
+                                </div>
+                                <div>
+                                    {{ service.lessonsCount }}
+                                </div>
+                            </div>
+                            <div class="price-cell">
+                                <div>
+                                    {{ service.price }}
+                                </div>
+                                <div>
+                                    {{ service.price.currency.name }}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </section>
+        {% endif %}
+
+        {% include ('admin/service/_modal_create.html.twig') %}
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    {{ parent() }}
+    <script src="{{ asset('build/admin/js/service.js') }}"></script>
+{% endblock %}

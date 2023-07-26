@@ -1,0 +1,33 @@
+<div class="modal modal-service" tabindex="-1" id="createServiceModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <section class="create__service__main">
+                    <form id="create-service" data-url="{{ url('admin.services.create') }}">
+                        <div class="form__input-wrapper">
+                            <input type="text" name="title" class="form__input" placeholder="Назва послуги">
+                            <select name="direction">
+                                <option disabled selected value>Напрямок</option>
+                                {% for direction in directions %}
+                                    <option value="{{ direction.value }}">{{ direction.icon }} {{ direction.name }}</option>
+                                {% endfor %}
+                            </select>
+                            <select name="age" id="">
+                                <option disabled selected value>Вік</option>
+                                {% for age in ages %}
+                                    <option value="{{ age.value }}">{{ age.icon }} {{ age.name }}</option>
+                                {% endfor %}
+                            </select>
+                            <input type="number" name="lessons" class="form__input" placeholder="Кількість уроків">
+                            <input type="number" name="price" class="form__input" placeholder="Ціна">
+                            <div class="controls">
+                                <button type="submit" class="btn btn-create">Створити</button>
+                                <button class="btn btn-cancel" data-bs-dismiss="modal">Відмінити</button>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>

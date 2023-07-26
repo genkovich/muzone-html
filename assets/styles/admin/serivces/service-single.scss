@@ -1,0 +1,76 @@
+.single-service {
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  &__main {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+
+    &__service-description {
+      display: flex;
+      flex-direction: column;
+      background-color: $white;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 8px 20px;
+      min-width: 300px;
+      width: 100%;
+
+      >div {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        height: 24px;
+      }
+
+      .prop-editable {
+        cursor: pointer;
+        transition: background-color 0.03s ease-in-out;
+
+        &:hover {
+          background-color: lightgray;
+        }
+      }
+
+
+    }
+  }
+
+  &__service-prices {
+    display: flex;
+    flex-direction: column;
+    background-color: $white;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 4px 20px;
+    min-width: 300px;
+    width: 100%;
+
+    .price-item {
+      display: grid;
+      grid-template-columns: 20px 1fr 1fr 1fr;
+    }
+
+    .price-item:first-child {
+      margin-bottom: 20px;
+      padding: 8px 0;
+      border-bottom: 1px solid lightgray;
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .single-service {
+    &__main {
+      flex-direction: column;
+    }
+  }
+}

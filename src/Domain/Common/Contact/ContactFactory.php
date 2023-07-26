@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Domain\Lead\Contact;
+namespace Domain\Common\Contact;
 
-use Domain\Lead\Contact\Value\Instagram;
-use Domain\Lead\Contact\Value\Other;
-use Domain\Lead\Contact\Value\Phone;
-use Domain\Lead\Contact\Value\Telegram;
+use Domain\Common\Contact\Value\Instagram;
+use Domain\Common\Contact\Value\Other;
+use Domain\Common\Contact\Value\Phone;
+use Domain\Common\Contact\Value\Telegram;
 
 final readonly class ContactFactory
 {

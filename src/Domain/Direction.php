@@ -26,6 +26,20 @@ enum Direction: string
 
     case Unknown = 'unknown';
 
+
+    public static function all(): array
+    {
+        return [
+            self::Drums,
+            self::Vocal,
+            self::Guitar,
+            self::Piano,
+            self::Ukulele,
+            self::Saxophone,
+            self::Other,
+        ];
+    }
+
     public function icon(): string
     {
         return match ($this) {

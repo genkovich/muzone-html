@@ -1,67 +1,47 @@
-
 services:
+  _defaults:
+    public: true
+    autowire: true
+    autoconfigure: true
+
+
+# GLOBAL
 
   Infrastructure\Symfony\Controller\SitemapController:
     public: true
-    tags: ['controller.service_arguments', 'container.service_subscriber']
-    calls:
-      - [setContainer, ['']]
 
   Infrastructure\Symfony\Controller\MainPageController:
     public: true
-    tags: ['controller.service_arguments', 'container.service_subscriber']
-    calls:
-      - [setContainer, ['']]
 
   Infrastructure\Symfony\Controller\LeadController:
-    public: true
-    tags: ['controller.service_arguments', 'container.service_subscriber']
-    calls:
-      - [setContainer, ['']]
     arguments:
       - '@lead.handler_save'
 
   Infrastructure\Symfony\Controller\SecurityController:
     public: true
-    tags: [ 'controller.service_arguments', 'container.service_subscriber' ]
-    calls:
-      - [ setContainer, [ '' ] ]
 
   Infrastructure\Symfony\Controller\GoogleController:
-    public: true
-    tags: [ 'controller.service_arguments', 'container.service_subscriber' ]
-    calls:
-      - [ setContainer, [ '' ] ]
+
+  # ADMIN
 
   Infrastructure\Symfony\Controller\AdminController:
-    public: true
-    tags: [ 'controller.service_arguments', 'container.service_subscriber' ]
-    calls:
-      - [ setContainer, [ '' ] ]
     arguments:
       - '@user.repository'
 
   Infrastructure\Symfony\Controller\Admin\UserController:
-    public: true
-    tags: [ 'controller.service_arguments', 'container.service_subscriber' ]
-    calls:
-      - [ setContainer, [ '' ] ]
     arguments:
       - '@user.repository'
       - '@admin.user.change_user_field.handler'
 
+  Infrastructure\Symfony\Controller\Admin\ServiceController:
+    arguments:
+      - '@admin_management.service.repository'
+
   Infrastructure\Symfony\Controller\Admin\LeadController:
-    public: true
-    tags: [ 'controller.service_arguments', 'container.service_subscriber' ]
-    calls:
-      - [ setContainer, [ '' ] ]
     arguments:
       - '@lead_repository'
 
+  # CABINET
   Infrastructure\Symfony\Controller\Cabinet\MainController:
-    public: true
-    tags: [ 'controller.service_arguments', 'container.service_subscriber' ]
-    calls:
-      - [ setContainer, [ '' ] ]
     arguments:
       - '@logger'

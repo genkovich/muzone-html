@@ -1,5 +1,6 @@
 imports:
   - { resource: './sendpulse/**.yaml' }
+  - { resource: './admin/**/**.yaml' }
   - { resource: 'controllers.yaml' }
 
 parameters:
@@ -56,7 +57,7 @@ services:
     alias: lead_repository.psql
 
   lead.contact_factory:
-    class: Domain\Lead\Contact\ContactFactory
+    class: Domain\Common\Contact\ContactFactory
 
   lead.message_bus.notifier:
     class: Infrastructure\Symfony\Messenger\Notifier\MessengerNotifier

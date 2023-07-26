@@ -12,6 +12,14 @@ enum Age: string
 
     case Unknown = 'unknown';
 
+    public static function all(): array
+    {
+        return [
+            self::Kids,
+            self::Adult,
+        ];
+    }
+
     public function icon(): string
     {
         return match ($this) {

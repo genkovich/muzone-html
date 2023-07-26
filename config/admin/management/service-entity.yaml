@@ -1,0 +1,16 @@
+services:
+
+  admin_management.service.repository.psql:
+    class: Infrastructure\Persistence\Psql\Repository\ServiceRepository
+    arguments:
+      - '@database_connection'
+      - '@uuid.factory'
+      - '@admin_management.service.factory'
+      -
+  admin_management.service.repository:
+    alias: admin_management.service.repository.psql
+
+  admin_management.service.factory:
+    class: Domain\Service\ServiceFactory
+
+

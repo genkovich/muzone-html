@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Domain\Lead;
 
 use Domain\Age;
+use Domain\Common\Contact\ContactFactory;
 use Domain\Direction;
 use Domain\GroupType;
-use Domain\Lead\Contact\ContactFactory;
 
 final readonly class LeadFactory
 {

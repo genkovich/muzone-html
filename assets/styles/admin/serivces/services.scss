@@ -1,0 +1,133 @@
+@import 'create-service';
+@import 'service-single';
+
+.admin__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  margin-top: 12px;
+  margin-bottom: 20px;
+
+  &__directions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+
+    .directions-navigate {
+      display: flex;
+      list-style: none;
+      gap: 8px;
+      box-shadow: 0 2px 5px 0 rgba(38, 51, 77, 0.1);
+      padding: 4px 20px;
+      border-radius: 12px;
+      margin: 0;
+      background-color: #FFFFFF;
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .active {
+        color: $primary;
+        font-weight: 900;
+      }
+    }
+
+    .directions-navigate li {
+      display: flex;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  }
+
+  &__add-button {
+    text-decoration: none;
+    border: 1px $dark-green solid;
+    color: $dark-green;
+    padding: 4px 12px;
+    border-radius: 12px;
+    &:hover {
+      background: $dark-green;
+      color: $secondary;
+    }
+  }
+}
+
+.services {
+  display: flex;
+  width: 100%;
+  background-color: #ffffff;
+  box-shadow: 0 2px 5px 0 rgba(38, 51, 77, 0.1);
+  padding: 4px 0;
+  border-radius: 12px;
+
+  &__table {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    .services-item {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      padding: 8px 20px;
+      transition: background-color 80ms ease-in-out;
+
+      div {
+        display: flex;
+        align-items: center;
+      }
+
+      .service-item-title {
+        display: flex;
+      }
+
+      .price-cell {
+        max-width: 100px;
+        display: flex;
+        justify-content: space-between;
+        gap: 4px;
+      }
+
+      .info-cell {
+        display: flex;
+        justify-content: space-between;
+        gap: 8px;
+        max-width: 200px;
+        margin: 0 8px;
+      }
+      &:nth-child(2n) {
+        background-color: #F7F7F7;
+      }
+
+      &:hover {
+        cursor: pointer;
+        background-color: #e7e7e7;
+      }
+    }
+
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .admin__header {
+    &__directions {
+      .directions-navigate {
+        display: none;
+      }
+    }
+  }
+
+  .services {
+    &__table {
+      .services-item {
+        .info-cell {
+          max-width: 60px;
+        }
+      }
+    }
+  }
+}

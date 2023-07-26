@@ -67,6 +67,21 @@ admin.lead.list:
     controller: Infrastructure\Symfony\Controller\Admin\LeadController::list
     methods: [ GET, POST ]
 
+admin.services.list:
+    path: /admin/services
+    controller: Infrastructure\Symfony\Controller\Admin\ServiceController::list
+    methods: [ GET ]
+
+admin.services.single:
+    path: /admin/services/{service_id}
+    controller: Infrastructure\Symfony\Controller\Admin\ServiceController::single
+    methods: [ GET ]
+
+admin.services.create:
+    path: /admin/services/create
+    controller: Infrastructure\Symfony\Controller\Admin\ServiceController::create
+    methods: [ POST ]
+
 google.connect_start:
     path: /connect/google
     controller: Infrastructure\Symfony\Controller\GoogleController::connectGoogleStart

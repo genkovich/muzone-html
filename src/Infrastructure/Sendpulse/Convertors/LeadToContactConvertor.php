@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Infrastructure\Sendpulse\Convertors;
 
-use Domain\Lead\Contact\ContactType;
+use Domain\Common\Contact\ContactType;
 use Domain\Lead\Lead;
 use Infrastructure\Sendpulse\Internal\Contact;
 use Infrastructure\Sendpulse\Internal\Messenger;

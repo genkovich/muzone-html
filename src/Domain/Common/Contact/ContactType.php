@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Domain\Lead\Contact;
+namespace Domain\Common\Contact;
 
 enum ContactType: string
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Domain\Lead\Contact\Value;
+namespace Domain\Common\Contact\Value;
 
 final readonly class Phone implements ContactValueInterface
 {

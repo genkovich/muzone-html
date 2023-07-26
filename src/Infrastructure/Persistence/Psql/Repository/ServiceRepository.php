@@ -33,24 +33,20 @@ final readonly class ServiceRepository implements ServiceRepositoryInterface
     public function add(Service $service): void
     {
         $this->connection->executeStatement(
-            'INSERT INTO services (service_id, title, price, currency, direction, lessons_count, age, created_at, updated_at)
-             VALUES (:service_id, :title, :price, :direction, :lessons_count, :age, :created_at, :updated_at)',
+            'INSERT INTO services (service_id, title, direction, lessons_count, age, created_at, updated_at)
+             VALUES (:service_id, :title, :direction, :lessons_count, :age, :created_at, :updated_at)',
             [
                 'service_id' => $service->serviceId,
                 'title' => $service->title,
-                'price' => $service->price->price,
-                'currency' => $service->price->currency->value,
-                'direction' => $service->direction,
+                'direction' => $service->direction->value,
                 'lessons_count' => $service->lessonsCount,
-                'age' => $service->age,
+                'age' => $service->age->value,
                 'created_at' => $service->createdAt,
                 'updated_at' => $service->updatedAt,
             ],
             [
                 'service_id' => Types::GUID,
                 'title' => Types::STRING,
-                'price' => Types::STRING,
-                'currency' => Types::STRING,
                 'direction' => Types::STRING,
                 'lessons_count' => Types::INTEGER,
                 'age' => Types::STRING,
@@ -58,12 +54,40 @@ final readonly class ServiceRepository implements ServiceRepositoryInterface
                 'updated_at' => Types::DATETIMETZ_IMMUTABLE,
             ],
         );
+
+        $this->connection->executeStatement(
+            'INSERT INTO service_prices (id, service_id, currency, price, start_date, end_date, created_at, updated_at)
+                VALUES (:id, :service_id, :currency, :price, :start_date, :end_date, :created_at, :updated_at)',
+            [
+                'id' => $this->uuidFactory->create(),
+                'service_id' => $service->serviceId,
+                'currency' => $service->price->currency->value,
+                'price' => $service->price->price,
+                'start_date' => $service->createdAt,
+                'end_date' => null,
+                'created_at' => $service->createdAt,
+                'updated_at' => $service->updatedAt,
+            ],
+            [
+                'id' => Types::GUID,
+                'service_id' => Types::GUID,
+                'currency' => Types::STRING,
+                'price' => Types::STRING,
+                'start_date' => Types::DATETIMETZ_IMMUTABLE,
+                'end_date' => Types::DATETIMETZ_IMMUTABLE,
+                'created_at' => Types::DATETIMETZ_IMMUTABLE,
+                'updated_at' => Types::DATETIMETZ_IMMUTABLE,
+            ]
+
+        );
     }
 
     public function find(ServiceId $serviceId): ?Service
     {
         $result = $this->connection->executeQuery(
-            'SELECT * FROM services WHERE service_id = :service_id',
+            'SELECT * FROM services 
+                LEFT JOIN service_prices sp on services.service_id = sp.service_id
+                WHERE  services.service_id = :service_id',
             [
                 'service_id' => $serviceId,
             ],
@@ -81,15 +105,29 @@ final readonly class ServiceRepository implements ServiceRepositoryInterface
         return $this->serviceFactory->fromArray($data);
     }
 
+    public function servicePrices(ServiceId $serviceId): array
+    {
+        $result = $this->connection->executeQuery(
+            'SELECT * FROM service_prices WHERE service_id = :service_id',
+            [
+                'service_id' => $serviceId,
+            ],
+            [
+                'service_id' => Types::GUID,
+            ],
+        );
+
+        return $result->fetchAllAssociative();
+
+    }
+
     public function update(Service $service): void
     {
         $this->connection->executeStatement(
-            'UPDATE services SET title = :title, price = :price, currency = :currency, direction = :direction, lessons_count = :lessons_count, age = :age, updated_at = :updated_at WHERE service_id = :service_id',
+            'UPDATE services SET title = :title, direction = :direction, lessons_count = :lessons_count, age = :age, updated_at = :updated_at WHERE service_id = :service_id',
             [
                 'service_id' => $service->serviceId,
                 'title' => $service->title,
-                'price' => $service->price->price,
-                'currency' => $service->price->currency->value,
                 'direction' => $service->direction,
                 'lessons_count' => $service->lessonsCount,
                 'age' => $service->age,
@@ -98,8 +136,6 @@ final readonly class ServiceRepository implements ServiceRepositoryInterface
             [
                 'service_id' => Types::GUID,
                 'title' => Types::STRING,
-                'price' => Types::STRING,
-                'currency' => Types::STRING,
                 'direction' => Types::STRING,
                 'lessons_count' => Types::INTEGER,
                 'age' => Types::STRING,
@@ -121,19 +157,29 @@ final readonly class ServiceRepository implements ServiceRepositoryInterface
         );
     }
 
-    public function list(int $limit, int $offset): array
+    public function list(int $limit, int $offset, array $filter = []): array
     {
-        $result = $this->connection->executeQuery(
-            'SELECT * FROM services LIMIT :limit OFFSET :offset',
-            [
-                'limit' => $limit,
-                'offset' => $offset,
-            ],
-            [
-                'limit' => Types::INTEGER,
-                'offset' => Types::INTEGER,
-            ],
-        );
+
+        $qb = $this->connection->createQueryBuilder();
+        $qb->select('*')
+            ->from('services')
+            ->leftJoin('services', 'service_prices', 'service_prices', 'services.service_id = service_prices.service_id')
+            ->where('service_prices.end_date IS NULL')
+            ->orderBy('services.direction ASC, services.age')
+            ->setMaxResults($limit)
+            ->setFirstResult($offset);
+
+        if (isset($filter['direction'])) {
+            $qb->andWhere('services.direction = :direction')
+                ->setParameter('direction', $filter['direction']);
+        }
+
+        if (isset($filter['age'])) {
+            $qb->andWhere('services.age = :age')
+                ->setParameter('age', $filter['age']);
+        }
+
+        $result = $qb->executeQuery();
 
         $data = $result->fetchAllAssociative();
 
