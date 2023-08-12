@@ -1,0 +1,1140 @@
+{% extends 'base.html.twig' %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../../assets/styles/drumsPageStyles/drums.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+</head>
+
+{% block body %}
+    {% include('../../main/_header.html.twig') %}
+    <div class="description">
+        <div class="description__container">
+            <div class="description__title">— Сучасна музична школа в Одесі —</div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="230" height="340" viewBox="0 0 230 340" fill="none"
+                class="description__decor1">
+                <path
+                    d="M-223.175 1.52946C-267.939 30.3635 -313.579 68.1595 -340.755 114.732C-347.693 126.623 -352.877 139.32 -357.359 152.306C-360.319 160.88 -363.666 169.777 -362.283 178.992C-358.902 201.512 -339.254 220.336 -319.614 229.53C-281.884 247.194 -234.627 228.033 -198.235 215.241C-148.724 197.838 -96.1854 174.172 -57.5753 137.517C-35.9665 117.002 -21.9778 88.3454 -12.9552 60.2664C-10.9099 53.9013 -7.43766 45.2342 -10.1728 38.5186C-14.0566 28.9829 -28.2099 24.3866 -36.7558 21.1907C-75.7259 6.61715 -119.657 8.77503 -156.46 29.3625C-191.658 49.0528 -204.91 92.0834 -214.884 128.705C-219.845 146.918 -228.977 181.185 -209.896 194.694C-179.097 216.498 -133.434 209.703 -100.47 198.186C-69.9551 187.524 -45.1332 169.856 -21.1845 148.332C-3.02255 132.008 14.312 115.036 25.259 92.9634C28.4491 86.5309 35.2048 75.1014 30.0979 67.9952C21.3998 55.8919 -3.72927 52.2308 -17.0208 50.5658C-67.1406 44.287 -121.212 61.4975 -159.007 94.8612C-192.382 124.323 -214.596 165.164 -225.3 208.154C-247.01 295.35 -105.988 250.192 -67.9636 234.153C-37.9132 221.477 -9.86457 203.223 8.48276 175.676C16.7683 163.237 22.659 149.672 27.7438 135.671C32.8494 121.613 38.6941 106.64 37.6416 91.4151C35.8583 65.618 16.5625 52.2076 -6.22116 44.7591C-35.6658 35.133 -66.1926 39.2982 -89.993 60.0212C-125.106 90.5941 -139.818 134.774 -154.074 177.644C-160.637 197.383 -173.414 231.594 -160.039 251.571C-151.308 264.612 -128.048 267.735 -114.095 267.139C-77.6868 265.584 -44.9338 245.196 -16.4365 224.282C33.1227 187.911 83.3288 148.2 99.6608 85.8939C102.84 73.7665 98.1085 68.8676 92.3552 58.6258C86.6929 48.5462 81.9854 38.3062 70.4995 34.3414C51.2147 27.6845 32.0948 19.4383 11.5225 18.2045C-15.0636 16.6101 -44.2991 14.8083 -68.8506 26.7792C-87.5307 35.8873 -104.699 48.5224 -121.768 60.2613C-143.235 75.0247 -164.615 89.964 -185.165 105.993C-216.694 130.585 -246.664 160.999 -261.858 198.665C-269.476 217.55 -276.901 236.555 -283.221 255.922C-287.204 268.126 -286.759 282.319 -278.826 292.884C-268.351 306.835 -246.449 313.206 -230.662 318.025C-200.58 327.209 -169.583 319.582 -141.526 307.017C-88.5883 283.309 -36.9185 255.06 -4.18918 205.437C10.6647 182.917 20.483 158.285 28.754 132.745C33.8815 116.911 41.6698 92.571 26.272 79.9211C8.40381 65.2415 -14.3175 66.1988 -33.1231 78.0509C-61.7961 96.1219 -86.9102 128.238 -102.634 157.918C-114.271 179.884 -126.553 205.688 -128.451 230.814C-129.578 245.742 -130.246 264.635 -125.004 278.949C-112.348 313.511 -77.0164 326.786 -42.8152 314.598C-13.7721 304.248 14.0354 287.675 35.9584 265.804C54.3618 247.445 72.2872 226.481 81.9509 202.056C86.8979 189.552 94.4959 171.628 84.2643 159.767C71.5733 145.055 48.0723 151.317 33.6613 158.748C2.00878 175.071 -26.9254 203.314 -47.1689 232.452C-63.3008 255.671 -76.9024 282.067 -82.5999 310.035C-92.2631 357.47 -17.4106 331.212 2.29384 323.109C57.601 300.364 127.829 261.118 140.643 196.696C142.921 185.248 142.871 164.632 126.437 164.572C116.795 164.536 107.257 173.014 100.613 178.948C86.8164 191.269 75.2031 206.42 66.1002 222.495C56.7076 239.081 50.5868 254.303 56.3501 273.062C61.0756 288.443 72.4817 300.591 86.1659 308.609C94.2905 313.37 102.714 317.386 112.271 318.057C133.178 319.527 152.164 305.678 168.919 295.034C189.683 281.843 210.837 267.759 227.856 249.801"
+                    stroke="#3502FF" stroke-width="3" stroke-linecap="round" />
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="291" height="561" viewBox="0 0 291 561" fill="none"
+                class="description__decor2">
+                <path
+                    d="M1.98969 404.84C24.2952 451.166 55.0825 499.389 96.4719 530.938C107.039 538.993 118.588 545.46 130.496 551.288C138.358 555.137 146.484 559.395 155.477 559.154C177.453 558.564 197.821 541.939 208.963 524.188C230.368 490.085 217.625 442.507 209.694 406.099C198.903 356.567 182.473 303.393 151.943 262.047C134.857 238.907 109.065 222.116 83.2366 210.155C77.3816 207.443 69.4908 203.092 62.7322 204.924C53.1353 207.526 47.0504 220.557 42.9734 228.377C24.3816 264.033 21.2297 306.418 36.5807 344.138C51.2626 380.214 90.9127 397.992 124.812 411.871C141.672 418.774 173.415 431.569 188.624 414.862C213.172 387.893 212.088 343.301 204.97 310.331C198.381 279.811 184.404 253.925 166.628 228.422C153.147 209.081 138.947 190.457 119.101 177.359C113.318 173.541 103.171 165.716 95.7559 169.777C83.1272 176.692 76.6344 200.36 73.4601 212.911C61.4904 260.237 71.5544 314.12 99.0275 354.297C123.288 389.776 159.775 415.891 199.689 431.22C280.646 462.313 254.138 321.75 243.289 283.394C234.716 253.082 220.56 224.032 196.349 203.192C185.416 193.78 173.121 186.533 160.312 180.007C147.45 173.454 133.8 166.085 119.089 165.301C94.1629 163.972 79.0229 180.897 69.1802 201.87C56.4599 228.974 56.8236 258.74 73.8491 284.007C98.9672 321.283 139.545 340.596 178.922 359.318C197.052 367.938 228.31 384.222 249.037 373.748C262.568 366.911 268.323 344.973 269.41 331.521C272.245 296.422 256.604 262.609 239.954 232.816C210.998 181.003 178.919 128.176 121.168 105.173C109.927 100.696 104.672 104.656 94.1763 108.967C83.8471 113.21 73.4776 116.518 68.3146 127.066C59.646 144.776 49.4744 162.141 45.8483 181.725C41.1621 207.034 35.9627 234.859 44.5142 259.815C51.0207 278.802 61.0858 296.756 70.3041 314.508C81.8975 336.834 93.6696 359.098 106.584 380.694C126.398 413.829 151.975 446.153 186.255 465.162C203.443 474.693 220.767 484.052 238.57 492.395C249.789 497.653 263.439 498.898 274.503 492.535C289.113 484.132 297.819 463.878 304.312 449.306C316.684 421.539 313.06 390.914 304.355 362.526C287.931 308.965 267.007 256.084 223.356 218.85C203.545 201.952 181.114 189.634 157.628 178.693C143.068 171.911 120.675 161.574 106.727 174.851C90.5404 190.257 88.7581 212.16 97.8785 231.591C111.785 261.218 139.569 289.087 166.135 307.662C185.797 321.411 209.058 336.229 232.904 341.009C247.071 343.849 265.092 346.715 279.428 343.375C314.044 335.309 330.959 302.989 323.345 268.754C316.88 239.681 304.307 211.061 285.959 187.46C270.556 167.648 252.602 147.987 230.35 135.842C218.959 129.625 202.69 120.226 190.111 128.641C174.509 139.079 177.716 162.355 183.123 177.051C195 209.329 218.62 240.405 244.13 263.251C264.458 281.458 288.13 297.611 314.248 306.37C358.543 321.226 342.281 246.347 336.859 226.496C321.639 170.776 292.384 98.8021 232.189 78.9234C221.491 75.3907 201.734 73.0093 199.724 88.7631C198.545 98.0053 205.533 108.151 210.429 115.223C220.594 129.905 233.73 142.827 248.048 153.451C262.822 164.413 276.678 172.076 295.334 168.759C310.631 166.039 323.625 156.531 332.932 144.353C338.458 137.122 343.306 129.516 345.085 120.431C348.977 100.553 337.965 80.7138 329.758 63.391C319.588 41.9242 308.608 19.9776 293.425 1.54102"
+                    stroke="#3502FF" stroke-width="3" stroke-linecap="round" />
+            </svg>
+            <div class="description__info info-description">
+                <div class="info-description__title">Барабани</div>
+                <div class="info-description__text">Тут дуже короткий опис послуги. Тут дуже короткий опис послуги. Тут
+                    дуже короткий опис послуги. Тут дуже короткий опис послуги.
+                </div>
+                {% include('../../main/_contact_form.html.twig') %}
+            </div>
+            <div class="description__decorSquare1"></div>
+            <div class="description__decorSquare2"></div>
+            <div class="description__decorSquare3"></div>
+        </div>
+    </div>
+    <div class="equipment">
+        <div class="equipment__container">
+            <div class="equipment__title">Наше обладнання</div>
+            <div class="swiper equipment__slider">
+                <div class="swiper-wrapper equipment__slider-wrapper">
+                    <div class="swiper-slide equipment-slide">
+                        <div class="equipment-slide__title">Джембе</div>
+                        <img src="../../../assets/drumsPage/img/line.svg" alt="" class="equipment-slide__line">
+                        <img src="../../../assets/drumsPage/img/equipment.png" alt="" class="equipment-slide__img">
+                        <div class="equipment__decoreSquare1"></div>
+                        <div class="equipment__decoreSquare2"></div>
+                    </div>
+                    <div class="swiper-slide equipment-slide">
+                        <div class="equipment-slide__title">Електронні барабани</div>
+                        <img src="../../../assets/drumsPage/img/line.svg" alt="" class="equipment-slide__line">
+                        <img src="../../../assets/drumsPage/img/equipment.png" alt="" class="equipment-slide__img">
+                        <div class="equipment__decoreSquare1"></div>
+                        <div class="equipment__decoreSquare2"></div>
+                    </div>
+                    <div class="swiper-slide equipment-slide">
+                        <div class="equipment-slide__title">Кахон</div>
+                        <img src="../../../assets/drumsPage/img/line.svg" alt="" class="equipment-slide__line">
+                        <img src="../../../assets/drumsPage/img/equipment.png" alt="" class="equipment-slide__img">
+                        <div class="equipment__decoreSquare1"></div>
+                        <div class="equipment__decoreSquare2"></div>
+                    </div>
+                    <div class="swiper-slide equipment-slide">
+                        <div class="equipment-slide__title">Барабани</div>
+                        <img src="../../../assets/drumsPage/img/line.svg" alt="" class="equipment-slide__line">
+                        <img src="../../../assets/drumsPage/img/equipment.png" alt="" class="equipment-slide__img">
+                        <div class="equipment__decoreSquare1"></div>
+                        <div class="equipment__decoreSquare2"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper equipment-mini">
+                <div class="swiper-wrapper equipment-mini__wrapper">
+                    <div class="swiper-slide equipment-mini__slide">
+                        <div class="equipment-mini__slide__indicator"></div>
+                        <div class="equipment-mini-slide__img">
+                            <img src="../../../assets/drumsPage/img/equipmentMini.png" alt="">
+                        </div>
+                        <div class="equipment-mini-slide__content">
+                            <div class="equipment-mini-slide__title">Джембе</div>
+                            <div class="equipment-mini-slide__text">
+                                Тут короткий опис що це таке. Тут короткий опис що це таке. Тут короткий опис що це таке
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide equipment-mini__slide">
+                        <div class="equipment-mini__slide__indicator"></div>
+                        <div class="equipment-mini-slide__img">
+                            <img src="../../../assets/drumsPage/img/equipmentMini.png" alt="">
+                        </div>
+                        <div class="equipment-mini-slide__content">
+                            <div class="equipment-mini-slide__title">Електронні барабани</div>
+                            <div class="equipment-mini-slide__text">
+                                Тут короткий опис що це таке. Тут короткий опис що це таке. Тут короткий опис що це таке
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide equipment-mini__slide">
+                        <div class="equipment-mini__slide__indicator"></div>
+                        <div class="equipment-mini-slide__img">
+                            <img src="../../../assets/drumsPage/img/equipmentMini.png" alt="">
+                        </div>
+                        <div class="equipment-mini-slide__content">
+                            <div class="equipment-mini-slide__title">Хакон</div>
+                            <div class="equipment-mini-slide__text">
+                                Тут короткий опис що це таке. Тут короткий опис що це таке. Тут короткий опис що це таке
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide equipment-mini__slide">
+                        <div class="equipment-mini__slide__indicator"></div>
+                        <div class="equipment-mini-slide__img">
+                            <img src="../../../assets/drumsPage/img/equipmentMini.png" alt="">
+                        </div>
+                        <div class="equipment-mini-slide__content">
+                            <div class="equipment-mini-slide__title">Барабани</div>
+                            <div class="equipment-mini-slide__text">
+                                Тут короткий опис що це таке. Тут короткий опис що це таке. Тут короткий опис що це таке
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <img src="../../../assets/drumsPage/img/line.svg" alt="" class="equipment__line">
+    </div>
+    <div class="steps">
+        <div class="steps__container">
+            <div class="steps__title">Як проходить пробний урок</div>
+            <div class="steps__description">Тут короткий текст, як проходить заняття, Про всі плюшки і тд. Тут короткий
+                текст, як проходить заняття, Про всі плюшки
+                і тд. Тут короткий текст, як проходить заняття, Про всі плюшки і тд. Тут короткий текст, як проходить
+                заняття, Про всі
+                плюшки і тд.
+            </div>
+            <div class="steps__items">
+                <div class="steps__item item-steps">
+                    <div class="item-steps__number">
+                        <p>1</p>
+                    </div>
+                    <div class="item-steps__content">
+                        <div class="item-steps__title">Знайомство з вчителем</div>
+                        <div class="item-steps__text">Щоб обрати для себе ідеального вчителя, ознайомтесь з інформацією
+                            на сайті.</div>
+                    </div>
+                </div>
+                <div class="steps__item item-steps">
+                    <div class="item-steps__number">
+                        <p>2</p>
+                    </div>
+                    <div class="item-steps__content">
+                        <div class="item-steps__title">Тест навичок і знань в музиці</div>
+                        <div class="item-steps__text">Тут більш конкретна інформація розписана про етапи, які потрібно
+                            очікувати від першого заняття,</div>
+                    </div>
+                </div>
+                <div class="steps__item item-steps">
+                    <div class="item-steps__number">
+                        <p>3</p>
+                    </div>
+                    <div class="item-steps__content">
+                        <div class="item-steps__title">Коротка теорія для початківців</div>
+                        <div class="item-steps__text">Тут більш конкретна інформація розписана про етапи, які потрібно
+                            очікувати від першого заняття,</div>
+                    </div>
+                </div>
+                <div class="steps__item item-steps">
+                    <div class="item-steps__number">
+                        <p>4</p>
+                    </div>
+                    <div class="item-steps__content">
+                        <div class="item-steps__title">Перші вправи та рудименти</div>
+                        <div class="item-steps__text">Тут більш конкретна інформація розписана про етапи, які потрібно
+                            очікувати від першого заняття,</div>
+                    </div>
+                </div>
+                <div class="steps__item item-steps">
+                    <div class="item-steps__number">
+                        <p>5</p>
+                    </div>
+                    <div class="item-steps__content">
+                        <div class="item-steps__title">Відповідаємо на ваші питання</div>
+                        <div class="item-steps__text">Тут більш конкретна інформація розписана про етапи, які потрібно
+                            очікувати від першого заняття,</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="line__wrapper">
+            <img src="../../../assets/drumsPage/img/line.svg" alt="" class="steps__line">
+        </div>
+    </div>
+    <div class="video">
+        <div class="video__container">
+            <div class="video__text">Втомились читати, Подивіться коротке відео як проходить заняття 🙂</div>
+            <iframe src="" frameborder="0"></iframe>
+        </div>
+        <img src="../../../assets/drumsPage/img/line.svg" alt="" class="video__line">
+    </div>
+    <section class="cost" id="cost">
+        <svg class="cost__line1 line">
+            <use xlink:href="{{ asset('build/images/icons.svg') }}#line2"/>
+        </svg>
+        <svg class="cost__line2 line">
+            <use xlink:href="{{ asset('build/images/icons.svg') }}#line2"/>
+        </svg>
+        <div class="container">
+            <h3 class="title-sec">Види навчання</h3>
+            <div class="tabs">
+                <ul class="tabs__list">
+                    {% for tab in tabs %}
+                        <li class="tabs__li j-wow j-wow-right" data-delay="{{loop.index * 0.1}}">
+                            <div class="tabs__item {{ loop.index == 1 ? 'active' : ''}}" data-tab="#tab1-{{ loop.index }}">
+                                {{ tab }}
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <label class="cost-checkbox">
+                <input type="checkbox" class="j-cost-checkbox">
+                <div class="cost-checkbox__bl">
+                    <div class="cost-checkbox__title">Для дорослих</div>
+                    <div class="cost-checkbox__toggle">
+                        <div class="cost-checkbox__toggle-circle"></div>
+                    </div>
+                    <div class="cost-checkbox__title">Для дітей</div>
+                </div>
+            </label>
+            <div class="cost__wrapper j-wow j-wow-bottom">
+                {% for direction_key, tab in tabs %}
+                    <div class="cost__tab j-tab-wrapper {{ loop.index == 1 ? 'active' : ''}}" id="tab1-{{ loop.index }}">
+                        <div class="row">
+                            {% for cart_item in cart %}
+                                <div class="col">
+                                    <div class="cost-item j-cost-item {{ cart_item.age == 'adult' ?  'age-adults' : 'age-children'}}">
+                                        {% if cart_item.promo is defined %}
+                                            <div class="cost-item__promo">{{ cart_item.promo }}</div>
+                                        {% endif %}
+                                        <div class="cost-item__price">
+                                            ₴
+                                            <span>
+                                                {{ cart_item.promo_price is defined ? cart_item.promo_price : cart_item.price }}
+                                            </span>
+                                        </div>
+                                        {% if cart_item.promo_price is defined %}
+                                            <div class="cost-item__promo-price">₴{{ cart_item.price }}</div>
+                                        {% endif %}
+                                        {% for info_row in cart_item.info %}
+                                            <div class="cost-item__info">{{ info_row }}</div>
+                                        {% endfor %}
+
+                                        <div class="cost-item__bottom">
+                                            <div class="cost-item__type">{{ cart_item.type }}</div>
+                                            <div class="cost-item__btn">
+                                                <button type="button" class="btn" data-src="#modal-prices" data-fancybox data-direction="{{ direction_key }}" data-direction-title="{{ tab }}" data-age="{{ cart_item.age }}" data-group-type="{{ cart_item.group_type }}" data-count="{{ cart_item.count }}">
+                                                    Записатися
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+
+    <div class="teachers">
+        <div class="teachers__container">
+            <div class="teachers__title">Наші викладачі</div>
+            <div class="teachers__sliders">
+                <div class="swiper teachers-slider">
+                    <div class="swiper-wrapper teachers-slider__wrapper">
+                        <div class="swiper-slide teachers-slide">
+                            <div class="teachers-slide__avatar">
+                                <img src="../../../assets/drumsPage/img/avatar.svg" alt="">
+                            </div>
+                            <div class="teachers-slide__content">
+                                <div class="teachers-slide__name">Імʼя Прізвище</div>
+                                <div class="teachers-slide__text">Короткий опис про себе від викладача. Короткий опис
+                                    про
+                                    себе від викладача. Короткий опис про себе від викладача.
+                                    Короткий опис про себе від викладача. Короткий опис про себе від викладача. Короткий
+                                    опис про себе від викладача. Короткий опис про себе від викладача.
+                                </div>
+                                <div class="teachers-slide__socials">
+                                    <a href="" class="teachers-slide-socials__link">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14"
+                                            fill="none">
+                                            <path
+                                                d="M6.25251 7.00559H4.29013C4.29013 10.1408 4.29013 14 4.29013 14H1.38227C1.38227 14 1.38227 10.1782 1.38227 7.00559H0V4.53354H1.38227V2.93458C1.38227 1.78942 1.92643 0 4.31685 0L6.47163 0.00825959V2.40791C6.47163 2.40791 5.16224 2.40791 4.90765 2.40791C4.65306 2.40791 4.2911 2.53521 4.2911 3.08131V4.53403H6.50661L6.25251 7.00559Z"
+                                                fill="#020202" />
+                                        </svg>
+                                    </a>
+                                    <a href="" class="teachers-slide-socials__link">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                                            viewBox="0 0 14 14" fill="none">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M13.9995 11.2941V5.56302V2.70541C13.9995 1.21314 12.7859 0 11.2936 0H2.70541C1.21314 0 0 1.21314 0 2.70541V5.56302V11.2941C0 12.7869 1.21314 14 2.70541 14H11.2941C12.7859 14 13.9995 12.7869 13.9995 11.2941ZM9.46422 6.99926C9.46422 8.35816 8.35717 9.46322 6.99926 9.46322C5.64085 9.46322 4.53479 8.35766 4.53628 6.99876C4.53678 6.46234 4.71079 5.96707 5.0023 5.56252C5.45097 4.94182 6.17826 4.53529 7.00074 4.53529C7.82273 4.53529 8.55052 4.94231 8.99819 5.56302C9.28871 5.96756 9.46422 6.46283 9.46422 6.99926ZM12.3798 3.98499V1.91961V1.61224L12.071 1.61323L10.0066 1.61967L10.0145 3.99292L12.3798 3.98499ZM6.99975 10.8281C9.11123 10.8281 10.8286 9.10974 10.8286 6.99926C10.8286 6.49159 10.7259 6.00623 10.544 5.56302H12.6347V11.2941C12.6347 12.0348 12.0323 12.6347 11.2931 12.6347H2.70491C1.96473 12.6347 1.36336 12.0348 1.36336 11.2941V5.56302H3.45303C3.27257 6.00623 3.17143 6.49159 3.17143 6.99926C3.17143 9.10974 4.88827 10.8281 6.99975 10.8281Z"
+                                                fill="black" />
+                                        </svg>
+                                    </a>
+                                </div>
+                                <button class="teachers-slide__button">Записатись на заняття</button>
+                            </div>
+                        </div>
+                        <div class="swiper-slide teachers-slide">
+                            <div class="teachers-slide__avatar">
+                                <img src="../../../assets/drumsPage/img/avatar.svg" alt="">
+                            </div>
+                            <div class="teachers-slide__content">
+                                <div class="teachers-slide__name">Імʼя Прізвище</div>
+                                <div class="teachers-slide__text">Короткий опис про себе від викладача. Короткий опис
+                                    про
+                                    себе від викладача. Короткий опис про себе від викладача.
+                                    Короткий опис про себе від викладача. Короткий опис про себе від викладача. Короткий
+                                    опис про себе від викладача. Короткий опис про себе від викладача.
+                                </div>
+                                <div class="teachers-slide__socials">
+                                    <a href="" class="teachers-slide-socials__link">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14"
+                                            fill="none">
+                                            <path
+                                                d="M6.25251 7.00559H4.29013C4.29013 10.1408 4.29013 14 4.29013 14H1.38227C1.38227 14 1.38227 10.1782 1.38227 7.00559H0V4.53354H1.38227V2.93458C1.38227 1.78942 1.92643 0 4.31685 0L6.47163 0.00825959V2.40791C6.47163 2.40791 5.16224 2.40791 4.90765 2.40791C4.65306 2.40791 4.2911 2.53521 4.2911 3.08131V4.53403H6.50661L6.25251 7.00559Z"
+                                                fill="#020202" />
+                                        </svg>
+                                    </a>
+                                    <a href="" class="teachers-slide-socials__link">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                                            viewBox="0 0 14 14" fill="none">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M13.9995 11.2941V5.56302V2.70541C13.9995 1.21314 12.7859 0 11.2936 0H2.70541C1.21314 0 0 1.21314 0 2.70541V5.56302V11.2941C0 12.7869 1.21314 14 2.70541 14H11.2941C12.7859 14 13.9995 12.7869 13.9995 11.2941ZM9.46422 6.99926C9.46422 8.35816 8.35717 9.46322 6.99926 9.46322C5.64085 9.46322 4.53479 8.35766 4.53628 6.99876C4.53678 6.46234 4.71079 5.96707 5.0023 5.56252C5.45097 4.94182 6.17826 4.53529 7.00074 4.53529C7.82273 4.53529 8.55052 4.94231 8.99819 5.56302C9.28871 5.96756 9.46422 6.46283 9.46422 6.99926ZM12.3798 3.98499V1.91961V1.61224L12.071 1.61323L10.0066 1.61967L10.0145 3.99292L12.3798 3.98499ZM6.99975 10.8281C9.11123 10.8281 10.8286 9.10974 10.8286 6.99926C10.8286 6.49159 10.7259 6.00623 10.544 5.56302H12.6347V11.2941C12.6347 12.0348 12.0323 12.6347 11.2931 12.6347H2.70491C1.96473 12.6347 1.36336 12.0348 1.36336 11.2941V5.56302H3.45303C3.27257 6.00623 3.17143 6.49159 3.17143 6.99926C3.17143 9.10974 4.88827 10.8281 6.99975 10.8281Z"
+                                                fill="black" />
+                                        </svg>
+                                    </a>
+                                </div>
+                                <button class="teachers-slide__button">Записатись на заняття</button>
+                            </div>
+                        </div>
+                        <div class="swiper-slide teachers-slide">
+                            <div class="teachers-slide__avatar">
+                                <img src="../../../assets/drumsPage/img/avatar.svg" alt="">
+                            </div>
+                            <div class="teachers-slide__content">
+                                <div class="teachers-slide__name">Імʼя Прізвище</div>
+                                <div class="teachers-slide__text">Короткий опис про себе від викладача. Короткий опис
+                                    про
+                                    себе від викладача. Короткий опис про себе від викладача.
+                                    Короткий опис про себе від викладача. Короткий опис про себе від викладача. Короткий
+                                    опис про себе від викладача. Короткий опис про себе від викладача.
+                                </div>
+                                <div class="teachers-slide__socials">
+                                    <a href="" class="teachers-slide-socials__link">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14"
+                                            fill="none">
+                                            <path
+                                                d="M6.25251 7.00559H4.29013C4.29013 10.1408 4.29013 14 4.29013 14H1.38227C1.38227 14 1.38227 10.1782 1.38227 7.00559H0V4.53354H1.38227V2.93458C1.38227 1.78942 1.92643 0 4.31685 0L6.47163 0.00825959V2.40791C6.47163 2.40791 5.16224 2.40791 4.90765 2.40791C4.65306 2.40791 4.2911 2.53521 4.2911 3.08131V4.53403H6.50661L6.25251 7.00559Z"
+                                                fill="#020202" />
+                                        </svg>
+                                    </a>
+                                    <a href="" class="teachers-slide-socials__link">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                                            viewBox="0 0 14 14" fill="none">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M13.9995 11.2941V5.56302V2.70541C13.9995 1.21314 12.7859 0 11.2936 0H2.70541C1.21314 0 0 1.21314 0 2.70541V5.56302V11.2941C0 12.7869 1.21314 14 2.70541 14H11.2941C12.7859 14 13.9995 12.7869 13.9995 11.2941ZM9.46422 6.99926C9.46422 8.35816 8.35717 9.46322 6.99926 9.46322C5.64085 9.46322 4.53479 8.35766 4.53628 6.99876C4.53678 6.46234 4.71079 5.96707 5.0023 5.56252C5.45097 4.94182 6.17826 4.53529 7.00074 4.53529C7.82273 4.53529 8.55052 4.94231 8.99819 5.56302C9.28871 5.96756 9.46422 6.46283 9.46422 6.99926ZM12.3798 3.98499V1.91961V1.61224L12.071 1.61323L10.0066 1.61967L10.0145 3.99292L12.3798 3.98499ZM6.99975 10.8281C9.11123 10.8281 10.8286 9.10974 10.8286 6.99926C10.8286 6.49159 10.7259 6.00623 10.544 5.56302H12.6347V11.2941C12.6347 12.0348 12.0323 12.6347 11.2931 12.6347H2.70491C1.96473 12.6347 1.36336 12.0348 1.36336 11.2941V5.56302H3.45303C3.27257 6.00623 3.17143 6.49159 3.17143 6.99926C3.17143 9.10974 4.88827 10.8281 6.99975 10.8281Z"
+                                                fill="black" />
+                                        </svg>
+                                    </a>
+                                </div>
+                                <button class="teachers-slide__button">Записатись на заняття</button>
+                            </div>
+                        </div>
+                        <div class="swiper-slide teachers-slide">
+                            <div class="teachers-slide__avatar">
+                                <img src="../../../assets/drumsPage/img/avatar.svg" alt="">
+                            </div>
+                            <div class="teachers-slide__content">
+                                <div class="teachers-slide__name">Імʼя Прізвище</div>
+                                <div class="teachers-slide__text">Короткий опис про себе від викладача. Короткий опис
+                                    про
+                                    себе від викладача. Короткий опис про себе від викладача.
+                                    Короткий опис про себе від викладача. Короткий опис про себе від викладача. Короткий
+                                    опис про себе від викладача. Короткий опис про себе від викладача.
+                                </div>
+                                <div class="teachers-slide__socials">
+                                    <a href="" class="teachers-slide-socials__link">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14"
+                                            fill="none">
+                                            <path
+                                                d="M6.25251 7.00559H4.29013C4.29013 10.1408 4.29013 14 4.29013 14H1.38227C1.38227 14 1.38227 10.1782 1.38227 7.00559H0V4.53354H1.38227V2.93458C1.38227 1.78942 1.92643 0 4.31685 0L6.47163 0.00825959V2.40791C6.47163 2.40791 5.16224 2.40791 4.90765 2.40791C4.65306 2.40791 4.2911 2.53521 4.2911 3.08131V4.53403H6.50661L6.25251 7.00559Z"
+                                                fill="#020202" />
+                                        </svg>
+                                    </a>
+                                    <a href="" class="teachers-slide-socials__link">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                                            viewBox="0 0 14 14" fill="none">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M13.9995 11.2941V5.56302V2.70541C13.9995 1.21314 12.7859 0 11.2936 0H2.70541C1.21314 0 0 1.21314 0 2.70541V5.56302V11.2941C0 12.7869 1.21314 14 2.70541 14H11.2941C12.7859 14 13.9995 12.7869 13.9995 11.2941ZM9.46422 6.99926C9.46422 8.35816 8.35717 9.46322 6.99926 9.46322C5.64085 9.46322 4.53479 8.35766 4.53628 6.99876C4.53678 6.46234 4.71079 5.96707 5.0023 5.56252C5.45097 4.94182 6.17826 4.53529 7.00074 4.53529C7.82273 4.53529 8.55052 4.94231 8.99819 5.56302C9.28871 5.96756 9.46422 6.46283 9.46422 6.99926ZM12.3798 3.98499V1.91961V1.61224L12.071 1.61323L10.0066 1.61967L10.0145 3.99292L12.3798 3.98499ZM6.99975 10.8281C9.11123 10.8281 10.8286 9.10974 10.8286 6.99926C10.8286 6.49159 10.7259 6.00623 10.544 5.56302H12.6347V11.2941C12.6347 12.0348 12.0323 12.6347 11.2931 12.6347H2.70491C1.96473 12.6347 1.36336 12.0348 1.36336 11.2941V5.56302H3.45303C3.27257 6.00623 3.17143 6.49159 3.17143 6.99926C3.17143 9.10974 4.88827 10.8281 6.99975 10.8281Z"
+                                                fill="black" />
+                                        </svg>
+                                    </a>
+                                </div>
+                                <button class="teachers-slide__button">Записатись на заняття</button>
+                            </div>
+                        </div>
+                        <div class="swiper-slide teachers-slide">
+                            <div class="teachers-slide__avatar">
+                                <img src="../../../assets/drumsPage/img/avatar.svg" alt="">
+                            </div>
+                            <div class="teachers-slide__content">
+                                <div class="teachers-slide__name">Імʼя Прізвище</div>
+                                <div class="teachers-slide__text">Короткий опис про себе від викладача. Короткий опис
+                                    про
+                                    себе від викладача. Короткий опис про себе від викладача.
+                                    Короткий опис про себе від викладача. Короткий опис про себе від викладача. Короткий
+                                    опис про себе від викладача. Короткий опис про себе від викладача.
+                                </div>
+                                <div class="teachers-slide__socials">
+                                    <a href="" class="teachers-slide-socials__link">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14"
+                                            fill="none">
+                                            <path
+                                                d="M6.25251 7.00559H4.29013C4.29013 10.1408 4.29013 14 4.29013 14H1.38227C1.38227 14 1.38227 10.1782 1.38227 7.00559H0V4.53354H1.38227V2.93458C1.38227 1.78942 1.92643 0 4.31685 0L6.47163 0.00825959V2.40791C6.47163 2.40791 5.16224 2.40791 4.90765 2.40791C4.65306 2.40791 4.2911 2.53521 4.2911 3.08131V4.53403H6.50661L6.25251 7.00559Z"
+                                                fill="#020202" />
+                                        </svg>
+                                    </a>
+                                    <a href="" class="teachers-slide-socials__link">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                                            viewBox="0 0 14 14" fill="none">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M13.9995 11.2941V5.56302V2.70541C13.9995 1.21314 12.7859 0 11.2936 0H2.70541C1.21314 0 0 1.21314 0 2.70541V5.56302V11.2941C0 12.7869 1.21314 14 2.70541 14H11.2941C12.7859 14 13.9995 12.7869 13.9995 11.2941ZM9.46422 6.99926C9.46422 8.35816 8.35717 9.46322 6.99926 9.46322C5.64085 9.46322 4.53479 8.35766 4.53628 6.99876C4.53678 6.46234 4.71079 5.96707 5.0023 5.56252C5.45097 4.94182 6.17826 4.53529 7.00074 4.53529C7.82273 4.53529 8.55052 4.94231 8.99819 5.56302C9.28871 5.96756 9.46422 6.46283 9.46422 6.99926ZM12.3798 3.98499V1.91961V1.61224L12.071 1.61323L10.0066 1.61967L10.0145 3.99292L12.3798 3.98499ZM6.99975 10.8281C9.11123 10.8281 10.8286 9.10974 10.8286 6.99926C10.8286 6.49159 10.7259 6.00623 10.544 5.56302H12.6347V11.2941C12.6347 12.0348 12.0323 12.6347 11.2931 12.6347H2.70491C1.96473 12.6347 1.36336 12.0348 1.36336 11.2941V5.56302H3.45303C3.27257 6.00623 3.17143 6.49159 3.17143 6.99926C3.17143 9.10974 4.88827 10.8281 6.99975 10.8281Z"
+                                                fill="black" />
+                                        </svg>
+                                    </a>
+                                </div>
+                                <button class="teachers-slide__button">Записатись на заняття</button>
+                            </div>
+                        </div>
+                        <div class="swiper-slide teachers-slide">
+                            <div class="teachers-slide__avatar">
+                                <img src="../../../assets/drumsPage/img/avatar.svg" alt="">
+                            </div>
+                            <div class="teachers-slide__content">
+                                <div class="teachers-slide__name">Імʼя Прізвище</div>
+                                <div class="teachers-slide__text">Короткий опис про себе від викладача. Короткий опис
+                                    про
+                                    себе від викладача. Короткий опис про себе від викладача.
+                                    Короткий опис про себе від викладача. Короткий опис про себе від викладача. Короткий
+                                    опис про себе від викладача. Короткий опис про себе від викладача.
+                                </div>
+                                <div class="teachers-slide__socials">
+                                    <a href="" class="teachers-slide-socials__link">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14"
+                                            fill="none">
+                                            <path
+                                                d="M6.25251 7.00559H4.29013C4.29013 10.1408 4.29013 14 4.29013 14H1.38227C1.38227 14 1.38227 10.1782 1.38227 7.00559H0V4.53354H1.38227V2.93458C1.38227 1.78942 1.92643 0 4.31685 0L6.47163 0.00825959V2.40791C6.47163 2.40791 5.16224 2.40791 4.90765 2.40791C4.65306 2.40791 4.2911 2.53521 4.2911 3.08131V4.53403H6.50661L6.25251 7.00559Z"
+                                                fill="#020202" />
+                                        </svg>
+                                    </a>
+                                    <a href="" class="teachers-slide-socials__link">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                                            viewBox="0 0 14 14" fill="none">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M13.9995 11.2941V5.56302V2.70541C13.9995 1.21314 12.7859 0 11.2936 0H2.70541C1.21314 0 0 1.21314 0 2.70541V5.56302V11.2941C0 12.7869 1.21314 14 2.70541 14H11.2941C12.7859 14 13.9995 12.7869 13.9995 11.2941ZM9.46422 6.99926C9.46422 8.35816 8.35717 9.46322 6.99926 9.46322C5.64085 9.46322 4.53479 8.35766 4.53628 6.99876C4.53678 6.46234 4.71079 5.96707 5.0023 5.56252C5.45097 4.94182 6.17826 4.53529 7.00074 4.53529C7.82273 4.53529 8.55052 4.94231 8.99819 5.56302C9.28871 5.96756 9.46422 6.46283 9.46422 6.99926ZM12.3798 3.98499V1.91961V1.61224L12.071 1.61323L10.0066 1.61967L10.0145 3.99292L12.3798 3.98499ZM6.99975 10.8281C9.11123 10.8281 10.8286 9.10974 10.8286 6.99926C10.8286 6.49159 10.7259 6.00623 10.544 5.56302H12.6347V11.2941C12.6347 12.0348 12.0323 12.6347 11.2931 12.6347H2.70491C1.96473 12.6347 1.36336 12.0348 1.36336 11.2941V5.56302H3.45303C3.27257 6.00623 3.17143 6.49159 3.17143 6.99926C3.17143 9.10974 4.88827 10.8281 6.99975 10.8281Z"
+                                                fill="black" />
+                                        </svg>
+                                    </a>
+                                </div>
+                                <button class="teachers-slide__button">Записатись на заняття</button>
+                            </div>
+                        </div>
+                    </div>
+                    <img src="../../../assets/drumsPage/img/arrow.svg" alt="" class="leftArrow">
+                    <img src="../../../assets/drumsPage/img/arrow.svg" alt="" class="rightArrow">
+                </div>
+                <div class="swiper teachers-mini">
+                    <div class="swiper-wrapper teachers-mini__wrapper">
+                        <div class="swiper-slide teachers-mini__slide">
+                            <img src="../../../assets/drumsPage/img/avatar.svg" alt="avatar">
+                        </div>
+                        <div class="swiper-slide teachers-mini__slide">
+                            <img src="../../../assets/drumsPage/img/avatar.svg" alt="avatar">
+                        </div>
+                        <div class="swiper-slide teachers-mini__slide">
+                            <img src="../../../assets/drumsPage/img/avatar.svg" alt="avatar">
+                        </div>
+                        <div class="swiper-slide teachers-mini__slide">
+                            <img src="../../../assets/drumsPage/img/avatar.svg" alt="avatar">
+                        </div>
+                        <div class="swiper-slide teachers-mini__slide">
+                            <img src="../../../assets/drumsPage/img/avatar.svg" alt="avatar">
+                        </div>
+                        <div class="swiper-slide teachers-mini__slide">
+                            <img src="../../../assets/drumsPage/img/avatar.svg" alt="avatar">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <img src="../../../assets/drumsPage/img/line.svg" alt="" class="teachers__line">
+    </div>
+    <div class="education">
+        <div class="education__container">
+            <div class="education__title">Програма навчання</div>
+            <div class="swiper education-mini">
+                <div class="swiper-wrapper education-mini__wrapper">
+                    <div class="swiper-slide education-mini-slide">
+                        <button class="education__module">Модуль 1</button>
+                    </div>
+                    <div class="swiper-slide education-mini-slide">
+                        <button class="education__module">Модуль 2</button>
+                    </div>
+                    <div class="swiper-slide education-mini-slide">
+                        <button class="education__module">Модуль 3</button>
+                    </div>
+                    <div class="swiper-slide education-mini-slide">
+                        <button class="education__module">Модуль 4</button>
+                    </div>
+                    <div class="swiper-slide education-mini-slide">
+                        <button class="education__module">Модуль 5</button>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper education-slider">
+                <div class="swiper-wrapper education-slider__wrapper">
+                    <div class="swiper-slide education-slide">
+                        <div class="education__stages">
+                            <div class="education__stage stage-education">
+                                <div class="stage-education__number">
+                                    <p>1</p>
+                                </div>
+                                <div class="stage-education__info">
+                                    <div class="stage-education__title">Перший етап</div>
+                                    <div class="stage-education__text">Lorem ipsum dolor sit amet, consectetur
+                                        adipisicing elit,
+                                        sed
+                                        do eiusmod tempor incididunt ut labore et dolore magna
+                                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+                                        ut
+                                        aliqui.
+                                        Lorem ipsum dolor sit amet,
+                                        consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                                        dolore magna
+                                        aliqua. Ut enim ad minim
+                                        veniam, quis nostrud exercitation ullamco laboris nisi ut aliqui.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="education__stage stage-education">
+                                <div class="stage-education__number">
+                                    <p>2</p>
+                                </div>
+                                <div class="stage-education__info">
+                                    <div class="stage-education__title">Другий етап</div>
+                                    <div class="stage-education__text">Lorem ipsum dolor sit amet, consectetur
+                                        adipisicing elit,
+                                        sed
+                                        do eiusmod tempor incididunt ut labore et dolore magna
+                                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+                                        ut
+                                        aliqui.
+                                        Lorem ipsum dolor sit amet,
+                                        consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                                        dolore magna
+                                        aliqua. Ut enim ad minim
+                                        veniam, quis nostrud exercitation ullamco laboris nisi ut aliqui.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="education__stage stage-education">
+                                <div class="stage-education__number">
+                                    <p>3</p>
+                                </div>
+                                <div class="stage-education__info">
+                                    <div class="stage-education__title">Третій етап</div>
+                                    <div class="stage-education__text">Lorem ipsum dolor sit amet, consectetur
+                                        adipisicing elit,
+                                        sed
+                                        do eiusmod tempor incididunt ut labore et dolore magna
+                                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+                                        ut
+                                        aliqui.
+                                        Lorem ipsum dolor sit amet,
+                                        consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                                        dolore magna
+                                        aliqua. Ut enim ad minim
+                                        veniam, quis nostrud exercitation ullamco laboris nisi ut aliqui.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide education-slide">
+                        <div class="education__stages">
+                            <div class="education__stage stage-education">
+                                <div class="stage-education__number">
+                                    <p>1</p>
+                                </div>
+                                <div class="stage-education__info">
+                                    <div class="stage-education__title">Перший етап</div>
+                                    <div class="stage-education__text">Lorem ipsum dolor sit amet, consectetur
+                                        adipisicing elit,
+                                        sed
+                                        do eiusmod tempor incididunt ut labore et dolore magna
+                                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+                                        ut
+                                        aliqui.
+                                        Lorem ipsum dolor sit amet,
+                                        consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                                        dolore magna
+                                        aliqua. Ut enim ad minim
+                                        veniam, quis nostrud exercitation ullamco laboris nisi ut aliqui.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="education__stage stage-education">
+                                <div class="stage-education__number">
+                                    <p>2</p>
+                                </div>
+                                <div class="stage-education__info">
+                                    <div class="stage-education__title">Другий етап</div>
+                                    <div class="stage-education__text">Lorem ipsum dolor sit amet, consectetur
+                                        adipisicing elit,
+                                        sed
+                                        do eiusmod tempor incididunt ut labore et dolore magna
+                                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+                                        ut
+                                        aliqui.
+                                        Lorem ipsum dolor sit amet,
+                                        consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                                        dolore magna
+                                        aliqua. Ut enim ad minim
+                                        veniam, quis nostrud exercitation ullamco laboris nisi ut aliqui.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="education__stage stage-education">
+                                <div class="stage-education__number">
+                                    <p>3</p>
+                                </div>
+                                <div class="stage-education__info">
+                                    <div class="stage-education__title">Третій етап</div>
+                                    <div class="stage-education__text">Lorem ipsum dolor sit amet, consectetur
+                                        adipisicing elit,
+                                        sed
+                                        do eiusmod tempor incididunt ut labore et dolore magna
+                                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+                                        ut
+                                        aliqui.
+                                        Lorem ipsum dolor sit amet,
+                                        consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                                        dolore magna
+                                        aliqua. Ut enim ad minim
+                                        veniam, quis nostrud exercitation ullamco laboris nisi ut aliqui.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide education-slide">
+                        <div class="education__stages">
+                            <div class="education__stage stage-education">
+                                <div class="stage-education__number">
+                                    <p>1</p>
+                                </div>
+                                <div class="stage-education__info">
+                                    <div class="stage-education__title">Перший етап</div>
+                                    <div class="stage-education__text">Lorem ipsum dolor sit amet, consectetur
+                                        adipisicing elit,
+                                        sed
+                                        do eiusmod tempor incididunt ut labore et dolore magna
+                                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+                                        ut
+                                        aliqui.
+                                        Lorem ipsum dolor sit amet,
+                                        consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                                        dolore magna
+                                        aliqua. Ut enim ad minim
+                                        veniam, quis nostrud exercitation ullamco laboris nisi ut aliqui.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="education__stage stage-education">
+                                <div class="stage-education__number">
+                                    <p>2</p>
+                                </div>
+                                <div class="stage-education__info">
+                                    <div class="stage-education__title">Другий етап</div>
+                                    <div class="stage-education__text">Lorem ipsum dolor sit amet, consectetur
+                                        adipisicing elit,
+                                        sed
+                                        do eiusmod tempor incididunt ut labore et dolore magna
+                                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+                                        ut
+                                        aliqui.
+                                        Lorem ipsum dolor sit amet,
+                                        consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                                        dolore magna
+                                        aliqua. Ut enim ad minim
+                                        veniam, quis nostrud exercitation ullamco laboris nisi ut aliqui.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="education__stage stage-education">
+                                <div class="stage-education__number">
+                                    <p>3</p>
+                                </div>
+                                <div class="stage-education__info">
+                                    <div class="stage-education__title">Третій етап</div>
+                                    <div class="stage-education__text">Lorem ipsum dolor sit amet, consectetur
+                                        adipisicing elit,
+                                        sed
+                                        do eiusmod tempor incididunt ut labore et dolore magna
+                                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+                                        ut
+                                        aliqui.
+                                        Lorem ipsum dolor sit amet,
+                                        consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                                        dolore magna
+                                        aliqua. Ut enim ad minim
+                                        veniam, quis nostrud exercitation ullamco laboris nisi ut aliqui.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide education-slide">
+                        <div class="education__stages">
+                            <div class="education__stage stage-education">
+                                <div class="stage-education__number">
+                                    <p>1</p>
+                                </div>
+                                <div class="stage-education__info">
+                                    <div class="stage-education__title">Перший етап</div>
+                                    <div class="stage-education__text">Lorem ipsum dolor sit amet, consectetur
+                                        adipisicing elit,
+                                        sed
+                                        do eiusmod tempor incididunt ut labore et dolore magna
+                                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+                                        ut
+                                        aliqui.
+                                        Lorem ipsum dolor sit amet,
+                                        consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                                        dolore magna
+                                        aliqua. Ut enim ad minim
+                                        veniam, quis nostrud exercitation ullamco laboris nisi ut aliqui.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="education__stage stage-education">
+                                <div class="stage-education__number">
+                                    <p>2</p>
+                                </div>
+                                <div class="stage-education__info">
+                                    <div class="stage-education__title">Другий етап</div>
+                                    <div class="stage-education__text">Lorem ipsum dolor sit amet, consectetur
+                                        adipisicing elit,
+                                        sed
+                                        do eiusmod tempor incididunt ut labore et dolore magna
+                                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+                                        ut
+                                        aliqui.
+                                        Lorem ipsum dolor sit amet,
+                                        consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                                        dolore magna
+                                        aliqua. Ut enim ad minim
+                                        veniam, quis nostrud exercitation ullamco laboris nisi ut aliqui.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="education__stage stage-education">
+                                <div class="stage-education__number">
+                                    <p>3</p>
+                                </div>
+                                <div class="stage-education__info">
+                                    <div class="stage-education__title">Третій етап</div>
+                                    <div class="stage-education__text">Lorem ipsum dolor sit amet, consectetur
+                                        adipisicing elit,
+                                        sed
+                                        do eiusmod tempor incididunt ut labore et dolore magna
+                                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+                                        ut
+                                        aliqui.
+                                        Lorem ipsum dolor sit amet,
+                                        consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                                        dolore magna
+                                        aliqua. Ut enim ad minim
+                                        veniam, quis nostrud exercitation ullamco laboris nisi ut aliqui.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide education-slide">
+                        <div class="education__stages">
+                            <div class="education__stage stage-education">
+                                <div class="stage-education__number">
+                                    <p>1</p>
+                                </div>
+                                <div class="stage-education__info">
+                                    <div class="stage-education__title">Перший етап</div>
+                                    <div class="stage-education__text">Lorem ipsum dolor sit amet, consectetur
+                                        adipisicing elit,
+                                        sed
+                                        do eiusmod tempor incididunt ut labore et dolore magna
+                                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+                                        ut
+                                        aliqui.
+                                        Lorem ipsum dolor sit amet,
+                                        consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                                        dolore magna
+                                        aliqua. Ut enim ad minim
+                                        veniam, quis nostrud exercitation ullamco laboris nisi ut aliqui.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="education__stage stage-education">
+                                <div class="stage-education__number">
+                                    <p>2</p>
+                                </div>
+                                <div class="stage-education__info">
+                                    <div class="stage-education__title">Другий етап</div>
+                                    <div class="stage-education__text">Lorem ipsum dolor sit amet, consectetur
+                                        adipisicing elit,
+                                        sed
+                                        do eiusmod tempor incididunt ut labore et dolore magna
+                                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+                                        ut
+                                        aliqui.
+                                        Lorem ipsum dolor sit amet,
+                                        consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                                        dolore magna
+                                        aliqua. Ut enim ad minim
+                                        veniam, quis nostrud exercitation ullamco laboris nisi ut aliqui.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="education__stage stage-education">
+                                <div class="stage-education__number">
+                                    <p>3</p>
+                                </div>
+                                <div class="stage-education__info">
+                                    <div class="stage-education__title">Третій етап</div>
+                                    <div class="stage-education__text">Lorem ipsum dolor sit amet, consectetur
+                                        adipisicing elit,
+                                        sed
+                                        do eiusmod tempor incididunt ut labore et dolore magna
+                                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+                                        ut
+                                        aliqui.
+                                        Lorem ipsum dolor sit amet,
+                                        consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                                        dolore magna
+                                        aliqua. Ut enim ad minim
+                                        veniam, quis nostrud exercitation ullamco laboris nisi ut aliqui.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="education__img"></div>
+        </div>
+        <div class="line__wrapper">
+            <img src="../../../assets/drumsPage/img/line.svg" alt="" class="education__line">
+        </div>
+        <div class="education__decoreSquare1"></div>
+        <div class="education__decoreSquare2"></div>
+    </div>
+    <div class="feedback">
+        <div class="feedback__container">
+            <div class="feedback__header">
+                <div class="feedback__title">Відгуки клієнтів</div>
+                <button class="feedback__button">Залишити відгук</button>
+            </div>
+            <div class="swiper feedback-slider">
+                <div class="swiper-wrapper feedback-slider__wrapper">
+                    <div class="swiper-slide feedback-slide">
+                        <div class="feedback-slide__user feedback-user">
+                            <div class="feedback-user__avatar">
+                                <img src="../../../assets/drumsPage/img/avatar.svg" alt="" />
+                            </div>
+                            <div class="feedback-user__info">
+                                <div class="feedback-user__name">
+                                    Імʼя Прізвище
+                                </div>
+                                <div class="feedback-user__instrument">
+                                    електронні барабани
+                                </div>
+                            </div>
+                        </div>
+                        <div class="feedback-slide__text">
+                            Відгук текстовий про заняття, або викладача, тощо. Відгук текстовий про заняття, або
+                            викладача,
+                            тощо. Відгук текстовий
+                            про заняття.
+                        </div>
+                    </div>
+                    <div class="swiper-slide feedback-slide">
+                        <div class="feedback-slide__user feedback-user">
+                            <div class="feedback-user__avatar">
+                                <img src="../../../assets/drumsPage/img/avatar.svg" alt="" />
+                            </div>
+                            <div class="feedback-user__info">
+                                <div class="feedback-user__name">
+                                    Імʼя Прізвище
+                                </div>
+                                <div class="feedback-user__instrument">
+                                    Джембе
+                                </div>
+                            </div>
+                        </div>
+                        <div class="feedback-slide__text">
+                            Відгук текстовий про заняття, або викладача, тощо. Відгук текстовий про заняття, або
+                            викладача,
+                            тощо. Відгук текстовий
+                            про заняття.
+                        </div>
+                    </div>
+                    <div class="swiper-slide feedback-slide">
+                        <div class="feedback-slide__user feedback-user">
+                            <div class="feedback-user__avatar">
+                                <img src="../../../assets/drumsPage/img/avatar.svg" alt="" />
+                            </div>
+                            <div class="feedback-user__info">
+                                <div class="feedback-user__name">
+                                    Імʼя Прізвище
+                                </div>
+                                <div class="feedback-user__instrument">
+                                    Хакон
+                                </div>
+                            </div>
+                        </div>
+                        <div class="feedback-slide__text">
+                            Відгук текстовий про заняття, або викладача, тощо. Відгук текстовий про заняття, або
+                            викладача,
+                            тощо. Відгук текстовий
+                            про заняття.
+                        </div>
+                    </div>
+                    <div class="swiper-slide feedback-slide">
+                        <div class="feedback-slide__user feedback-user">
+                            <div class="feedback-user__avatar">
+                                <img src="../../../assets/drumsPage/img/avatar.svg" alt="" />
+                            </div>
+                            <div class="feedback-user__info">
+                                <div class="feedback-user__name">
+                                    Імʼя Прізвище
+                                </div>
+                                <div class="feedback-user__instrument">
+                                    Джембе
+                                </div>
+                            </div>
+                        </div>
+                        <div class="feedback-slide__text">
+                            Відгук текстовий про заняття, або викладача, тощо. Відгук текстовий про заняття, або
+                            викладача,
+                            тощо. Відгук текстовий
+                            про заняття.
+                        </div>
+                    </div>
+                    <div class="swiper-slide feedback-slide">
+                        <div class="feedback-slide__user feedback-user">
+                            <div class="feedback-user__avatar">
+                                <img src="../../../assets/drumsPage/img/avatar.svg" alt="" />
+                            </div>
+                            <div class="feedback-user__info">
+                                <div class="feedback-user__name">
+                                    Імʼя Прізвище
+                                </div>
+                                <div class="feedback-user__instrument">
+                                    Хакон
+                                </div>
+                            </div>
+                        </div>
+                        <div class="feedback-slide__text">
+                            Відгук текстовий про заняття, або викладача, тощо. Відгук текстовий про заняття, або
+                            викладача,
+                            тощо. Відгук текстовий
+                            про заняття.
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </div>
+    </div>
+    <div class="faq">
+        <div class="faq__container">
+            <div class="faq__title">FAQ</div>
+            <div class="faq__items">
+                <div class="faq__item item-faq">
+                    <div class="item-faq__iconPlus">+</div>
+                    <div class="item-faq__iconMinus">-</div>
+                    <div class="item-faq__content">
+                        <div class="item-faq__question">Is this thing on?</div>
+                        <div class="item-faq__answer">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                            eiusmod tempor incididunt ut labore et dolore magna
+                            aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                            ex ea commodo consequat m
+                            dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor inc.
+                        </div>
+                    </div>
+                </div>
+                <div class="faq__item item-faq">
+                    <div class="item-faq__iconPlus">+</div>
+                    <div class="item-faq__iconMinus">-</div>
+                    <div class="item-faq__content">
+                        <div class="item-faq__question">Is this thing on?</div>
+                        <div class="item-faq__answer">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                            eiusmod tempor incididunt ut labore et dolore magna
+                            aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                            ex ea commodo consequat m
+                            dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor inc.
+                        </div>
+                    </div>
+                </div>
+                <div class="faq__item item-faq">
+                    <div class="item-faq__iconPlus">+</div>
+                    <div class="item-faq__iconMinus">-</div>
+                    <div class="item-faq__content">
+                        <div class="item-faq__question">Is this thing on?</div>
+                        <div class="item-faq__answer">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                            eiusmod tempor incididunt ut labore et dolore magna
+                            aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                            ex ea commodo consequat m
+                            dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor inc.
+                        </div>
+                    </div>
+                </div>
+                <div class="faq__item item-faq">
+                    <div class="item-faq__iconPlus">+</div>
+                    <div class="item-faq__iconMinus">-</div>
+                    <div class="item-faq__content">
+                        <div class="item-faq__question">Is this thing on?</div>
+                        <div class="item-faq__answer">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                            eiusmod tempor incididunt ut labore et dolore magna
+                            aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                            ex ea commodo consequat m
+                            dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor inc.
+                        </div>
+                    </div>
+                </div>
+                <div class="faq__item item-faq">
+                    <div class="item-faq__iconPlus">+</div>
+                    <div class="item-faq__iconMinus">-</div>
+                    <div class="item-faq__content">
+                        <div class="item-faq__question">Is this thing on?</div>
+                        <div class="item-faq__answer">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                            eiusmod tempor incididunt ut labore et dolore magna
+                            aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                            ex ea commodo consequat m
+                            dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor inc.
+                        </div>
+                    </div>
+                </div>
+                <div class="faq__item item-faq">
+                    <div class="item-faq__iconPlus">+</div>
+                    <div class="item-faq__iconMinus">-</div>
+                    <div class="item-faq__content">
+                        <div class="item-faq__question">Is this thing on?</div>
+                        <div class="item-faq__answer">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                            eiusmod tempor incididunt ut labore et dolore magna
+                            aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                            ex ea commodo consequat m
+                            dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor inc.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="enroll">
+        <div class="enroll__container">
+            <div class="enroll__content">
+                <div class="enroll__title">Як записатись на заняття?</div>
+                <div class="enroll__text">Все супер просто, клацай на кнопку нижче обирай ідеальні дату, час, викладача
+                    і
+                    локацію 🙂</div>
+                <button class="enroll__button">Перейти до запису</button>
+            </div>
+        </div>
+        <img src="../../../assets/drumsPage/img/line.svg" alt="" class="enroll__line1">
+        <div class="line2__wrapper">
+            <img src="../../../assets/drumsPage/img/line.svg" alt="" class="enroll__line2">
+        </div>
+    </div>
+    <div class="other">
+        <div class="other__container">
+            <div class="other__title">Інші послуги</div>
+            <div class="other__instruments">
+                <div class="other__instrument instrument-other">
+                    <div class="instrument-other__img"></div>
+                    <div class="instrument-other__subtitle">Вокал</div>
+                </div>
+                <div class="other__instrument instrument-other">
+                    <div class="instrument-other__img"></div>
+                    <div class="instrument-other__subtitle">Гітара</div>
+                </div>
+                <div class="other__instrument instrument-other">
+                    <div class="instrument-other__img"></div>
+                    <div class="instrument-other__subtitle">Клавіші</div>
+                </div>
+                <div class="other__instrument instrument-other">
+                    <div class="instrument-other__img"></div>
+                    <div class="instrument-other__subtitle">Укулєлє</div>
+                </div>
+            </div>
+            <div class="other__info">
+                <div class="other__text">Тут текст для сеошних цілей, Тут текст для сеошних цілей, Тут текст для сеошних
+                    цілей, Тут текст для сеошних цілей, Тут
+                    текст для сеошних цілей, Тут текст для сеошних цілей, Тут текст для сеошних цілей, Тут текст для
+                    сеошних цілей, Тут
+                    текст для сеошних цілей, Тут текст для сеошних цілей, Тут текст для сеошних цілей, Тут текст для
+                    сеошних цілей, Тут
+                    текст для сеошних цілей, Тут текст для сеошних цілей, Тут текст для сеошних цілей, <a
+                        href="#">Показати більше</a></div>
+            </div>
+        </div>
+    </div>
+    {% include('../../main/_footer.html.twig') %}
+    {% include('../../main/_сontacts.html') %}
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="drums.js"></script>
+{% endblock %}
+
+</html>
