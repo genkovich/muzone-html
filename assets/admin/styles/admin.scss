@@ -1,0 +1,107 @@
+@import './custom-theme';
+@import "~bootstrap/scss/bootstrap";
+@import '~bootstrap-icons/font/bootstrap-icons';
+@import '~toastr/toastr';
+
+.toast-custom {
+  top: 68px;
+  right: 12px;
+}
+
+.toast-top-right-custom {
+  top: 24px !important;
+  right: 24px !important;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar {
+  height: calc(100vh - 60px);
+  padding-top: 1rem;
+  width: 200px;
+  transition: width 0.3s;
+}
+
+.nav-item {
+  color: #fff;
+}
+
+.nav-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.menu-text {
+  margin-left: 1rem;
+}
+
+.collapsed {
+  width: 80px;
+
+  .menu-text {
+    display: none;
+  }
+}
+
+.navbar {
+  background-color: #000;
+  height: 60px;
+}
+
+.logout {
+  margin-left: auto;
+  color: #fff;
+}
+
+.menu-icon {
+  font-size: 1rem;
+}
+
+.offcanvas-body {
+  height: 100%;
+  overflow-y: auto;
+}
+
+.navbar-logo {
+  width: 100%;
+
+  img {
+    width: 134px;
+  }
+}
+
+.user-table {
+  cursor: pointer;
+}
+
+.toggle-sidebar {
+  padding: var(--bs-navbar-toggler-padding-y) var(--bs-navbar-toggler-padding-x);
+  font-size: var(--bs-navbar-toggler-font-size);
+  line-height: 1;
+  color: var(--bs-navbar-color);
+  background-color: transparent;
+  border: var(--bs-border-width) solid var(--bs-navbar-toggler-border-color);
+  border-radius: var(--bs-navbar-toggler-border-radius);
+  transition: var(--bs-navbar-toggler-transition);
+}
+
+.left-nav-div {
+  width: 240px;
+}
+
+.table > :not(caption) > * > * {
+    padding: 0.2rem 0.2rem;
+}
+
+@media (max-width: 991.98px) {
+
+  .mobile-hide {
+    display: none !important;
+  }
+  .toggle-sidebar, .sidebar {
+    display: none !important;
+  }
+
+}

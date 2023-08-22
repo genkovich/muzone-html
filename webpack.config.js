@@ -16,11 +16,11 @@ Encore
     .setOutputPath('public/build/')
     .setPublicPath('/build')
 
-    .addEntry('app', './assets/app.js')
-    .addStyleEntry('styles', './assets/styles/app.scss')
+    .addEntry('landing/script', './assets/landing/js/app.js')
+    .addStyleEntry('landing/style', './assets/landing/styles/app.scss')
 
-    .addEntry('admin', './assets/admin.js')
-    .addStyleEntry('admin_style', './assets/styles/admin/admin.scss')
+    .addEntry('admin/script', './assets/admin/js/admin.js')
+    .addStyleEntry('admin/style', './assets/admin/styles/admin.scss')
 
     .enableSingleRuntimeChunk()
 
@@ -37,13 +37,6 @@ Encore
             };
         }
     )
-    .addLoader({
-        test: /\.webm$/,
-        loader: 'file-loader',
-        options: {
-            name: 'videos/[name].[hash].[ext]',
-        },
-    })
     .enablePostCssLoader()
     .addPlugin(new MiniCssExtractPlugin({
         filename: '[name].css'
@@ -51,21 +44,16 @@ Encore
     .addPlugin(new ESLintPlugin())
     .addPlugin(new CopyWebpackPlugin({
         patterns: [
-            { from: "./assets/landing/libs/form/ua.json", to: "libs/form/" },
+            { from: "./assets/landing/js/libs/form/ua.json", to: "libs/form/" },
         ],
     }),)
     .configureBabelPresetEnv((config) => {
         config.useBuiltIns = 'usage';
         config.corejs = '3.23';
     })
-    .addAliases({
-        '@symfony/stimulus-bridge/controllers.json': path.resolve(__dirname, 'assets/controllers.json'),
-        $: 'jquery',
-        jQuery: 'jquery'
-    })
     .autoProvidejQuery()
     .copyFiles({
-        from: './assets/styles/favicon',
+        from: './assets/favicon',
         to: 'favicon/[path][name].[ext]',
     })
 ;

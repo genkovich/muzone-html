@@ -30,11 +30,11 @@
         <!-- Site Manifest -->
         <link rel="manifest" href="{{ asset('build/favicon/site.webmanifest') }}">
         {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
+            {{ encore_entry_link_tags('landing/style') }}
         {% endblock %}
 
         {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
+            {{ encore_entry_script_tags('landing/script') }}
         {% endblock %}
     </head>
     <body>

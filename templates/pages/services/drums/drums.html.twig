@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+{% block title %} Muzone - музична школа в Одесі для дітей і дорослих {% endblock %}
+{% block description %}Muzone ✅ Сучасна музична школа в Одесі для дорослих і дітей ⭐️ Навчись швидко грати на музияних інструментах з нами ✅ Ціни і відгуки на сайті.{% endblock %}
+
+{% block body %}
+<div class="wrapper">
+    {% include('main/_header.html.twig') %}
+    {% include('pages/services/drums/_description.html.twig') %}
+
+
+{#    {% include('main/_footer.html.twig') %}#}
+</div>
+{% endblock %}

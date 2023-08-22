@@ -2,6 +2,10 @@ main_page:
     path: /
     controller: Infrastructure\Symfony\Controller\MainPageController
 
+services_drums:
+    path: /services/drums
+    controller: Infrastructure\Symfony\Controller\Services\DrumsController
+
 sitemap_html:
     path: /sitemap
     controller: Infrastructure\Symfony\Controller\SitemapController::sitemapHtml

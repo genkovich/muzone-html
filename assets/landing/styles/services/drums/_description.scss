@@ -1,0 +1,167 @@
+.description {
+  height: 649px;
+  padding: 38px 0px 96px 0px;
+  background: linear-gradient(126deg, #020202 17.28%, rgba(2, 2, 2, 0) 67.8%, #020202 100%), url("../../../../landing/img/drums_page/descriptionBG.png");
+  background-size: cover;
+  background-position: 72%;
+  background-repeat: no-repeat;
+  position: relative;
+  overflow: hidden;
+
+  // .description__title
+  &__title {
+    position: relative;
+    z-index: 2;
+    color: #bdff02; //!ОБЯЗАТЕЛЬНО ПОМЕНЯТЬ НА $green
+    text-align: center;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 218%;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 180px;
+
+    @media (min-width: $mobile) {
+      font-size: 12px;
+      line-height: 200%;
+      text-align: left;
+      margin-bottom: 11px;
+    }
+  }
+  // .description__decor1
+  &__decor1 {
+    z-index: 1;
+    position: absolute;
+    width: 408px;
+    left: -185px;
+    bottom: 42px;
+
+    @media (min-width: $mobileSmall) {
+      left: -150px;
+    }
+    @media (min-width: $mobile) {
+      width: 585px;
+      bottom: 150px;
+      left: -170px;
+    }
+  }
+  // .description__decor2
+  &__decor2 {
+    position: absolute;
+    width: 335px;
+    top: 70px;
+    right: -230px;
+
+    @media (min-width: $mobile) {
+      width: 565px;
+      top: 20px;
+      right: -130px;
+    }
+  }
+  // .description__info
+  &__info {
+    position: relative;
+    z-index: 2;
+    color: #fff;
+  }
+
+  &__decorSquare1 {
+    display: none;
+
+    @media (min-width: 1328px) {
+      display: block;
+      position: absolute;
+      z-index: 2;
+      width: 35px;
+      height: 35px;
+      border-radius: 5px;
+      background-color: #bdff02; //!ОБЯЗАТЕЛЬНО ЗАМЕНИТЬ НА $green
+      transform: rotate(21.576deg);
+      top: 180px;
+      left: 50px;
+      animation: rotateAnimation 3s linear infinite;
+    }
+  }
+  &__decorSquare2 {
+    display: none;
+
+    @media (min-width: $mobile) {
+      display: block;
+      position: absolute;
+      width: 48px;
+      height: 48px;
+      border-radius: 11px;
+      background-color: #bdff02; //!ОБЯЗАТЕЛЬНО ЗАМЕНИТЬ НА $green
+      transform: rotate(-14.924deg);
+      bottom: 210px;
+      right: 270px;
+      animation: rotateAnimation 3s linear infinite;
+    }
+  }
+  &__decorSquare3 {
+    display: none;
+
+    @media (min-width: $mobile) {
+      display: block;
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      border-radius: 9px;
+      background-color: #bdff02; //!ОБЯЗАТЕЛЬНО ЗАМЕНИТЬ НА $green
+      transform: rotate(65.076deg);
+      top: 115px;
+      right: 185px;
+      animation: rotateAnimation 3s linear infinite;
+    }
+  }
+
+  &__container {
+    @media (min-width: $mobile) {
+      flex: auto;
+    }
+  }
+
+  @media (min-width: $mobile) {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.info-description {
+  // .info-description__title
+  &__title {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 110%;
+    text-align: center;
+    margin-bottom: 10px;
+    font-family: Montserrat;
+
+    @media (min-width: $mobile) {
+      font-size: 44px;
+      text-align: left;
+    }
+    @media (min-width: $tablet) {
+      font-size: 66px;
+    }
+  }
+  // .info-description__text
+  &__text {
+    font-size: 14px;
+    line-height: 171%;
+    max-width: 255px;
+    margin: 0px auto 20px auto;
+
+    @media (min-width: $mobile) {
+      font-size: 16px;
+      margin: 0px 0px 20px 0px;
+      max-width: 416px;
+    }
+  }
+  // .info-description__form
+  &__form {
+    font-family: Montserrat;
+    display: flex;
+    justify-content: center;
+  }
+}

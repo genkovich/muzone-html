@@ -1,0 +1,289 @@
+.cost {
+    position: relative;
+    &__line1 {
+        width: 2608px;
+        height: 1033px;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 0;
+        margin-left: -1400px;
+        stroke-width: 2.5;
+    }
+    &__line2 {
+        width: 2608px;
+        height: 1033px;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 80px;
+        margin-left: 1350px;
+        stroke-width: 2.5;
+    }
+    &__wrapper {
+        margin: 40px 0 0;
+    }
+    &__desc {
+        margin: 30px 0 0;
+    }
+    &__tab {
+        display: none;
+        &.active {
+            display: block;
+        }
+    }
+    .row {
+        margin-bottom: -24px;
+    }
+    .col {
+        width: 33.3333%;
+    }
+}
+
+.tabs {
+    margin: 20px 0 0;
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+        margin: -12px;
+    }
+    &__li {
+        padding: 12px;
+    }
+    &__item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 50px;
+        padding: 0 24px;
+        border: 1px solid $text;
+        font: 700 18px / 1 $font;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: .3s $trans;
+        user-select: none;
+        background: $bg;
+        &:hover {
+            background: rgba($text, .1);
+        }
+        &.active {
+            background: #000;
+            color: #fff;
+            cursor: inherit;
+        }
+    }
+}
+
+.cost-checkbox {
+    color: #A1AEB7;
+    cursor: pointer;
+    user-select: none;
+    display: inline-flex;
+    margin: 40px 0 0;
+    user-select: none;
+    input {
+        display: none;
+        &:checked {
+            + .cost-checkbox__bl {
+                .cost-checkbox {
+                    &__title {
+                        &:last-child {
+                            color: #000;
+                        }
+                    }
+                    &__toggle {
+                        &-circle {
+                            transform: translateX(19px);
+                        }
+                    }
+                }
+            }
+        }
+        &:not(:checked) {
+            + .cost-checkbox__bl {
+                .cost-checkbox {
+                    &__title {
+                        &:first-child {
+                            color: #000;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &__bl {
+        display: flex;
+        align-items: center;
+    }
+    &__toggle {
+        width: 42px;
+        height: 20px;
+        background: $text;
+        border-radius: 20px;
+        margin: 0 10px;
+        &-circle {
+            width: 24px;
+            height: 24px;
+            margin: -2px 0 0;
+            border-radius: 50%;
+            background: #fff;
+            border: 1px solid $text;
+            transition: .3s $trans;
+        }
+    }
+    &__title {
+        transition: .3s $trans;
+    }
+}
+
+.cost-item {
+    text-align: center;
+    background: #fff;
+    box-shadow: 0px 4px 18px rgba(66, 75, 90, 0.15);
+    border-radius: 20px;
+    padding: 34px 30px;
+    margin: 0 0 24px;
+    &__promo {
+        font: 400 18px / 1.2 $font;
+        color: $blue;
+        margin: 0 0 15px;
+    }
+    &__price {
+        font: 400 50px / 1.2 $font;
+        span {
+            font-weight: 900;
+        }
+    }
+    &__promo-price {
+        font: 400 18px / 1.2 $font;
+        color: $blue;
+        text-decoration-line: line-through;
+        margin: 15px 0 0;
+    }
+    &__info {
+        font: 400 14px / 1.5 $font;
+        margin: 4px 0 0;
+    }
+    &__bottom {
+        border-top: 1px solid #A6B2CD;
+        margin: 20px 0 0;
+        padding: 20px 0 0;
+    }
+    &__type {
+        font: 400 italic 18px / 1.2 $font;
+    }
+    &__btn {
+        margin: 20px 0 0;
+        .btn {
+            width: 100%;
+        }
+    }
+    &.age-adults {
+
+    }
+    &.age-children {
+        display: none;
+        .cost-item {
+            &__promo {
+                color: $pink;
+            }
+            &__promo-price {
+                color: $pink;
+            }
+            &__btn {
+                .btn {
+                    background: $green;
+                    color: $text;
+                    &:hover {
+                        background: $greenH;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 1200px) {
+    .cost {
+        &__line2 {
+            margin-left: 1500px;
+        }
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .cost {
+        margin: 100px 0 0;
+        &__line1 {
+            width: 1829px;
+            height: 724px;
+            margin-left: 70px;
+            top: 210px;
+            transform: translateX(-50%) rotate(-32deg);
+            stroke-width: 3;
+        }
+        &__line2 {
+            top: unset;
+            bottom: 0;
+            margin-left: 0;
+            width: 1540px;
+            height: 610px;
+            stroke-width: 3.5;
+        }
+        &__desc {
+            margin: 20px 0 0;
+        }
+        .col {
+            width: 100%;
+        }
+    }
+
+    .cost-item {
+        max-width: 364px;
+        width: 100%;
+        margin: 0 auto 24px;
+    }
+
+    .tabs {
+        &__list {
+            margin: -7px;
+        }
+        &__li {
+            padding: 7px;
+        }
+        &__item {
+            font-size: 14px;
+            height: 40px;
+            padding: 0 15px;
+        }
+    }
+
+    .cost-checkbox {
+        &__toggle {
+            margin: 0 20px;
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .cost {
+        margin: 80px 0 0;
+        &__line1,
+        &__line2 {
+            display: none;
+        }
+        &__desc {
+            text-align: center;
+        }
+    }
+
+    .tabs {
+        &__list {
+            justify-content: center;
+        }
+    }
+
+    .cost-checkbox {
+        display: flex;
+        justify-content: center;
+    }
+}

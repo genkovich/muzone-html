@@ -1,0 +1,75 @@
+
+.modal {
+    color: $text;
+    max-width: 1200px !important;
+    width: 100%;
+    display: none;
+    border-radius: 20px;
+    &__title {
+        font: 900 46px / 1.2 $font;
+        text-align: center;
+    }
+    &__desc {
+        margin: 15px 0 0;
+        text-align: center;
+    }
+    &__form {
+        margin: 25px 0 0;
+    }
+}
+
+.modal-prices {
+    color: $text;
+    max-width: 1200px;
+    display: none;
+    border-radius: 20px;
+}
+
+.fancybox__container {
+    .carousel__button.is-close {
+        width: 40px;
+        height: 40px;
+        right: -40px;
+        top: -50px;
+        &:hover {
+            color: $green;
+            svg {
+                transform: rotate(180deg);
+            }
+        }
+        svg {
+            filter: none;
+            width: 30px;
+            height: 30px;
+            transition: .3s $trans;
+        }
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .modal {
+        &__title {
+            font-size: 36px;
+        }
+
+        .trial {
+            &__img {
+                height: auto;
+            }
+
+            &__form {
+                margin: 1rem auto auto;
+
+                .desc-sec {
+                    margin: 1rem auto;
+                }
+            }
+        }
+    }
+
+    .fancybox__container {
+        .carousel__button.is-close {
+            right: 0;
+        }
+    }
+}
